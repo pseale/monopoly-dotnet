@@ -17,9 +17,10 @@ namespace MonopolyTests.Infrastructure
       
     }
 
-    protected BrowserSession Session()
+// ReSharper disable once InconsistentNaming
+    protected static BrowserSession browser
     {
-      return TestRunSetup.BrowserSession;
+      get { return TestRunSetup.BrowserSession; }
     }
   }
 }

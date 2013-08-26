@@ -2,7 +2,7 @@
 
 namespace MonopolyWeb.Controllers
 {
-  public class HomeController : Controller
+  public class NewGameController : Controller
   {
     public ActionResult Index()
     {

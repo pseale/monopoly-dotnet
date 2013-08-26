@@ -10,9 +10,9 @@ namespace MonopolyTests
     [Test]
     public void When_anyone_visits_the_home_page__should_be_able_to_start_a_new_game()
     {
-      Session().Visit("/");
+      browser.Visit("/");
 
-      var link = Session().FindLink("Start New Game");
+      var link = browser.FindLink("Start a new game");
 
       Assert.IsTrue(link.Exists());
     }

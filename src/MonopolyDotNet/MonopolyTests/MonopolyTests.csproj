@@ -83,7 +83,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="IisExpressInstance.cs" />
+    <Compile Include="Infrastructure\IisExpressInstance.cs" />
     <Compile Include="Infrastructure\TestRunSetup.cs" />
     <Compile Include="Infrastructure\WebTestBase.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

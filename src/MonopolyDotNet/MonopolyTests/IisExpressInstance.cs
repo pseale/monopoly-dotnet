@@ -32,7 +32,7 @@ using System.Diagnostics;
 using System.IO;
 using System.Linq;
 
-namespace MonopolyTests.Infrastructure
+namespace MonopolyTests
 {
   public static class IisExpressInstance
   {

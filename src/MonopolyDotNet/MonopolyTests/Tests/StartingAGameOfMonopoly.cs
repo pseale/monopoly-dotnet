@@ -1,8 +1,6 @@
-﻿using Coypu.Drivers;
-using MonopolyTests.Infrastructure;
-using NUnit.Framework;
+﻿using NUnit.Framework;
 
-namespace MonopolyTests
+namespace MonopolyTests.Tests
 {
   [TestFixture]
   public class StartingAGameOfMonopoly : WebTestBase

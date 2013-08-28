@@ -1,4 +1,5 @@
-﻿using NUnit.Framework;
+﻿using MonopolyTests.Infrastructure;
+using NUnit.Framework;
 
 namespace MonopolyTests
 {
@@ -10,7 +11,6 @@ namespace MonopolyTests
     public void TestFixtureSetUp()
     {
       IisExpressInstance.Start("MonopolyWeb", 19456);
-      SeleniumHelper.Start();
     }
 
     [TearDown]

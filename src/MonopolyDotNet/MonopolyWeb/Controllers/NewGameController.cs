@@ -1,4 +1,5 @@
-﻿using System.Web.Mvc;
+﻿using MvcContrib;
+using System.Web.Mvc;
 
 namespace MonopolyWeb.Controllers
 {
@@ -11,7 +12,7 @@ namespace MonopolyWeb.Controllers
 
     public ActionResult Create()
     {
-      throw new System.NotImplementedException();
+      return this.RedirectToAction(x => x.Index());
     }
   }
 }

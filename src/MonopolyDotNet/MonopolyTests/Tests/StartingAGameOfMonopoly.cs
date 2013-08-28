@@ -25,6 +25,8 @@ namespace MonopolyTests.Tests
       browser.FindFieldset("Opponent 1").Choose("Rube");
       browser.FindFieldset("Opponent 2").Choose("Chester");
       browser.FindFieldset("Opponent 3").Choose("Adolf");
+
+      //Assert there is no error up to this point
     }
   }
 }

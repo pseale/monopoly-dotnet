@@ -1,13 +1,19 @@
 ﻿using Coypu;
 
-namespace MonopolyTests
+namespace MonopolyTests.Infrastructure
 {
   public static class SeleniumHelper
   {
     private static BrowserSession _browserSession;
     public static BrowserSession BrowserSession
     {
-      get { return _browserSession; }
+      get
+      {
+        if (_browserSession == null)
+          Start();
+
+        return _browserSession;
+      }
     }
 
     public static void Start()

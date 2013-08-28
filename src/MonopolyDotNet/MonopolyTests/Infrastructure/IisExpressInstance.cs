@@ -1,4 +1,5 @@
-﻿/*
+﻿#region license
+/*
  * This IIS Express spawning code gleaned from the Seleno codebase at github.com/TestStack/TestStack.Seleno, which is under an MIT license.
  * 
  * I have modified the original files heavily.
@@ -26,18 +27,18 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 THE SOFTWARE.
  * 
  */
+#endregion
 
 using System;
 using System.Diagnostics;
 using System.IO;
 using System.Linq;
 
-namespace MonopolyTests
+namespace MonopolyTests.Infrastructure
 {
   public static class IisExpressInstance
   {
     private static Process _webHostProcess;
-    private static int _port;
 
     public static void Start(string webProjectFolderName, int port)
     {
@@ -57,9 +58,19 @@ namespace MonopolyTests
       _webHostProcess = null;
     }
 
+    private static int _port;
     public static int Port
     {
       get { return _port; }
+    }
+
+    public static string BaseUrl
+    {
+      get
+      {
+        if (_port == 0) throw new TestRunException("Can't figure out base URL for the webserver, no port has been set.");
+        return "http://localhost:" + _port;
+      }
     }
 
     private static ProcessStartInfo ProcessStartInfo(string applicationPath, int port)

@@ -1,5 +1,5 @@
 ﻿/*
- * This IIS code gleaned from the Seleno codebase at github.com/TestStack/TestStack.Seleno, which is under an MIT license.
+ * This IIS Express spawning code gleaned from the Seleno codebase at github.com/TestStack/TestStack.Seleno, which is under an MIT license.
  * 
  * I have modified the original files heavily.
 
@@ -64,7 +64,6 @@ namespace MonopolyTests
 
     private static ProcessStartInfo ProcessStartInfo(string applicationPath, int port)
     {
-      // todo: grab stdout and/or stderr for logging purposes?
       var key = Environment.Is64BitOperatingSystem ? "programfiles(x86)" : "programfiles";
       var programfiles = Environment.GetEnvironmentVariable(key);
 

@@ -8,5 +8,10 @@ namespace MonopolyWeb.Controllers
     {
       return View();
     }
+
+    public ActionResult Create()
+    {
+      throw new System.NotImplementedException();
+    }
   }
 }

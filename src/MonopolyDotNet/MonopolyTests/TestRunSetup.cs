@@ -1,8 +1,8 @@
-﻿using Coypu;
-using NUnit.Framework;
+﻿using NUnit.Framework;
 
 namespace MonopolyTests
 {
+  //fun fact: NUnit doesn't see this file if I put it in a subfolder.
   [SetUpFixture]
   public class TestRunSetup
   {

@@ -1,6 +1,64 @@
-﻿@{
+﻿@using HtmlTags
+@using Microsoft.Web.Mvc
+@using MonopolyWeb.Controllers
+@{
   ViewBag.Title = "Start a new game";
 }
 
+
 <h2>Start a new game</h2>
 
+@{
+  using (Html.BeginForm<NewGameController>(x => x.Create()))
+  {
+
+      <div class="span5" style="height: 300px">
+        <fieldset>
+          <legend>Player 1 (You)</legend>
+          <h5>Enter your name and totem. <em>Choose wisely</em></h5>
+          <label>Name: <input type="text" name="Name" /></label>
+
+          <label><input type="radio" name="Totem" value="Dog"> Dog</label>
+
+          <label><input type="radio" name="Totem" value="Thimble"> Thimble</label>
+          <label><input type="radio" name="Totem" value="Shoe" /> Shoe</label>
+          <label><input type="radio" name="Totem" value="Horseman" /> Horseman</label>
+        </fieldset>
+</div>
+    <div class="span5"  style="height: 300px">
+      <fieldset>
+        <legend>Opponent 1</legend>
+        <h5>Select a computer opponent.</h5>
+        <label><input type="radio" name="Player2" value="Rube"> Rube</label>
+        <label><input type="radio" name="Player2" value="Chester"> Chester</label>
+        <label><input type="radio" name="Player2" value="Mike Shishesky"> Mike Shishesky</label>
+        <label><input type="radio" name="Player2" value="Mike Krzyzewski"> Mike Krzyzewski</label>
+        <label><input type="radio" name="Player2" value="Adolf"> Adolf</label>
+      </fieldset>
+    </div>
+    <div class="span5"  style="height: 300px">
+      <fieldset>
+        <legend>Opponent 2</legend>
+        <h5>Select a computer opponent.</h5>
+        <label><input type="radio" name="Player3" value="Rube"> Rube</label>
+        <label><input type="radio" name="Player3" value="Chester"> Chester</label>
+        <label><input type="radio" name="Player3" value="Mike Shishesky"> Mike Shishesky</label>
+        <label><input type="radio" name="Player3" value="Mike Krzyzewski"> Mike Krzyzewski</label>
+        <label><input type="radio" name="Player3" value="Adolf"> Adolf</label>
+      </fieldset>
+    </div>
+    <div class="span5"  style="height: 300px">
+      <fieldset>
+        <legend>Opponent 3</legend>
+        <h5>Select a computer opponent.</h5>
+        <label><input type="radio" name="Player4" value="Rube"> Rube</label>
+        <label><input type="radio" name="Player4" value="Chester"> Chester</label>
+        <label><input type="radio" name="Player4" value="Mike Shishesky"> Mike Shishesky</label>
+        <label><input type="radio" name="Player4" value="Mike Krzyzewski"> Mike Krzyzewski</label>
+        <label><input type="radio" name="Player4" value="Adolf"> Adolf</label>
+      </fieldset>
+    </div>
+    <div class="span12"><input class="btn btn-large" type="submit" value="Submit"/> </div>
+                      
+  }
+}

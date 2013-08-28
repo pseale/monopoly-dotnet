@@ -6,7 +6,7 @@ namespace MonopolyTests.Tests
   public class VisitingTheAboutPage : WebTestBase
   {
     [Test]
-    public void When_visiting_the_home_page__should_have_link_to_About_page()
+    public void When_visiting_the_home_page__should_be_able_to_visit_the_About_page()
     {
       browser.Visit("/");
 

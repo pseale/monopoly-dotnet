@@ -14,5 +14,17 @@ namespace MonopolyTests.Tests
 
       Assert.IsTrue(link.Exists());
     }
+
+    [Test]
+    public void When_starting_a_new_game__should_be_able_to_fill_in_every_field_on_the_form()
+    {
+      browser.Visit("/NewGame");
+      
+      browser.FillIn("Name").With("Tron");
+      browser.Choose("Dog");
+      browser.FindFieldset("Opponent 1").Choose("Rube");
+      browser.FindFieldset("Opponent 2").Choose("Chester");
+      browser.FindFieldset("Opponent 3").Choose("Adolf");
+    }
   }
 }

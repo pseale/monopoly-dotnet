@@ -5,7 +5,7 @@ VisualStudioVersion = 12.0.20623.1 VSUPREVIEW
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MonopolyWeb", "MonopolyWeb\MonopolyWeb.csproj", "{28C0B40C-C193-4017-B224-915BA3F7FED7}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MonopolyTests", "MonopolyTests\MonopolyTests.csproj", "{88BADE35-A4F0-4D28-9E06-31FBE1DEB3B7}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MonopolyWebTests", "MonopolyTests\MonopolyWebTests.csproj", "{88BADE35-A4F0-4D28-9E06-31FBE1DEB3B7}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

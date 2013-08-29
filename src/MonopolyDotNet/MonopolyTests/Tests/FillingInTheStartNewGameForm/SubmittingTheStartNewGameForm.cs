@@ -3,7 +3,7 @@ using System.Net;
 using NUnit.Framework;
 using RestSharp;
 
-namespace MonopolyTests.Tests
+namespace MonopolyTests.Tests.FillingInTheStartNewGameForm
 {
   [TestFixture]
   public class SubmittingTheStartNewGameForm : WebTestBase
@@ -15,7 +15,8 @@ namespace MonopolyTests.Tests
     public void SetUp()
     {
       _client = new RestClient(baseUrl);
-      _request = new RestRequest("NewGame/Create");
+      _request = new RestRequest("NewGame");
+      _request.Method = Method.POST;
     }
 
     [Test]

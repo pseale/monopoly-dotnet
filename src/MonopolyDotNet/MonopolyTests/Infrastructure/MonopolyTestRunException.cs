@@ -2,11 +2,11 @@
 
 namespace MonopolyTests.Infrastructure
 {
-  public class TestRunException : Exception
+  public class MonopolyTestRunException : Exception
   {
     private readonly string _message;
 
-    public TestRunException(string message)
+    public MonopolyTestRunException(string message)
     {
       _message = message;
     }

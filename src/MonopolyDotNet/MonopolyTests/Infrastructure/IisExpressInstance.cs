@@ -68,7 +68,7 @@ namespace MonopolyTests.Infrastructure
     {
       get
       {
-        if (_port == 0) throw new TestRunException("Can't figure out base URL for the webserver, no port has been set.");
+        if (_port == 0) throw new MonopolyTestRunException("Can't figure out base URL for the webserver, no port has been set.");
         return "http://localhost:" + _port;
       }
     }

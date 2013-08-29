@@ -88,11 +88,11 @@
   <ItemGroup>
     <Compile Include="Infrastructure\IisExpressInstance.cs" />
     <Compile Include="Infrastructure\SeleniumHelper.cs" />
-    <Compile Include="Infrastructure\TestRunException.cs" />
+    <Compile Include="Infrastructure\MonopolyTestRunException.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="TestRunSetup.cs" />
+    <Compile Include="Tests\FillingInTheStartNewGameForm\SubmittingTheStartNewGameForm.cs" />
     <Compile Include="Tests\StartingAGameOfMonopoly.cs" />
-    <Compile Include="Tests\SubmittingTheStartNewGameForm.cs" />
     <Compile Include="Tests\VisitingTheAboutPage.cs" />
     <Compile Include="WebTestBase.cs" />
   </ItemGroup>

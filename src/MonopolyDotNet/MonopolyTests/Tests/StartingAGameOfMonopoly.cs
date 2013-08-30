@@ -1,4 +1,5 @@
 ﻿using System;
+using Coypu;
 using NUnit.Framework;
 
 namespace MonopolyTests.Tests
@@ -23,9 +24,9 @@ namespace MonopolyTests.Tests
       
       browser.FillIn("Name").With("Tron");
       browser.Choose("Dog");
-      browser.FindFieldset("Opponent 1").Choose("Rube");
-      browser.FindFieldset("Opponent 2").Choose("Chester");
-      browser.FindFieldset("Opponent 3").Choose("Adolf");
+      browser.FindFieldset("Opponent 1").Choose("P2Rube");
+      browser.FindFieldset("Opponent 2").Choose("P3Chester");
+      browser.FindFieldset("Opponent 3").Choose("P4Adolf");
 
       //Assert there is no error up to this point
     }
@@ -37,8 +38,8 @@ namespace MonopolyTests.Tests
 
       browser.FillIn("Name").With("Tron");
       browser.Choose("Dog");
-      browser.FindFieldset("Opponent 1").Choose("Rube");
-      browser.FindFieldset("Opponent 2").Choose("Chester");
+      browser.FindFieldset("Opponent 1").Choose("P2Rube");
+      browser.FindFieldset("Opponent 2").Choose("P3Chester");
       //everything filled in except 3rd opponent Adolf //browser.FindFieldset("Opponent 3").Choose("Adolf");
 
       browser.ClickButton("Submit");
@@ -46,8 +47,8 @@ namespace MonopolyTests.Tests
       Assert.AreEqual(new Uri(baseUrl+"/NewGame"), browser.Location);
       Assert.AreEqual("Tron", browser.FindField("Name").Value);
       Assert.AreEqual("Dog", browser.FindField("Totem").Value);
-      Assert.AreEqual("Rube", browser.FindField("Player2").Value);
-      Assert.AreEqual("Chester", browser.FindField("Player3").Value);
+      Assert.AreEqual("true", browser.FindField("P2Rube")["Checked"]); //"But Peter, why are you doing such horrible things with Checked attributes and mangling radio button names, when the API seems so much friendlier?" YOU CANT HANDLE THE TRUTH
+      Assert.AreEqual("true", browser.FindField("P3Chester")["Checked"]);
     }
 
     [Test]
@@ -56,12 +57,12 @@ namespace MonopolyTests.Tests
       browser.Visit("/NewGame");
 
       //nothing filled in, EXCEPT 3rd opponent Adolf
-      browser.FindFieldset("Opponent 3").Choose("Adolf");
+      browser.FindFieldset("Opponent 3").Choose("P4Adolf");
 
       browser.ClickButton("Submit");
 
       Assert.AreEqual(new Uri(baseUrl + "/NewGame"), browser.Location);
-      Assert.AreEqual("Adolf", browser.FindField("Player4").Value);
+      Assert.AreEqual("true", browser.FindField("P4Adolf")["Checked"]);
     }
   }
 }

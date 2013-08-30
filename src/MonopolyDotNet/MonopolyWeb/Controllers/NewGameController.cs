@@ -1,4 +1,4 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using MonopolyWeb.Models;
 using MvcContrib;
 using System.Web.Mvc;
 
@@ -22,19 +22,5 @@ namespace MonopolyWeb.Controllers
 
       return this.RedirectToAction<GameController>(x => x.Index());
     }
-  }
-
-  public class NewGame
-  {
-    [Required]
-    public string Name { get; set; }
-    [Required]
-    public string Totem { get; set; }
-    [Required]
-    public string Player2 { get; set; }
-    [Required]
-    public string Player3 { get; set; }
-    [Required]
-    public string Player4 { get; set; }
   }
 }

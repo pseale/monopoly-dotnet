@@ -31,9 +31,9 @@ namespace MonopolyTests.Tests.FillingInTheStartNewGameForm
     public void When_posting_everything_minus_our_name_to_the_Start_New_Game_service__should_redirect_us_back_to_the_form()
     {
       _request.AddParameter("Totem", "Dog");
-      _request.AddParameter("Player2", "Rube");
-      _request.AddParameter("Player3", "Rube");
-      _request.AddParameter("Player4", "Rube");
+      _request.AddParameter("Second", "P2Rube");
+      _request.AddParameter("Third", "P3Rube");
+      _request.AddParameter("Fourth", "P4Rube");
       
       var response = _client.Execute(_request);
 
@@ -44,9 +44,9 @@ namespace MonopolyTests.Tests.FillingInTheStartNewGameForm
     public void When_posting_everything_minus_our_totem_to_the_Start_New_Game_service__should_redirect_us_back_to_the_form()
     {
       _request.AddParameter("Name", "Tron");
-      _request.AddParameter("Player2", "Rube");
-      _request.AddParameter("Player3", "Rube");
-      _request.AddParameter("Player4", "Rube");
+      _request.AddParameter("Second", "P2Rube");
+      _request.AddParameter("Third", "P3Rube");
+      _request.AddParameter("Fourth", "P4Rube");
 
       var response = _client.Execute(_request);
 
@@ -58,8 +58,8 @@ namespace MonopolyTests.Tests.FillingInTheStartNewGameForm
     {
       _request.AddParameter("Name", "Tron");
       _request.AddParameter("Totem", "Dog");
-      _request.AddParameter("Player3", "Rube");
-      _request.AddParameter("Player4", "Rube");
+      _request.AddParameter("Third", "P3Rube");
+      _request.AddParameter("Fourth", "P4Rube");
 
       var response = _client.Execute(_request);
 
@@ -71,8 +71,8 @@ namespace MonopolyTests.Tests.FillingInTheStartNewGameForm
     {
       _request.AddParameter("Name", "Tron");
       _request.AddParameter("Totem", "Dog");
-      _request.AddParameter("Player2", "Rube");
-      _request.AddParameter("Player4", "Rube");
+      _request.AddParameter("Second", "P2Rube");
+      _request.AddParameter("Fourth", "P4Rube");
       
       var response = _client.Execute(_request);
 
@@ -84,8 +84,8 @@ namespace MonopolyTests.Tests.FillingInTheStartNewGameForm
     {
       _request.AddParameter("Name", "Tron");
       _request.AddParameter("Totem", "Dog");
-      _request.AddParameter("Player2", "Rube");
-      _request.AddParameter("Player3", "Rube");
+      _request.AddParameter("Second", "P2Rube");
+      _request.AddParameter("Third", "P3Rube");
 
       var response = _client.Execute(_request);
 
@@ -97,8 +97,9 @@ namespace MonopolyTests.Tests.FillingInTheStartNewGameForm
     {
       _request.AddParameter("Name", "");
       _request.AddParameter("Totem", "Dog");
-      _request.AddParameter("Player2", "Rube");
-      _request.AddParameter("Player3", "Rube");
+      _request.AddParameter("Second", "P2Rube");
+      _request.AddParameter("Third", "P3Rube");
+      _request.AddParameter("Fourth", "P4Rube");
 
       var response = _client.Execute(_request);
 
@@ -111,8 +112,9 @@ namespace MonopolyTests.Tests.FillingInTheStartNewGameForm
       string nameThatIs51CharsLong = "12345678901234567890123456789012345678901234567890*";
       _request.AddParameter("Name", nameThatIs51CharsLong);
       _request.AddParameter("Totem", "Dog");
-      _request.AddParameter("Player2", "Rube");
-      _request.AddParameter("Player3", "Rube");
+      _request.AddParameter("Second", "Rube");
+      _request.AddParameter("Third", "Rube");
+      _request.AddParameter("Fourth", "P4Rube");
 
       var response = _client.Execute(_request);
 

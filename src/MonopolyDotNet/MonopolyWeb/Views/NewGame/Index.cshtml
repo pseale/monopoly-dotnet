@@ -1,4 +1,4 @@
-﻿@model NewGame
+﻿@model MonopolyWeb.Models.NewGame
 
 @using Microsoft.Web.Mvc
 @using MonopolyWeb.Controllers
@@ -29,33 +29,33 @@
       <fieldset>
         <legend>Opponent 1</legend>
         <h5>Select a computer opponent.</h5>
-        <label>@Html.RadioButtonFor(x => x.Player2, "Rube") Rube</label>
-        <label>@Html.RadioButtonFor(x => x.Player2, "Chester") Chester</label>
-        <label>@Html.RadioButtonFor(x => x.Player2, "Mike Shishesky") Mike Shishesky</label>
-        <label>@Html.RadioButtonFor(x => x.Player2, "Mike Krzyzewski") Mike Krzyzewski</label>
-        <label>@Html.RadioButtonFor(x => x.Player2, "Adolf") Adolf</label>
+        <label>@Html.RadioButtonFor(x => x.Second, "P2Rube") Rube</label>
+        <label>@Html.RadioButtonFor(x => x.Second, "P2Chester") Chester</label>
+        <label>@Html.RadioButtonFor(x => x.Second, "P2Mike Shishesky") Mike Shishesky</label>
+        <label>@Html.RadioButtonFor(x => x.Second, "P2Mike Krzyzewski") Mike Krzyzewski</label>
+        <label>@Html.RadioButtonFor(x => x.Second, "P2Adolf") Adolf</label>
       </fieldset>
     </div>
     <div class="span5"  style="height: 300px">
       <fieldset>
         <legend>Opponent 2</legend>
         <h5>Select a computer opponent.</h5>
-        <label>@Html.RadioButtonFor(x => x.Player3, "Rube") Rube</label>
-        <label>@Html.RadioButtonFor(x => x.Player3, "Chester") Chester</label>
-        <label>@Html.RadioButtonFor(x => x.Player3, "Mike Shishesky") Mike Shishesky</label>
-        <label>@Html.RadioButtonFor(x => x.Player3, "Mike Krzyzewski") Mike Krzyzewski</label>
-        <label>@Html.RadioButtonFor(x => x.Player3, "Adolf") Adolf</label>
+        <label>@Html.RadioButtonFor(x => x.Third, "P3Rube") Rube</label>
+        <label>@Html.RadioButtonFor(x => x.Third, "P3Chester") Chester</label>
+        <label>@Html.RadioButtonFor(x => x.Third, "P3Mike Shishesky") Mike Shishesky</label>
+        <label>@Html.RadioButtonFor(x => x.Third, "P3Mike Krzyzewski") Mike Krzyzewski</label>
+        <label>@Html.RadioButtonFor(x => x.Third, "P3Adolf") Adolf</label>
       </fieldset>
     </div>
     <div class="span5"  style="height: 300px">
       <fieldset>
         <legend>Opponent 3</legend>
         <h5>Select a computer opponent.</h5>
-        <label>@Html.RadioButtonFor(x => x.Player4, "Rube") Rube</label>
-        <label>@Html.RadioButtonFor(x => x.Player4, "Chester") Chester</label>
-        <label>@Html.RadioButtonFor(x => x.Player4, "Mike Shishesky") Mike Shishesky</label>
-        <label>@Html.RadioButtonFor(x => x.Player4, "Mike Krzyzewski") Mike Krzyzewski</label>
-        <label>@Html.RadioButtonFor(x => x.Player4, "Adolf") Adolf</label>
+        <label>@Html.RadioButtonFor(x => x.Fourth, "P4Rube") Rube</label>
+        <label>@Html.RadioButtonFor(x => x.Fourth, "P4Chester") Chester</label>
+        <label>@Html.RadioButtonFor(x => x.Fourth, "P4Mike Shishesky") Mike Shishesky</label>
+        <label>@Html.RadioButtonFor(x => x.Fourth, "P4Mike Krzyzewski") Mike Krzyzewski</label>
+        <label>@Html.RadioButtonFor(x => x.Fourth, "P4Adolf") Adolf</label>
       </fieldset>
     </div>
     <div class="span12"><input class="btn btn-large" type="submit" value="Submit"/> </div>

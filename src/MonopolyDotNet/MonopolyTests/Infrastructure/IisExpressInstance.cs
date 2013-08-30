@@ -85,7 +85,7 @@ namespace MonopolyTests.Infrastructure
         LoadUserProfile = true,
         CreateNoWindow = true,
         UseShellExecute = false,
-        Arguments = String.Format("/path:\"{0}\" /port:{1}", applicationPath, port),
+        Arguments = String.Format("/systray:false /path:\"{0}\" /port:{1}", applicationPath, port),
         FileName = string.Format("{0}\\IIS Express\\iisexpress.exe", programfiles)
       };
     }

@@ -9,15 +9,15 @@ namespace MonopolyWeb.Controllers
     [HttpGet]
     public ActionResult Index()
     {
-      return View(new NewGame());
+      return View(new NewGameInput());
     }
 
     [HttpPost]
-    public ActionResult Index(NewGame newGame)
+    public ActionResult Index(NewGameInput newGameInput)
     {
       if (!ModelState.IsValid)
       {
-        return View(newGame);
+        return View(newGameInput);
       }
 
       return this.RedirectToAction<GameController>(x => x.Index());

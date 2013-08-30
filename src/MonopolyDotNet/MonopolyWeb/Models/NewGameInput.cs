@@ -2,7 +2,7 @@
 
 namespace MonopolyWeb.Models
 {
-  public class NewGame
+  public class NewGameInput
   {
     [Required]
     [MaxLength(50, ErrorMessage = "Name cannot be longer than 40 characters.")]

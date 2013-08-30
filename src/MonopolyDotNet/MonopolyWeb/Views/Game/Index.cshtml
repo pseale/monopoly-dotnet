@@ -1,3 +1,45 @@
 ﻿@{
   ViewBag.Title = "Your turn";
 }
+
+@section styles
+{
+  <style>
+    .monopoly-board {
+      height: 720px;
+      width: 720px;
+      background-image: url('../img/board.png');
+      background-position: center center;
+    }
+    .player-card {
+      height: 180px;
+    }
+
+    img.player-icon {
+      float: left;
+      padding: 3px;
+    }
+  </style>  
+}
+
+<div class="monopoly-board span9"></div>
+<div class="player-card span3">
+  <img class="player-icon" src="../img/human_player.png"/>
+  <h4>Player 1 (YOU)</h4>
+  <p>$600<br/></p>
+</div>
+<div class="player-card span3">
+  <img class="player-icon" src="../img/robot_scum.png" />
+  <h4>Rube</h4>
+  <p>$600<br /></p>
+</div>
+<div class="player-card span3">
+  <img class="player-icon" src="../img/robot_scum.png" />
+  <h4>Chester</h4>
+  <p>$600<br /></p>
+</div>
+<div class="player-card span3">
+  <img class="player-icon" src="../img/robot_scum.png" />
+  <h4>Adolf</h4>
+  <p>$600<br /></p>
+</div>

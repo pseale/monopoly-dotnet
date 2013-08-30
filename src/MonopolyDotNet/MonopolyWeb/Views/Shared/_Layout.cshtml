@@ -7,6 +7,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>@ViewBag.Title - Monopoly</title>
     @Styles.Render("~/Content/css")
+    @RenderSection("styles", required: false)
+
     @Scripts.Render("~/bundles/modernizr")
   </head>
   <body>

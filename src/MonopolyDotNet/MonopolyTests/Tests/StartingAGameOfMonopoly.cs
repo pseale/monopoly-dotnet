@@ -40,7 +40,7 @@ namespace MonopolyTests.Tests
       browser.Choose("Dog");
       browser.FindFieldset("Opponent 1").Choose("P2Rube");
       browser.FindFieldset("Opponent 2").Choose("P3Chester");
-      //everything filled in except 3rd opponent Adolf //browser.FindFieldset("Opponent 3").Choose("Adolf");
+      //everything filled in except 3rd opponent Adolf //browser.FindFieldset("Opponent 3").Choose("P4Adolf");
 
       browser.ClickButton("Submit");
 
@@ -64,5 +64,22 @@ namespace MonopolyTests.Tests
       Assert.AreEqual(new Uri(baseUrl + "/NewGame"), browser.Location);
       Assert.AreEqual("true", browser.FindField("P4Adolf")["Checked"]);
     }
+
+    [Test]
+    public void When_submitting_the_form_for_a_new_game_with_all_necessary_info__should_start_a_game()
+    {
+      browser.Visit("/NewGame");
+
+      browser.FillIn("Name").With("Tron");
+      browser.Choose("Dog");
+      browser.FindFieldset("Opponent 1").Choose("P2Rube");
+      browser.FindFieldset("Opponent 2").Choose("P3Chester");
+      browser.FindFieldset("Opponent 3").Choose("P4Adolf");
+
+      browser.ClickButton("Submit");
+
+      Assert.AreEqual(new Uri(baseUrl + "/Game"), browser.Location);
+    }
+
   }
 }

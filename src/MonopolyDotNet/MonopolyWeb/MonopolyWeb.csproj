@@ -131,10 +131,16 @@
     <Content Include="favicon.ico" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
+    <Content Include="img\dog.png" />
     <Content Include="img\glyphicons-halflings-white.png" />
     <Content Include="img\glyphicons-halflings.png" />
     <Content Include="img\board.png" />
+    <Content Include="img\horseman.png" />
+    <Content Include="img\human_player.png" />
     <Content Include="img\Monopoly_board.jpg" />
+    <Content Include="img\robot_scum.png" />
+    <Content Include="img\shoe.png" />
+    <Content Include="img\thimble.png" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <None Include="Scripts\jquery-1.8.2.intellisense.js" />

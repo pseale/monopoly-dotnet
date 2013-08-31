@@ -10,6 +10,7 @@
       width: 720px;
       background-image: url('../img/board.png');
       background-position: center center;
+      position: relative;
     }
     .player-card {
       height: 180px;
@@ -19,10 +20,41 @@
       float: left;
       padding: 3px;
     }
+
+    img.player-totem {
+      float: right;
+      vertical-align: bottom;
+    }
+
+    img#player-1 {
+      position: absolute;
+      right: 100px;
+      bottom: 30px;
+    }
+    img#player-2 {
+      position: absolute;
+      right: 70px;
+      bottom: 40px;
+    }
+    img#player-3 {
+      position: absolute;
+      right: 50px;
+      bottom: 80px;
+    }
+    img#player-4 {
+      position: absolute;
+      right: 40px;
+      bottom: 120px;
+    }
   </style>  
 }
 
-<div class="monopoly-board span9"></div>
+<div class="monopoly-board span9">
+  <img class="player-totem" id="player-1" src="../img/dog.png" />
+  <img class="player-totem" id="player-2" src="../img/horseman.png" />
+  <img class="player-totem" id="player-3" src="../img/thimble.png" />
+  <img class="player-totem" id="player-4" src="../img/shoe.png" />
+</div>
 <div class="player-card span3">
   <img class="player-icon" src="../img/human_player.png"/>
   <h4>Player 1 (YOU)</h4>

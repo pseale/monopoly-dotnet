@@ -24,9 +24,9 @@ namespace MonopolyTests.Tests
       
       browser.FillIn("Name").With("Tron");
       browser.Choose("Dog");
-      browser.FindFieldset("Opponent 1").Choose("P2Rube");
-      browser.FindFieldset("Opponent 2").Choose("P3Chester");
-      browser.FindFieldset("Opponent 3").Choose("P4Adolf");
+      browser.FindFieldset("Opponent 1").Choose("Rube");
+      browser.FindFieldset("Opponent 2").Choose("Chester");
+      browser.FindFieldset("Opponent 3").Choose("Adolf");
 
       //Assert there is no error up to this point
     }
@@ -38,17 +38,17 @@ namespace MonopolyTests.Tests
 
       browser.FillIn("Name").With("Tron");
       browser.Choose("Dog");
-      browser.FindFieldset("Opponent 1").Choose("P2Rube");
-      browser.FindFieldset("Opponent 2").Choose("P3Chester");
-      //everything filled in except 3rd opponent Adolf //browser.FindFieldset("Opponent 3").Choose("P4Adolf");
+      browser.FindFieldset("Opponent 1").Choose("Rube");
+      browser.FindFieldset("Opponent 2").Choose("Chester");
+      //everything filled in except 3rd opponent Adolf //browser.FindFieldset("Opponent 3").Choose("Adolf");
 
       browser.ClickButton("Submit");
 
       Assert.AreEqual(new Uri(baseUrl+"/NewGame"), browser.Location);
       Assert.AreEqual("Tron", browser.FindField("Name").Value);
       Assert.AreEqual("Dog", browser.FindField("Totem").Value);
-      Assert.AreEqual("true", browser.FindField("P2Rube")["Checked"]); //"But Peter, why are you doing such horrible things with Checked attributes and mangling radio button names, when the API seems so much friendlier?" YOU CANT HANDLE THE TRUTH
-      Assert.AreEqual("true", browser.FindField("P3Chester")["Checked"]);
+      Assert.AreEqual("true", browser.FindFieldset("Opponent 1").FindField("Rube")["Checked"]); //"But Peter, why are you doing such horrible things with Checked attributes and mangling radio button names, when the API seems so much friendlier?" YOU CANT HANDLE THE TRUTH
+      Assert.AreEqual("true", browser.FindFieldset("Opponent 2").FindField("Chester")["Checked"]);
     }
 
     [Test]
@@ -57,12 +57,12 @@ namespace MonopolyTests.Tests
       browser.Visit("/NewGame");
 
       //nothing filled in, EXCEPT 3rd opponent Adolf
-      browser.FindFieldset("Opponent 3").Choose("P4Adolf");
+      browser.FindFieldset("Opponent 3").Choose("Adolf");
 
       browser.ClickButton("Submit");
 
       Assert.AreEqual(new Uri(baseUrl + "/NewGame"), browser.Location);
-      Assert.AreEqual("true", browser.FindField("P4Adolf")["Checked"]);
+      Assert.AreEqual("true", browser.FindFieldset("Opponent 3").FindField("Adolf")["Checked"]);
     }
 
     [Test]
@@ -72,9 +72,9 @@ namespace MonopolyTests.Tests
 
       browser.FillIn("Name").With("Tron");
       browser.Choose("Dog");
-      browser.FindFieldset("Opponent 1").Choose("P2Rube");
-      browser.FindFieldset("Opponent 2").Choose("P3Chester");
-      browser.FindFieldset("Opponent 3").Choose("P4Adolf");
+      browser.FindFieldset("Opponent 1").Choose("Rube");
+      browser.FindFieldset("Opponent 2").Choose("Chester");
+      browser.FindFieldset("Opponent 3").Choose("Adolf");
 
       browser.ClickButton("Submit");
 

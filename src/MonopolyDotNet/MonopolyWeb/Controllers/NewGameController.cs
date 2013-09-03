@@ -1,5 +1,7 @@
-﻿using MonopolyWeb.Models;
-using MvcContrib;
+﻿using System;
+using System.Web;
+using Microsoft.Web.Mvc;
+using MonopolyWeb.Models;
 using System.Web.Mvc;
 
 namespace MonopolyWeb.Controllers
@@ -20,6 +22,9 @@ namespace MonopolyWeb.Controllers
         return View(newGameInput);
       }
 
+      var cookie = new HttpCookie("monopolydotnet", Guid.NewGuid().ToString("D"));
+      cookie.Expires = new DateTime(2099, 12, 31);
+      Response.Cookies.Add(cookie);
       return this.RedirectToAction<GameController>(x => x.Index());
     }
   }

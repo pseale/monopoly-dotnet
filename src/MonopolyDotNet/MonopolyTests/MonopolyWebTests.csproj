@@ -93,6 +93,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="TestRunSetup.cs" />
     <Compile Include="Tests\FillingInTheStartNewGameForm\SubmittingTheStartNewGameForm.cs" />
+    <Compile Include="Tests\ResumingAnOngoingGame.cs" />
     <Compile Include="Tests\StartingAGameOfMonopoly.cs" />
     <Compile Include="Tests\VisitingTheAboutPage.cs" />
     <Compile Include="WebTestBase.cs" />

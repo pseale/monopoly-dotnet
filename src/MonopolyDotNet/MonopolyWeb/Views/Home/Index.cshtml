@@ -1,7 +1,15 @@
-﻿@{
+﻿@using System.Linq
+@{
     ViewBag.Title = "Home Page";  
 }
 
 <div class="hero-unit" style="height: 400px; background-image: url('../img/Monopoly_board.jpg'); background-position: center center">
-  <div><a href="NewGame" class="btn btn-success btn-large">Start a new game <i class="icon-white icon-arrow-right"></i></a></div>
+  @if (Request.Cookies.Count == 0)
+  {
+    <div><a href="NewGame" class="btn btn-success btn-large">Start a new game <i class="icon-white icon-arrow-right"></i></a></div>
+  }
+  else
+  {
+    <div><a href="Game" class="btn btn-success btn-large">Resume Game</a></div>
+  }
 </div>

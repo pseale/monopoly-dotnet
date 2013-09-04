@@ -1,6 +1,8 @@
 ﻿using System;
+using MonopolyWeb.Models.Core;
+using MonopolyWeb.Models.Services;
 
-namespace MonopolyWeb.Models
+namespace MonopolyWeb.Models.Commands
 {
   public static class CreateGameCommand
   {

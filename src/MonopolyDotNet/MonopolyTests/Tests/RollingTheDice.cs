@@ -24,7 +24,7 @@ namespace MonopolyTests.Tests
 
       //I want to see test failures in terms of offset from the board coordinates, not offset from the entire page
       Assert.AreNotEqual(originalLocation.X - boardLocation.X, newLocation.X - boardLocation.X);
-      Assert.AreNotEqual(originalLocation.Y - boardLocation.Y, newLocation.Y - boardLocation.Y);
+      Assert.AreEqual(originalLocation.Y - boardLocation.Y, newLocation.Y - boardLocation.Y);
     }
   }
 }

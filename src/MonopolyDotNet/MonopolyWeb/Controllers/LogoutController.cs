@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Web.Mvc;
 using MonopolyWeb.Models;
+using MonopolyWeb.Models.Services;
 
 namespace MonopolyWeb.Controllers
 {

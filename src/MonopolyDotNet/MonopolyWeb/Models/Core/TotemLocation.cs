@@ -1,4 +1,4 @@
-﻿namespace MonopolyWeb.Models
+﻿namespace MonopolyWeb.Models.Core
 {
   public class TotemLocation
   {

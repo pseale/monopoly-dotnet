@@ -1,5 +1,6 @@
 ﻿using System.Linq;
 using MonopolyWeb.Models;
+using MonopolyWeb.Models.Core;
 using NUnit.Framework;
 
 namespace MonopolyFastTests
@@ -27,7 +28,7 @@ namespace MonopolyFastTests
       var tokens = game.GetTotemLocations();
       var playerToken = tokens[0];
 
-      Assert.AreEqual(720-80-45, playerToken.OffsetFromLeft);
+      Assert.AreEqual(720-80-40-47, playerToken.OffsetFromLeft);
       Assert.AreEqual(720-80, playerToken.OffsetFromTop);
     }
   }

@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 
-namespace MonopolyWeb.Models
+namespace MonopolyWeb.Models.Core
 {
   public class Game
   {

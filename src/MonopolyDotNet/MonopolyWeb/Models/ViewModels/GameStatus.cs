@@ -1,4 +1,4 @@
-﻿namespace MonopolyWeb.Models
+﻿namespace MonopolyWeb.Models.ViewModels
 {
   public class GameStatus
   {

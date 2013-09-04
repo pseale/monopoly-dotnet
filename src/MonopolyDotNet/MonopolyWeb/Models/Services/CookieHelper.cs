@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Web;
 
-namespace MonopolyWeb.Models
+namespace MonopolyWeb.Models.Services
 {
   public static class CookieHelper
   {

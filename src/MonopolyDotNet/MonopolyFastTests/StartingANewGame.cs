@@ -1,4 +1,5 @@
-﻿using MonopolyWeb.Models.Core;
+﻿using System;
+using MonopolyWeb.Models.Core;
 using NUnit.Framework;
 
 namespace MonopolyFastTests
@@ -21,13 +22,30 @@ namespace MonopolyFastTests
     [Test]
     public void When_rolling_a_1_from_GO__should_change_the_players_location_to_Mediterranean()
     {
-      var game = new Game();
-      game.Roll();
+      WithDiceBehavior(() => 1, () =>
+      {
+        var game = new Game();
+        game.Roll();
 
-      var tokens = game.GetTotemLocations();
-      var playerToken = tokens[0];
+        var tokens = game.GetTotemLocations();
+        var playerToken = tokens[0];
 
-      Assert.AreEqual(1, playerToken);
+        Assert.AreEqual(1, playerToken);
+      });
+    }
+
+    private void WithDiceBehavior(Func<int> diceBehavior, Action action)
+    {
+      var originalBehavior = Dice.Roll;
+      try
+      {
+        Dice.Roll = diceBehavior;
+        action();
+      }
+      finally
+      {
+        Dice.Roll = originalBehavior;
+      }
     }
   }
 }

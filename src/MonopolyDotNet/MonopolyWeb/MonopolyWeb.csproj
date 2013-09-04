@@ -118,7 +118,9 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\Commands\CreateGameCommand.cs" />
+    <Compile Include="Models\Core\Dice.cs" />
     <Compile Include="Models\Core\Game.cs" />
+    <Compile Include="Models\Core\Location.cs" />
     <Compile Include="Models\Core\TotemLocation.cs" />
     <Compile Include="Models\Queries\FindGameByPlayerIdQuery.cs" />
     <Compile Include="Models\Services\CookieHelper.cs" />

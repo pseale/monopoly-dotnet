@@ -1,6 +1,4 @@
-﻿using System.Linq;
-using MonopolyWeb.Models;
-using MonopolyWeb.Models.Core;
+﻿using MonopolyWeb.Models.Core;
 using NUnit.Framework;
 
 namespace MonopolyFastTests
@@ -13,10 +11,11 @@ namespace MonopolyFastTests
     {
       var game = new Game();
       var tokens = game.GetTotemLocations();
-      var playerToken = tokens[0];
 
-      Assert.AreEqual(720-80, playerToken.OffsetFromLeft);
-      Assert.AreEqual(720-80, playerToken.OffsetFromTop);
+      Assert.AreEqual(0, tokens[0]);
+      Assert.AreEqual(0, tokens[1]);
+      Assert.AreEqual(0, tokens[2]);
+      Assert.AreEqual(0, tokens[3]);
     }
   
     [Test]
@@ -28,8 +27,7 @@ namespace MonopolyFastTests
       var tokens = game.GetTotemLocations();
       var playerToken = tokens[0];
 
-      Assert.AreEqual(720-80-40-47, playerToken.OffsetFromLeft);
-      Assert.AreEqual(720-80, playerToken.OffsetFromTop);
+      Assert.AreEqual(1, playerToken);
     }
   }
 }

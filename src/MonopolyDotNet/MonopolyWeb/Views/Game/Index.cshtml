@@ -1,4 +1,8 @@
-﻿@{
+﻿@model MonopolyWeb.Models.GameStatus
+
+@using Microsoft.Web.Mvc
+@using MonopolyWeb.Controllers
+@{
   ViewBag.Title = "Your turn";
 }
 
@@ -13,7 +17,7 @@
       position: relative;
     }
     .player-card {
-      height: 180px;
+      height: 160px;
     }
 
     img.player-icon {
@@ -28,23 +32,23 @@
 
     img#player-1 {
       position: absolute;
-      right: 100px;
-      bottom: 30px;
+      left: @(Model.Player1OffsetFromLeft)px;
+      top: @(Model.Player1OffsetFromTop)px;
     }
     img#player-2 {
       position: absolute;
-      right: 70px;
-      bottom: 40px;
+      left: @(Model.Player2OffsetFromLeft)px;
+      top: @(Model.Player2OffsetFromTop)px;
     }
     img#player-3 {
       position: absolute;
-      right: 50px;
-      bottom: 80px;
+      left: @(Model.Player3OffsetFromLeft)px;
+      top: @(Model.Player3OffsetFromTop)px;
     }
     img#player-4 {
       position: absolute;
-      right: 40px;
-      bottom: 120px;
+      left: @(Model.Player4OffsetFromLeft)px;
+      top: @(Model.Player4OffsetFromTop)px;
     }
   </style>  
 }
@@ -74,4 +78,10 @@
   <img class="player-icon" src="../img/robot_scum.png" />
   <h4>Adolf</h4>
   <p>$600<br /></p>
+</div>
+<div class="span3">
+  @using (Html.BeginForm<GameController>(x=>x.Roll()))
+  {
+    <input class="btn btn-large" type="submit" value="Roll" />
+  }
 </div>

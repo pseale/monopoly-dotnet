@@ -33,7 +33,7 @@ namespace MonopolyTests.Tests.FillingInTheStartNewGameForm
       _request.AddParameter("Totem", "Dog");
       _request.AddParameter("Second", "Rube");
       _request.AddParameter("Third", "Chester");
-      _request.AddParameter("Fourth", "Adolf");
+      _request.AddParameter("Fourth", "Rube");
       
       var response = _client.Execute(_request);
 
@@ -46,7 +46,7 @@ namespace MonopolyTests.Tests.FillingInTheStartNewGameForm
       _request.AddParameter("Name", "Tron");
       _request.AddParameter("Second", "Rube");
       _request.AddParameter("Third", "Chester");
-      _request.AddParameter("Fourth", "Adolf");
+      _request.AddParameter("Fourth", "Rube");
 
       var response = _client.Execute(_request);
 
@@ -59,7 +59,7 @@ namespace MonopolyTests.Tests.FillingInTheStartNewGameForm
       _request.AddParameter("Name", "Tron");
       _request.AddParameter("Totem", "Dog");
       _request.AddParameter("Third", "Chester");
-      _request.AddParameter("Fourth", "Adolf");
+      _request.AddParameter("Fourth", "Rube");
 
       var response = _client.Execute(_request);
 
@@ -72,7 +72,7 @@ namespace MonopolyTests.Tests.FillingInTheStartNewGameForm
       _request.AddParameter("Name", "Tron");
       _request.AddParameter("Totem", "Dog");
       _request.AddParameter("Second", "Rube");
-      _request.AddParameter("Fourth", "Adolf");
+      _request.AddParameter("Fourth", "Rube");
       
       var response = _client.Execute(_request);
 
@@ -85,7 +85,7 @@ namespace MonopolyTests.Tests.FillingInTheStartNewGameForm
       _request.AddParameter("Name", "Tron");
       _request.AddParameter("Totem", "Dog");
       _request.AddParameter("Second", "Rube");
-      _request.AddParameter("Third", "Chester");
+      _request.AddParameter("Third", "Rube");
 
       var response = _client.Execute(_request);
 
@@ -98,8 +98,8 @@ namespace MonopolyTests.Tests.FillingInTheStartNewGameForm
       _request.AddParameter("Name", "");
       _request.AddParameter("Totem", "Dog");
       _request.AddParameter("Second", "Rube");
-      _request.AddParameter("Third", "Chester");
-      _request.AddParameter("Fourth", "Adolf");
+      _request.AddParameter("Third", "Rube");
+      _request.AddParameter("Fourth", "Rube");
 
       var response = _client.Execute(_request);
 
@@ -113,8 +113,8 @@ namespace MonopolyTests.Tests.FillingInTheStartNewGameForm
       _request.AddParameter("Name", nameThatIs51CharsLong);
       _request.AddParameter("Totem", "Dog");
       _request.AddParameter("Second", "Rube");
-      _request.AddParameter("Third", "Chester");
-      _request.AddParameter("Fourth", "Adolf");
+      _request.AddParameter("Third", "Rube");
+      _request.AddParameter("Fourth", "Rube");
 
       var response = _client.Execute(_request);
 

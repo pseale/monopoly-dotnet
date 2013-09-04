@@ -118,7 +118,14 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Models\NewGameInput.cs" />
+    <Compile Include="Models\CookieHelper.cs" />
+    <Compile Include="Models\CreateGameCommand.cs" />
+    <Compile Include="Models\FindGameByPlayerIdQuery.cs" />
+    <Compile Include="Models\Game.cs" />
+    <Compile Include="Models\GameStatus.cs" />
+    <Compile Include="Models\InMemoryGameStorage.cs" />
+    <Compile Include="Models\TotemLocation.cs" />
+    <Compile Include="Models\ViewModels\NewGameInput.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

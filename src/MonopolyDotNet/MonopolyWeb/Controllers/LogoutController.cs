@@ -1,9 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Net;
-using System.Web;
+﻿using System.Collections.Generic;
 using System.Web.Mvc;
-using Microsoft.Web.Mvc;
+using MonopolyWeb.Models;
 
 namespace MonopolyWeb.Controllers
 {
@@ -16,14 +13,9 @@ namespace MonopolyWeb.Controllers
         cookieList.Add(cookieName.ToString());
 
       foreach (var cookie in cookieList)
-      {
-        var newCookie = new HttpCookie(cookie);
-        newCookie.Expires = DateTime.Today.AddDays(-2);
-        Response.Cookies.Add(newCookie);
-      }
+        Response.Cookies.Add(CookieHelper.CreateExpiredCookie(cookie));
 
       return View();
-      //return this.RedirectToAction<HomeController>(x => x.Index());
     }
   }
 }

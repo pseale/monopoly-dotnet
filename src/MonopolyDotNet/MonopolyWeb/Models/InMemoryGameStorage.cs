@@ -1,7 +1,10 @@
-﻿namespace MonopolyWeb.Models
+﻿using System;
+using System.Collections.Generic;
+
+namespace MonopolyWeb.Models
 {
-  public class InMemoryGameStorage
+  public static class InMemoryGameStorage
   {
-     
+     public static Dictionary<Guid, Game> Games = new Dictionary<Guid, Game>();
   }
 }

@@ -87,6 +87,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Builders\TestHelper.cs" />
     <Compile Include="Infrastructure\IisExpressInstance.cs" />
     <Compile Include="Infrastructure\SeleniumHelper.cs" />
     <Compile Include="Infrastructure\MonopolyTestRunException.cs" />
@@ -94,6 +95,7 @@
     <Compile Include="TestRunSetup.cs" />
     <Compile Include="Tests\FillingInTheStartNewGameForm\SubmittingTheStartNewGameForm.cs" />
     <Compile Include="Tests\ResumingAnOngoingGame.cs" />
+    <Compile Include="Tests\RollingTheDice.cs" />
     <Compile Include="Tests\StartingAGameOfMonopoly.cs" />
     <Compile Include="Tests\VisitingTheAboutPage.cs" />
     <Compile Include="WebTestBase.cs" />

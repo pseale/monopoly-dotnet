@@ -7,6 +7,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MonopolyWeb", "MonopolyWeb\
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MonopolyWebTests", "MonopolyTests\MonopolyWebTests.csproj", "{88BADE35-A4F0-4D28-9E06-31FBE1DEB3B7}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MonopolyFastTests", "MonopolyFastTests\MonopolyFastTests.csproj", "{276EFEDF-AFE9-42DA-9F23-5E9990A4C3BA}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +23,10 @@ Global
 		{88BADE35-A4F0-4D28-9E06-31FBE1DEB3B7}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{88BADE35-A4F0-4D28-9E06-31FBE1DEB3B7}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{88BADE35-A4F0-4D28-9E06-31FBE1DEB3B7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{276EFEDF-AFE9-42DA-9F23-5E9990A4C3BA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{276EFEDF-AFE9-42DA-9F23-5E9990A4C3BA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{276EFEDF-AFE9-42DA-9F23-5E9990A4C3BA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{276EFEDF-AFE9-42DA-9F23-5E9990A4C3BA}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

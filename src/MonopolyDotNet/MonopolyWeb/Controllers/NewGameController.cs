@@ -3,6 +3,7 @@ using System.Web;
 using Microsoft.Web.Mvc;
 using MonopolyWeb.Models;
 using System.Web.Mvc;
+using MonopolyWeb.Models.ViewModels;
 
 namespace MonopolyWeb.Controllers
 {
@@ -22,9 +23,11 @@ namespace MonopolyWeb.Controllers
         return View(newGameInput);
       }
 
-      var cookie = new HttpCookie("monopolydotnet", Guid.NewGuid().ToString("D"));
-      cookie.Expires = new DateTime(2099, 12, 31);
-      Response.Cookies.Add(cookie);
+      Guid playerId = Guid.NewGuid();
+      CreateGameCommand.Execute(playerId);
+
+      Response.Cookies.Add(CookieHelper.Create(playerId));
+
       return this.RedirectToAction<GameController>(x => x.Index());
     }
   }

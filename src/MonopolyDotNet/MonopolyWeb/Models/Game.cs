@@ -38,14 +38,44 @@ namespace MonopolyWeb.Models
         //
         //Ok we're ready. This is ugly math, but will work for now, I can't think of a simpler setup.
 
+        int extraSpaceToAddForFirstMove = 40;
+        int spacePerMove = 47;
+        int totalBoardSize = 720;
+        int halfwayOffsetForCornerTile = 80;
+
         if (locationOnBoard < 10)
-          list.Add(new TotemLocation(720-80-locationOnBoard*45, 720-80));
+        {
+          int offsetFromLeft = totalBoardSize - halfwayOffsetForCornerTile;
+          if (locationOnBoard > 0)
+            offsetFromLeft -= extraSpaceToAddForFirstMove + locationOnBoard*spacePerMove;
+          int offsetFromTop = totalBoardSize-halfwayOffsetForCornerTile;
+          var totemLocation = new TotemLocation(offsetFromLeft, offsetFromTop);
+          list.Add(totemLocation);
+        }
         else if (locationOnBoard < 20)
-          list.Add(new TotemLocation(0 + 80, 720 - 80 - locationOnBoard * 45));
+        {
+          int offsetFromLeft = 0 + halfwayOffsetForCornerTile;
+          int offsetFromTop = totalBoardSize - halfwayOffsetForCornerTile;
+          if (locationOnBoard%10 > 0)
+            offsetFromTop -= extraSpaceToAddForFirstMove + (locationOnBoard%10)*spacePerMove;
+          list.Add(new TotemLocation(offsetFromLeft, offsetFromTop));
+        }
         else if (locationOnBoard < 30)
-          list.Add(new TotemLocation(0 + 80 + locationOnBoard * 45, 0 + 80));
+        {
+          int offsetFromLeft = 0 + halfwayOffsetForCornerTile;
+          if (locationOnBoard%10 > 0)
+            offsetFromLeft += extraSpaceToAddForFirstMove + (locationOnBoard%10)*spacePerMove;
+          int offsetFromTop = 0 + halfwayOffsetForCornerTile;
+          list.Add(new TotemLocation(offsetFromLeft, offsetFromTop));
+        }
         else
-          list.Add(new TotemLocation(720 - 80, 0 + 80 + locationOnBoard * 45));
+        {
+          int offsetFromLeft = totalBoardSize - halfwayOffsetForCornerTile;
+          int offsetFromTop = 0 + halfwayOffsetForCornerTile;
+          if (locationOnBoard%10 > 0)
+            offsetFromTop += extraSpaceToAddForFirstMove + (locationOnBoard%10)*spacePerMove;
+          list.Add(new TotemLocation(offsetFromLeft, offsetFromTop));
+        }
       }
 
       return list.ToArray();
@@ -54,6 +84,7 @@ namespace MonopolyWeb.Models
     public void Roll()
     {
       _playersLocationOnBoard++;
+      _playersLocationOnBoard = _playersLocationOnBoard%40;
     }
   }
 }

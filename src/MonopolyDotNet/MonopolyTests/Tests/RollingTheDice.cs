@@ -16,7 +16,7 @@ namespace MonopolyTests.Tests
         ((OpenQA.Selenium.Firefox.FirefoxWebElement) browser
         .FindCss(".monopoly-board").Native).Coordinates.LocationInDom;
 
-      var dogTotem = browser.FindId("player-1");
+      var dogTotem = browser.FindCss("img#player-1");
       var originalLocation = ((OpenQA.Selenium.Firefox.FirefoxWebElement) dogTotem.Native).Coordinates.LocationInDom;
       
       browser.ClickButton("Roll");
@@ -24,7 +24,6 @@ namespace MonopolyTests.Tests
 
       //I want to see test failures in terms of offset from the board coordinates, not offset from the entire page
       Assert.AreNotEqual(originalLocation.X - boardLocation.X, newLocation.X - boardLocation.X);
-      Assert.AreEqual(originalLocation.Y - boardLocation.Y, newLocation.Y - boardLocation.Y);
     }
   }
 }

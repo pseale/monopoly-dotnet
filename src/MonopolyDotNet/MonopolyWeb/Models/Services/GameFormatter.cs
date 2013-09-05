@@ -18,6 +18,11 @@ namespace MonopolyWeb.Models.Services
       gameStatus.Player4OffsetFromLeft = (locations[3].OffsetFromLeft).ToString();
       gameStatus.Player4OffsetFromTop = (locations[3].OffsetFromTop).ToString();
 
+      var cash = game.GetCash();
+      gameStatus.Player1Cash = "$" + cash[0];
+      gameStatus.Player2Cash = "$" + cash[1];
+      gameStatus.Player3Cash = "$" + cash[2];
+      gameStatus.Player4Cash = "$" + cash[3];
       return gameStatus;
     }
   }

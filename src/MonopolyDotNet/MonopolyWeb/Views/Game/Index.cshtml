@@ -20,6 +20,10 @@
       height: 160px;
     }
 
+    .cash {
+      
+    }
+
     img.player-icon {
       float: left;
       padding: 3px;
@@ -59,25 +63,25 @@
   <img class="player-totem" id="player-3" src="../img/thimble.png" />
   <img class="player-totem" id="player-4" src="../img/shoe.png" />
 </div>
-<div class="player-card span3">
+<div class="player-card span3" id="player-1">
   <img class="player-icon" src="../img/human_player.png"/>
   <h4>Player 1 (YOU)</h4>
-  <p>$600<br/></p>
+  <div class="cash">@Model.Player1Cash</div>
 </div>
-<div class="player-card span3">
+<div class="player-card span3" id="player-2">
   <img class="player-icon" src="../img/robot_scum.png" />
   <h4>Rube</h4>
-  <p>$600<br /></p>
+  <div class="cash">@Model.Player2Cash</div>
 </div>
-<div class="player-card span3">
+<div class="player-card span3" id="player-3">
   <img class="player-icon" src="../img/robot_scum.png" />
   <h4>Chester</h4>
-  <p>$600<br /></p>
+  <div class="cash">@Model.Player3Cash</div>
 </div>
-<div class="player-card span3">
+<div class="player-card span3" id="player-4">
   <img class="player-icon" src="../img/robot_scum.png" />
   <h4>Adolf</h4>
-  <p>$600<br /></p>
+  <div class="cash">@Model.Player4Cash</div>
 </div>
 <div class="span3">
   @using (Html.BeginForm<GameController>(x=>x.Roll()))

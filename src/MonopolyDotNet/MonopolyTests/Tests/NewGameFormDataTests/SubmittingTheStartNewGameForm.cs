@@ -3,7 +3,7 @@ using System.Net;
 using NUnit.Framework;
 using RestSharp;
 
-namespace MonopolyTests.Tests.FillingInTheStartNewGameForm
+namespace MonopolyTests.Tests.NewGameFormDataTests
 {
   [TestFixture]
   public class SubmittingTheStartNewGameForm : WebTestBase

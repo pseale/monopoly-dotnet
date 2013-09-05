@@ -10,5 +10,10 @@
     public string Player3OffsetFromTop { get; set; }
     public string Player4OffsetFromLeft { get; set; }
     public string Player4OffsetFromTop { get; set; }
+
+    public string Player1Cash { get; set; }
+    public string Player2Cash { get; set; }
+    public string Player3Cash { get; set; }
+    public string Player4Cash { get; set; }
   }
 }

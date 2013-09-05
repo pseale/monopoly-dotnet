@@ -7,6 +7,7 @@ namespace MonopolyTests.Infrastructure
     private readonly string _message;
 
     public MonopolyTestRunException(string message)
+      :base(message)
     {
       _message = message;
     }

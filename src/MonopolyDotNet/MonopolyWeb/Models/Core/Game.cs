@@ -1,70 +1,64 @@
-﻿using System.Collections.Generic;
+﻿using System.Collections;
+using System.Collections.Generic;
 using System.Linq;
 
 namespace MonopolyWeb.Models.Core
 {
   public class Game
   {
-    private int _playersLocationOnBoard;
-    private readonly int[] _computerPlayersLocationsOnBoard = new int[3];
-
-    private int _playerCash;
-    private readonly int[] _computerPlayerCash = new int[3];
-    private bool _playerPassesGoNextRoll;
+    private readonly List<Player> _players = new List<Player>(); 
 
     public Game()
     {
-      _playerCash = 1500;
-      for (int i = 0; i < 3; i++)
-        _computerPlayerCash[i] = 1500;
+      for (int i=0; i<4; i++)
+        _players.Add(new Player() { Cash = 1500 });
     }
 
     public int[] GetTotemLocations()
     {
-      var locationsOnBoard = new List<int>();
-      locationsOnBoard.Add(_playersLocationOnBoard);
-      locationsOnBoard.AddRange(_computerPlayersLocationsOnBoard);
-      return locationsOnBoard.ToArray();
+      return _players.Select(x => x.Location).ToArray();
     }
 
     public int[] GetCash()
     {
-      var cash = new List<int>();
-      cash.Add(_playerCash);
-      cash.AddRange(_computerPlayerCash);
-      return cash.ToArray();
+      return _players.Select(x => x.Cash).ToArray();
+    }
+
+    public List<List<Property>> GetHoldings()
+    {
+      return _players.Select(x => x.Holdings).ToList();
     }
 
     public void Roll()
     {
-      _playersLocationOnBoard += Dice.Roll();
-      if (_playersLocationOnBoard > 40)
-        PassGo();
-      else if (_playersLocationOnBoard == 40)
-        _playerPassesGoNextRoll = true;
-      else if (_playerPassesGoNextRoll)
+      var player = _players[0];
+      player.Location += Dice.Roll();
+      
+      if (player.Location > 40)
       {
-        _playerPassesGoNextRoll = false;
+        PassGo();
+      }
+      else if (player.Location == 40)
+      {
+        player.PassesGoOnNextRoll = true;
+      }
+      else if (player.PassesGoOnNextRoll)
+      {
+        player.PassesGoOnNextRoll = false;
         PassGo();
       }
 
-      _playersLocationOnBoard = _playersLocationOnBoard%40;
+      player.Location %= 40;
     }
 
     private void PassGo()
     {
-      _playerCash += 200;
+      _players[0].Cash += 200;
     }
 
-    public List<List<string>> GetHoldings()
+    public IEnumerable<Player> GetPlayers()
     {
-      var list = new List<List<string>>();
-      list.Add(new List<string>());
-      list[0].Add("Boardwalk");
-      list.Add(new List<string>());
-      list.Add(new List<string>());
-      list.Add(new List<string>());
-      return list;
+      return _players;
     }
   }
 }

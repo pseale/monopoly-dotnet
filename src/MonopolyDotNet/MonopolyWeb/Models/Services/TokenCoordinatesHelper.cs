@@ -99,12 +99,19 @@ namespace MonopolyWeb.Models.Services
       for (int i=0; i<4; i++)
       {
         var locationOnBoard = locationsOnBoard[i];
-        var location = GetMidpointOf(locationOnBoard);
-        var totemLocation = new TotemLocation(location.OffsetFromLeft, location.OffsetFromTop, i, locationOnBoard);
-        list.Add(ShiftForPlayerIndex(AdjustPointToTopLeftOfTotem(totemLocation)));
+        var finalPoint = GetLocationOnBoard(locationOnBoard, i);
+        list.Add(ShiftForPlayerIndex(finalPoint));
       }
 
       return list.ToArray();
+    }
+
+    public static TotemLocation GetLocationOnBoard(int locationOnBoard, int playerIndex)
+    {
+      var location = GetMidpointOf(locationOnBoard);
+      var totemLocation = new TotemLocation(location.OffsetFromLeft, location.OffsetFromTop, playerIndex, locationOnBoard);
+      var finalPoint = AdjustPointToTopLeftOfTotem(totemLocation);
+      return finalPoint;
     }
   }
 }

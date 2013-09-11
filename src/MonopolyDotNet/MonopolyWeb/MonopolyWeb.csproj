@@ -122,6 +122,7 @@
     <Compile Include="Models\Core\Dice.cs" />
     <Compile Include="Models\Core\Game.cs" />
     <Compile Include="Models\Core\Location.cs" />
+    <Compile Include="Models\Core\Player.cs" />
     <Compile Include="Models\Core\TotemLocation.cs" />
     <Compile Include="Models\Queries\FindGameByPlayerIdQuery.cs" />
     <Compile Include="Models\Services\GameFormatter.cs" />

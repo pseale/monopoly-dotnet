@@ -11,6 +11,9 @@ namespace MonopolyWeb.Controllers
   {
     public ActionResult Index()
     {
+      if (!(Session["playerId"] is Guid))
+        return this.RedirectToAction<LogoutController>(x => x.Index());
+
       var playerId = (Guid) Session["playerId"];
       var game = FindGameByPlayerIdQuery.Execute(playerId);
       var gameStatus = GameFormatter.Flatten(game);
@@ -20,6 +23,9 @@ namespace MonopolyWeb.Controllers
     [HttpPost]
     public ActionResult Roll()
     {
+      if (!(Session["playerId"] is Guid))
+        return this.RedirectToAction<LogoutController>(x => x.Index());
+
       var playerId = (Guid)Session["playerId"];
       var game = FindGameByPlayerIdQuery.Execute(playerId);
       game.Roll();

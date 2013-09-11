@@ -1,4 +1,5 @@
-﻿using System.Web.Mvc;
+﻿using System;
+using System.Web.Mvc;
 using Microsoft.Web.Mvc;
 using MonopolyWeb.Models;
 using MonopolyWeb.Models.Queries;
@@ -10,7 +11,7 @@ namespace MonopolyWeb.Controllers
   {
     public ActionResult Index()
     {
-      var playerId = CookieHelper.GetPlayerIdFrom(Request.Cookies);
+      var playerId = (Guid) Session["playerId"];
       var game = FindGameByPlayerIdQuery.Execute(playerId);
       var gameStatus = GameFormatter.Flatten(game);
       return View(gameStatus);
@@ -19,7 +20,7 @@ namespace MonopolyWeb.Controllers
     [HttpPost]
     public ActionResult Roll()
     {
-      var playerId = CookieHelper.GetPlayerIdFrom(Request.Cookies);
+      var playerId = (Guid)Session["playerId"];
       var game = FindGameByPlayerIdQuery.Execute(playerId);
       game.Roll();
       return this.RedirectToAction<GameController>(x => x.Index());

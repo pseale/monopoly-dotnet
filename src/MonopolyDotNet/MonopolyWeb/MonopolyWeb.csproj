@@ -124,7 +124,6 @@
     <Compile Include="Models\Core\Location.cs" />
     <Compile Include="Models\Core\TotemLocation.cs" />
     <Compile Include="Models\Queries\FindGameByPlayerIdQuery.cs" />
-    <Compile Include="Models\Services\CookieHelper.cs" />
     <Compile Include="Models\Services\GameFormatter.cs" />
     <Compile Include="Models\Services\InMemoryGameStorage.cs" />
     <Compile Include="Models\Services\TokenCoordinatesHelper.cs" />

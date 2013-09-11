@@ -28,7 +28,7 @@ namespace MonopolyWeb.Controllers
       Guid playerId = Guid.NewGuid();
       CreateGameCommand.Execute(playerId);
 
-      Response.Cookies.Add(CookieHelper.Create(playerId));
+      Session["playerId"] = playerId;
 
       return this.RedirectToAction<GameController>(x => x.Index());
     }

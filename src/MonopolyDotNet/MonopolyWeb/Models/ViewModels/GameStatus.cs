@@ -1,4 +1,7 @@
-﻿namespace MonopolyWeb.Models.ViewModels
+﻿using System.Collections.Generic;
+using System.Web.Mvc;
+
+namespace MonopolyWeb.Models.ViewModels
 {
   public class GameStatus
   {
@@ -15,5 +18,10 @@
     public string Player2Cash { get; set; }
     public string Player3Cash { get; set; }
     public string Player4Cash { get; set; }
+
+    public List<SelectListItem> Player1Holdings { get; set; }
+    public List<SelectListItem> Player2Holdings { get; set; }
+    public List<SelectListItem> Player3Holdings { get; set; }
+    public List<SelectListItem> Player4Holdings { get; set; }
   }
 }

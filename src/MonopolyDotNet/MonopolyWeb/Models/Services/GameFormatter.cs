@@ -1,4 +1,7 @@
-﻿using MonopolyWeb.Models.Core;
+﻿using System.Collections.Generic;
+using System.Linq;
+using System.Web.Mvc;
+using MonopolyWeb.Models.Core;
 using MonopolyWeb.Models.ViewModels;
 
 namespace MonopolyWeb.Models.Services
@@ -23,7 +26,27 @@ namespace MonopolyWeb.Models.Services
       gameStatus.Player2Cash = "$" + cash[1];
       gameStatus.Player3Cash = "$" + cash[2];
       gameStatus.Player4Cash = "$" + cash[3];
+
+      var holdings = game.GetHoldings();
+      gameStatus.Player1Holdings = Adapt(holdings[0]);
+      gameStatus.Player2Holdings = Adapt(holdings[1]);
+      gameStatus.Player3Holdings = Adapt(holdings[2]);
+      gameStatus.Player4Holdings = Adapt(holdings[3]);
       return gameStatus;
+    }
+
+    private static List<SelectListItem> Adapt(List<string> list)
+    {
+      var adaptedList = new List<SelectListItem>();
+      foreach (var item in list)
+      {
+        var selectListItem = new SelectListItem();
+        selectListItem.Text = item;
+        selectListItem.Value = item;
+        adaptedList.Add(selectListItem);
+      }
+
+      return adaptedList;
     }
   }
 }

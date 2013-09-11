@@ -55,5 +55,16 @@ namespace MonopolyWeb.Models.Core
     {
       _playerCash += 200;
     }
+
+    public List<List<string>> GetHoldings()
+    {
+      var list = new List<List<string>>();
+      list.Add(new List<string>());
+      list[0].Add("Boardwalk");
+      list.Add(new List<string>());
+      list.Add(new List<string>());
+      list.Add(new List<string>());
+      return list;
+    }
   }
 }

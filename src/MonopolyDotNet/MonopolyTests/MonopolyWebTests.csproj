@@ -95,6 +95,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="TestRunSetup.cs" />
     <Compile Include="Tests\BeginningAGame.cs" />
+    <Compile Include="Tests\BuyingProperty.cs" />
     <Compile Include="Tests\NewGameFormDataTests\SubmittingTheStartNewGameForm.cs" />
     <Compile Include="Tests\PassingGo.cs" />
     <Compile Include="Tests\ResumingAnOngoingGame.cs" />

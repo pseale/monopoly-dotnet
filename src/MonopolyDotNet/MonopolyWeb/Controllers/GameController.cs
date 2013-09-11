@@ -25,5 +25,10 @@ namespace MonopolyWeb.Controllers
       game.Roll();
       return this.RedirectToAction<GameController>(x => x.Index());
     }
+
+    public ActionResult BuyProperty()
+    {
+      throw new NotImplementedException();
+    }
   }
 }

@@ -2,6 +2,7 @@
 
 @using Microsoft.Web.Mvc
 @using MonopolyWeb.Controllers
+@using MonopolyWeb.Models.ViewModels
 @{
   ViewBag.Title = "Your turn";
 }
@@ -9,7 +10,7 @@
 @section styles
 {
   <style>
-    .monopoly-board {
+  .monopoly-board {
       height: 720px;
       width: 720px;
       background-image: url('../img/board.png');
@@ -21,7 +22,7 @@
     }
 
     .cash {
-      
+
     }
 
     img.player-icon {
@@ -34,26 +35,16 @@
       vertical-align: bottom;
     }
 
-    img#player-1 {
+    @foreach (var player in Model.PlayerStatuses) {
+      
+<text>    img#player-@(player.PlayerNumber) {
       position: absolute;
-      left: @(Model.Player1OffsetFromLeft)px;
-      top: @(Model.Player1OffsetFromTop)px;
-    }
-    img#player-2 {
-      position: absolute;
-      left: @(Model.Player2OffsetFromLeft)px;
-      top: @(Model.Player2OffsetFromTop)px;
-    }
-    img#player-3 {
-      position: absolute;
-      left: @(Model.Player3OffsetFromLeft)px;
-      top: @(Model.Player3OffsetFromTop)px;
-    }
-    img#player-4 {
-      position: absolute;
-      left: @(Model.Player4OffsetFromLeft)px;
-      top: @(Model.Player4OffsetFromTop)px;
-    }
+      left: @(player.OffsetFromLeft)px;
+      top: @(player.OffsetFromTop)px;
+      }</text>
+
+  } 
+
 
     .holdings {
       
@@ -67,30 +58,26 @@
   <img class="player-totem" id="player-3" src="../img/thimble.png" />
   <img class="player-totem" id="player-4" src="../img/shoe.png" />
 </div>
-<div class="player-card span3" id="player-1">
-  <img class="player-icon" src="../img/human_player.png"/>
-  <h4>Player 1 (YOU)</h4>
-  <div class="cash">@Model.Player1Cash</div>
-  @Html.ListBoxFor(x=>x.Player1Holdings, Model.Player1Holdings, new { @class="holdings" })
-</div>
-<div class="player-card span3" id="player-2">
-  <img class="player-icon" src="../img/robot_scum.png" />
-  <h4>Rube</h4>
-  <div class="cash">@Model.Player2Cash</div>
-  @Html.ListBoxFor(x => x.Player2Holdings, Model.Player2Holdings, new { @class = "holdings" })
-</div>
-<div class="player-card span3" id="player-3">
-  <img class="player-icon" src="../img/robot_scum.png" />
-  <h4>Chester</h4>
-  <div class="cash">@Model.Player3Cash</div>
-  @Html.ListBoxFor(x => x.Player3Holdings, Model.Player3Holdings, new { @class = "holdings" })
-</div>
-<div class="player-card span3" id="player-4">
-  <img class="player-icon" src="../img/robot_scum.png" />
-  <h4>Adolf</h4>
-  <div class="cash">@Model.Player4Cash</div>
-  @Html.ListBoxFor(x => x.Player4Holdings, Model.Player4Holdings, new { @class = "holdings" })
-</div>
+@foreach (var player in Model.PlayerStatuses)
+{
+  <div class="player-card span3" id="player-@(player.PlayerNumber)">
+    @if (player.IsHuman)
+    {
+    <img class="player-icon" src="../img/human_player.png" />
+    }
+    else
+    {
+    <img class="player-icon" src="../img/robot_scum.png" />
+    }
+
+    <h4>Rube</h4>
+    <div class="cash">@player.Cash</div>
+@*    <select>*@
+@*      *@
+@*    </select>*@
+    @(Html.ListBoxFor(x => x.PlayerStatuses[0].Holdings, player.Holdings, new { @class = "holdings" }))
+  </div>
+}
 <div class="span3">
   @using (Html.BeginForm<GameController>(x=>x.Roll()))
   {

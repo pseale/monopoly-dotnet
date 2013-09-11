@@ -98,9 +98,8 @@ namespace MonopolyWeb.Models.Services
       var list = new List<TotemLocation>();
       for (int i=0; i<4; i++)
       {
-        var locationOnBoard = locationsOnBoard[i];
-        var finalPoint = GetLocationOnBoard(locationOnBoard, i);
-        list.Add(ShiftForPlayerIndex(finalPoint));
+        var finalPoint = GetLocationOnBoard(locationsOnBoard[i], i);
+        list.Add(finalPoint);
       }
 
       return list.ToArray();
@@ -110,7 +109,8 @@ namespace MonopolyWeb.Models.Services
     {
       var location = GetMidpointOf(locationOnBoard);
       var totemLocation = new TotemLocation(location.OffsetFromLeft, location.OffsetFromTop, playerIndex, locationOnBoard);
-      var finalPoint = AdjustPointToTopLeftOfTotem(totemLocation);
+      var adjustedPoint = AdjustPointToTopLeftOfTotem(totemLocation);
+      var finalPoint = ShiftForPlayerIndex(adjustedPoint);
       return finalPoint;
     }
   }

@@ -14,7 +14,6 @@ namespace MonopolyWeb.Models.Services
       int playerIndex = 1;
       gameStatus.PlayerStatuses.AddRange(
         game.GetPlayers().Select(player => Convert(player, playerIndex++)));
-
       return gameStatus;
     }
 

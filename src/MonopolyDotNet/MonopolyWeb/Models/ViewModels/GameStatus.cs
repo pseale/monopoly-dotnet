@@ -22,6 +22,7 @@ namespace MonopolyWeb.Models.ViewModels
       Holdings = new List<SelectListItem>();
     }
 
+    public bool IsHuman { get; set; }
     public int PlayerNumber { get; set; }
     public string OffsetFromLeft { get; set; }
     public string OffsetFromTop { get; set; }

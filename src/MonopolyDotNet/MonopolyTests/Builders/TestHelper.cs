@@ -65,5 +65,23 @@ namespace MonopolyTests.Builders
     {
       return browserSession.FindCss(".player-card#player-1 .cash").HasContent("$" + cash);
     }
+
+    public static void WithHardcodedDiceRoll(int roll, Action action)
+    {
+      WithHardcodedDiceRolls(new int[] { roll }, action);
+    }
+
+    public static void WithHardcodedDiceRolls(int[] rolls, Action action)
+    {
+      try
+      {
+        ReplaceRandomRollsWith(rolls);
+        action();
+      }
+      finally
+      {
+        ResetRolls();
+      }
+    }
   }
 }

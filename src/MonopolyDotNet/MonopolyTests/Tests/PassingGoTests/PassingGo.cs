@@ -10,17 +10,16 @@ namespace MonopolyTests.Tests.PassingGoTests
     public void When_passing_GO__collect_200_dollars()
     {
       TestHelper.StartAGame();
-      TestHelper.ReplaceRandomRollsWith(10);
+      TestHelper.WithHardcodedDiceRoll(10, () =>
+      {
+        browser.ClickButton("Roll");
+        browser.ClickButton("Roll");
+        browser.ClickButton("Roll");
+        browser.ClickButton("Roll"); //arrives at GO
+        browser.ClickButton("Roll"); //passes GO
 
-      browser.ClickButton("Roll");
-      browser.ClickButton("Roll");
-      browser.ClickButton("Roll");
-      browser.ClickButton("Roll"); //arrives at GO
-      browser.ClickButton("Roll"); //passes GO
-
-      Assert.IsTrue(browser.PlayerHasMoney(1700));
-
-      TestHelper.ResetRolls();
+        Assert.IsTrue(browser.PlayerHasMoney(1700));
+      });
     }
   }
 }

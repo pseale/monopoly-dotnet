@@ -11,7 +11,7 @@ namespace MonopolyFastTests
     [Test]
     public void When_rolling_a_1_from_GO__should_change_the_players_location_to_Mediterranean()
     {
-      WithDiceBehavior(() => 1, () =>
+      FastTestHelper.WithDiceBehavior(() => 1, () =>
       {
         var game = new Game();
         game.Roll();
@@ -21,20 +21,6 @@ namespace MonopolyFastTests
 
         Assert.AreEqual(1, playerOne.Location);
       });
-    }
-
-    private void WithDiceBehavior(Func<int> diceBehavior, Action action)
-    {
-      var originalBehavior = Dice.Roll;
-      try
-      {
-        Dice.Roll = diceBehavior;
-        action();
-      }
-      finally
-      {
-        Dice.Roll = originalBehavior;
-      }
     }
   }
 }

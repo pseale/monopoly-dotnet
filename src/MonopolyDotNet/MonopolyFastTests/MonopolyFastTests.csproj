@@ -46,6 +46,7 @@
     <Compile Include="DrawingTokensOnTheBoard.cs" />
     <Compile Include="FakingDiceRolls.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="RollingDice.cs" />
     <Compile Include="StartingANewGame.cs" />
   </ItemGroup>
   <ItemGroup>

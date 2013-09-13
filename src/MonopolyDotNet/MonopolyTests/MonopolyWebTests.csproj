@@ -94,14 +94,16 @@
     <Compile Include="Infrastructure\MonopolyTestRunException.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="TestRunSetup.cs" />
-    <Compile Include="Tests\BeginningAGame.cs" />
+    <Compile Include="Tests\StartingAGame.cs" />
     <Compile Include="Tests\BuyingProperty.cs" />
+    <Compile Include="Tests\NewGameFormDataTests\FillingOutTheStartGameForm.cs" />
     <Compile Include="Tests\NewGameFormDataTests\SubmittingTheStartNewGameForm.cs" />
-    <Compile Include="Tests\PassingGo.cs" />
+    <Compile Include="Tests\PassingGoTests\ArrivingAtGo.cs" />
+    <Compile Include="Tests\PassingGoTests\PassingGo.cs" />
     <Compile Include="Tests\ResumingAnOngoingGame.cs" />
     <Compile Include="Tests\RollingTheDice.cs" />
-    <Compile Include="Tests\StartingAGameOfMonopoly.cs" />
     <Compile Include="Tests\VisitingTheAboutPage.cs" />
+    <Compile Include="Tests\VisitingTheHomePage.cs" />
     <Compile Include="WebTestBase.cs" />
   </ItemGroup>
   <ItemGroup>

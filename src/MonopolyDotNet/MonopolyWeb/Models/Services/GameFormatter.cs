@@ -8,18 +8,18 @@ namespace MonopolyWeb.Models.Services
 {
   public static class GameFormatter
   {
-    public static GameStatus Flatten(Game game)
+    public static GameStatusViewModel Flatten(Game game)
     {
-      var gameStatus = new GameStatus();
+      var gameStatusViewModel = new GameStatusViewModel();
       int playerIndex = 1;
-      gameStatus.PlayerStatuses.AddRange(
-        game.GetPlayers().Select(player => Convert(player, playerIndex++)));
-      return gameStatus;
+      var gameStatus = game.GetCurrentGameStatus();
+      gameStatusViewModel.PlayerStatuses.AddRange(gameStatus.Players.Select(player => Convert(player, playerIndex++)));
+      return gameStatusViewModel;
     }
 
-    private static PlayerStatus Convert(Player player, int playerIndex)
+    private static PlayerStatusViewModel Convert(Player player, int playerIndex)
     {
-      var playerStatus = new PlayerStatus();
+      var playerStatus = new PlayerStatusViewModel();
       playerStatus.PlayerNumber = playerIndex;
       playerStatus.Cash = "$" + player.Cash;
       playerStatus.Holdings = Convert(player.Holdings);

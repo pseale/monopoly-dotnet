@@ -47,6 +47,10 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\packages\Mvc4Futures.4.0.20710.0\lib\net40\Microsoft.Web.Mvc.dll</HintPath>
     </Reference>
+    <Reference Include="MonopolyWeb, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>Bin\MonopolyWeb.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Data.Entity" />
@@ -130,9 +134,9 @@
     <Compile Include="Models\Services\GameFormatter.cs" />
     <Compile Include="Models\Services\InMemoryGameStorage.cs" />
     <Compile Include="Models\Services\TokenCoordinatesHelper.cs" />
-    <Compile Include="Models\ViewModels\GameStatus.cs" />
+    <Compile Include="Models\ViewModels\GameStatusViewModel.cs" />
     <Compile Include="Models\ViewModels\NewGameInput.cs" />
-    <Compile Include="Models\ViewModels\PlayerStatus.cs" />
+    <Compile Include="Models\ViewModels\PlayerStatusViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

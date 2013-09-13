@@ -20,10 +20,8 @@ namespace MonopolyTests.Tests
     public void When_a_game_has_started__other_visitors_should_not_be_able_to_find_the_game()
     {
       TestHelper.StartAGame();
-
       browser.Visit("/Logout");
-
-
+      
       browser.Visit("/");
 
       Assert.IsFalse(browser.FindLink("Resume Game").Exists());

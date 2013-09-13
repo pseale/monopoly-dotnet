@@ -3,9 +3,9 @@ using System.Web.Mvc;
 
 namespace MonopolyWeb.Models.ViewModels
 {
-  public class PlayerStatus
+  public class PlayerStatusViewModel
   {
-    public PlayerStatus()
+    public PlayerStatusViewModel()
     {
       Holdings = new List<SelectListItem>();
     }

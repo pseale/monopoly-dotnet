@@ -1,5 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
 
 namespace MonopolyWeb.Models.Core
@@ -41,9 +40,14 @@ namespace MonopolyWeb.Models.Core
       _players[0].Cash += 200;
     }
 
-    public IEnumerable<Player> GetPlayers()
+    public GameStatus GetCurrentGameStatus()
     {
-      return _players;
+      return new GameStatus() { Players = _players.ToArray().ToList() };
     }
+  }
+
+  public class GameStatus
+  {
+    public List<Player> Players { get; set; }
   }
 }

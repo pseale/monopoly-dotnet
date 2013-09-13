@@ -3,14 +3,14 @@ using System.Collections.Generic;
 
 namespace MonopolyWeb.Models.ViewModels
 {
-  public class GameStatus
+  public class GameStatusViewModel
   {
-    public GameStatus()
+    public GameStatusViewModel()
     {
-      PlayerStatuses = new List<PlayerStatus>();
+      PlayerStatuses = new List<PlayerStatusViewModel>();
     }
 
-    public List<PlayerStatus> PlayerStatuses { get; set; }
+    public List<PlayerStatusViewModel> PlayerStatuses { get; set; }
     public bool CanBuyProperty { get; set; }
     public int SalePrice { get; set; }
   }

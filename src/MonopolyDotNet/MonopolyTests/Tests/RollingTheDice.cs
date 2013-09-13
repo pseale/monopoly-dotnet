@@ -1,5 +1,4 @@
-﻿using Coypu.Drivers;
-using MonopolyTests.Builders;
+﻿using MonopolyTests.Builders;
 using NUnit.Framework;
 
 namespace MonopolyTests.Tests

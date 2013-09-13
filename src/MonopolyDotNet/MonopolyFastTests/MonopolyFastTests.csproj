@@ -43,6 +43,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="BuyingAProperty.cs" />
     <Compile Include="DrawingTokensOnTheBoard.cs" />
     <Compile Include="EnumeratingMonopolyProperties.cs" />
     <Compile Include="FakingDiceRolls.cs" />

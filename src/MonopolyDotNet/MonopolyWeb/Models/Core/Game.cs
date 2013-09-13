@@ -66,6 +66,7 @@ namespace MonopolyWeb.Models.Core
       var humanPlayer = _players[0];
       var property = Locations.All[humanPlayer.Location].Property;
       humanPlayer.Holdings.Add(property);
+      humanPlayer.Cash -= property.SalePrice;
     }
   }
 }

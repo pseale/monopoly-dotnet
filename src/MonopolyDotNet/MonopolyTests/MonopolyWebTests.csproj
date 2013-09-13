@@ -94,6 +94,7 @@
     <Compile Include="Infrastructure\MonopolyTestRunException.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="TestRunSetup.cs" />
+    <Compile Include="Tests\BuyingPropertyTests\BuyingAProperty.cs" />
     <Compile Include="Tests\BuyingPropertyTests\LandingOnAPropertyForSale.cs" />
     <Compile Include="Tests\BuyingPropertyTests\LandingOnPropertyIOwn.cs" />
     <Compile Include="Tests\StartingAGame.cs" />

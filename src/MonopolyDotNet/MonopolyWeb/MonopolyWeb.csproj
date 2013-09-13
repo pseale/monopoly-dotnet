@@ -119,6 +119,7 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\Commands\CreateGameCommand.cs" />
+    <Compile Include="Models\Commands\RollDiceCommand.cs" />
     <Compile Include="Models\Core\Dice.cs" />
     <Compile Include="Models\Core\Game.cs" />
     <Compile Include="Models\Core\Location.cs" />

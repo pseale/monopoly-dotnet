@@ -2,6 +2,7 @@
 using System.Web.Mvc;
 using Microsoft.Web.Mvc;
 using MonopolyWeb.Models;
+using MonopolyWeb.Models.Commands;
 using MonopolyWeb.Models.Queries;
 using MonopolyWeb.Models.Services;
 
@@ -28,7 +29,7 @@ namespace MonopolyWeb.Controllers
 
       var playerId = (Guid)Session["playerId"];
       var game = FindGameByPlayerIdQuery.Execute(playerId);
-      game.Roll();
+      RollDiceCommand.Execute(game);
       return this.RedirectToAction<GameController>(x => x.Index());
     }
 

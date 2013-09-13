@@ -15,13 +15,8 @@
     <div class="navbar navbar-inverse navbar-fixed-top">
       <div class="navbar-inner">
         <div class="container">
-          <button type="button" class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-          </button>
           @Html.ActionLink("Monopoly", "Index", "Home", null, new { @class = "brand" })
-          <div class="nav-collapse collapse">
+          <div>
             <ul class="nav">
               <li>@(Html.ActionLink<HomeController>(x=> x.Index(), "Home"))</li>
               <li>@(Html.ActionLink<AboutController>(x => x.Index(), "About"))</li>

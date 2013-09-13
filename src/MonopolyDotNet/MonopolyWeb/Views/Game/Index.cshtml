@@ -2,7 +2,6 @@
 
 @using Microsoft.Web.Mvc
 @using MonopolyWeb.Controllers
-@using MonopolyWeb.Models.ViewModels
 @{
   ViewBag.Title = "Your turn";
 }
@@ -41,10 +40,9 @@
       position: absolute;
       left: @(player.OffsetFromLeft)px;
       top: @(player.OffsetFromTop)px;
-      }</text>
+    }</text>
 
-  } 
-
+    } 
 
     .holdings {
       
@@ -72,9 +70,6 @@
 
     <h4>Rube</h4>
     <div class="cash">@player.Cash</div>
-@*    <select>*@
-@*      *@
-@*    </select>*@
     @(Html.ListBoxFor(x => x.PlayerStatuses[0].Holdings, player.Holdings, new { @class = "holdings" }))
   </div>
 }

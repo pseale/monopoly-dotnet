@@ -14,14 +14,4 @@ namespace MonopolyWeb.Models.Core
     public List<Property> Holdings { get; set; }
     public bool PassesGoOnNextRoll { get; set; }
   }
-
-  public class Property
-  {
-    public Property()
-    {
-      SalePrice = 100;
-    }
-    public string Name { get; set; }
-    public int SalePrice { get; set; }
-  }
 }

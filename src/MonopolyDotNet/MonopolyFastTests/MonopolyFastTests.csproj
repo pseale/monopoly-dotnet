@@ -44,8 +44,11 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="DrawingTokensOnTheBoard.cs" />
+    <Compile Include="EnumeratingMonopolyProperties.cs" />
     <Compile Include="FakingDiceRolls.cs" />
     <Compile Include="FastTestHelper.cs" />
+    <Compile Include="LandingOnAPropertyIAlreadyOwn.cs" />
+    <Compile Include="LandingOnAPropertyIDontOwn.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="RollingDice.cs" />
     <Compile Include="StartingANewGame.cs" />

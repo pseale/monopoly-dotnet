@@ -14,7 +14,7 @@ namespace MonopolyTests.Tests.BuyingPropertyTests
       {
         browser.ClickButton("Roll");
 
-        var button = browser.FindButton("Buy ($100)");
+        var button = browser.FindButton("Buy ($80)");
 
         Assert.IsTrue(button.Exists());
       });

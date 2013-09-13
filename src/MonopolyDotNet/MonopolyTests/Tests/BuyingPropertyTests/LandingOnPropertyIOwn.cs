@@ -13,14 +13,14 @@ namespace MonopolyTests.Tests.BuyingPropertyTests
       TestHelper.WithHardcodedDiceRolls(new[] { 6, 10, 10, 10, 10}, () =>
       {
         browser.ClickButton("Roll");
-        browser.ClickButton("Buy");
+        browser.ClickButton("Buy ($80)");
 
         browser.ClickButton("Roll");
         browser.ClickButton("Roll");
         browser.ClickButton("Roll");
         browser.ClickButton("Roll");
 
-        var button = browser.FindButton("Buy");
+        var button = browser.FindButton("Buy ($80)");
 
         Assert.IsFalse(button.Exists());
       });

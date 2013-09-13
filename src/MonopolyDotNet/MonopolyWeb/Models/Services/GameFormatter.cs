@@ -11,9 +11,14 @@ namespace MonopolyWeb.Models.Services
     public static GameStatusViewModel Flatten(Game game)
     {
       var gameStatusViewModel = new GameStatusViewModel();
+      
       int playerIndex = 1;
       var gameStatus = game.GetCurrentGameStatus();
       gameStatusViewModel.PlayerStatuses.AddRange(gameStatus.Players.Select(player => Convert(player, playerIndex++)));
+      
+      gameStatusViewModel.CanBuyProperty = gameStatus.CanBuyProperty;
+      gameStatusViewModel.PropertySalePrice = "$" + gameStatus.PropertySalePrice;
+
       return gameStatusViewModel;
     }
 

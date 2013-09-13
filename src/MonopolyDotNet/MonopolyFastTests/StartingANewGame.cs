@@ -18,5 +18,14 @@ namespace MonopolyFastTests
       Assert.AreEqual(0, players[2].Location);
       Assert.AreEqual(0, players[3].Location);
     }
+
+    [Test]
+    public void When_starting_a_new_game__should_not_be_able_to_buy_property()
+    {
+      var game = new Game();
+      var gameStatus = game.GetCurrentGameStatus();
+
+      Assert.IsFalse(gameStatus.CanBuyProperty);
+    }
   }
 }

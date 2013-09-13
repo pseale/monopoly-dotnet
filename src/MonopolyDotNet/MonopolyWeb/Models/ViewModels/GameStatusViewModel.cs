@@ -12,6 +12,6 @@ namespace MonopolyWeb.Models.ViewModels
 
     public List<PlayerStatusViewModel> PlayerStatuses { get; set; }
     public bool CanBuyProperty { get; set; }
-    public int SalePrice { get; set; }
+    public string PropertySalePrice { get; set; }
   }
 }

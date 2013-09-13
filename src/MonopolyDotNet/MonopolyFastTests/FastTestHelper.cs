@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Linq;
 using MonopolyWeb.Models.Core;
 
 namespace MonopolyFastTests
@@ -11,6 +12,20 @@ namespace MonopolyFastTests
       try
       {
         Dice.Roll = diceBehavior;
+        action();
+      }
+      finally
+      {
+        Dice.Roll = originalBehavior;
+      }
+    }
+
+    public static void WithDiceRolls(int[] rolls, Action action)
+    {
+      var originalBehavior = Dice.Roll;
+      try
+      {
+        Dice.ReplaceRandomRollsWith(rolls.ToList());
         action();
       }
       finally

@@ -33,9 +33,17 @@ namespace MonopolyWeb.Controllers
       return this.RedirectToAction<GameController>(x => x.Index());
     }
 
+    [HttpPost]
     public ActionResult BuyProperty()
     {
-      throw new NotImplementedException();
+      if (!(Session["playerId"] is Guid))
+        return this.RedirectToAction<LogoutController>(x => x.Index());
+
+      var playerId = (Guid)Session["playerId"];
+      var game = FindGameByPlayerIdQuery.Execute(playerId);
+      BuyPropertyCommand.Execute(game);
+
+      return this.RedirectToAction<GameController>(x => x.Index());
     }
   }
 }

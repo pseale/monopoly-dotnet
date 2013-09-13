@@ -1,58 +1,59 @@
 ﻿using MonopolyWeb.Models.Core;
+using MonopolyWeb.Models.ViewModels;
 
 namespace MonopolyWeb.Models.Services
 {
   public static class TokenCoordinatesHelper
   {
-    private static readonly Location[] Midpoints = new[]
+    private static readonly LocationViewModel[] Midpoints = new[]
     {
-      new Location(638,633),
-      new Location(550,633), 
-      new Location(507,633), 
-      new Location(464,633), 
-      new Location(415,633), 
-      new Location(367,633), 
-      new Location(320,633), 
-      new Location(271,633), 
-      new Location(225,633), 
-      new Location(183,633), 
+      new LocationViewModel(638,633),
+      new LocationViewModel(550,633), 
+      new LocationViewModel(507,633), 
+      new LocationViewModel(464,633), 
+      new LocationViewModel(415,633), 
+      new LocationViewModel(367,633), 
+      new LocationViewModel(320,633), 
+      new LocationViewModel(271,633), 
+      new LocationViewModel(225,633), 
+      new LocationViewModel(183,633), 
 
       
-      new Location(89,633), 
-      new Location(89,550), 
-      new Location(89,499), 
-      new Location(89,454), 
-      new Location(89,408), 
-      new Location(89,358), 
-      new Location(89,308), 
-      new Location(89,262), 
-      new Location(89,217), 
-      new Location(89,174), 
+      new LocationViewModel(89,633), 
+      new LocationViewModel(89,550), 
+      new LocationViewModel(89,499), 
+      new LocationViewModel(89,454), 
+      new LocationViewModel(89,408), 
+      new LocationViewModel(89,358), 
+      new LocationViewModel(89,308), 
+      new LocationViewModel(89,262), 
+      new LocationViewModel(89,217), 
+      new LocationViewModel(89,174), 
 
-      new Location(89,82), 
-      new Location(166,82), 
-      new Location(217,82), 
-      new Location(263,82), 
-      new Location(312,82), 
-      new Location(360,82), 
-      new Location(407,82), 
-      new Location(458,82), 
-      new Location(499,82), 
-      new Location(540,82), 
+      new LocationViewModel(89,82), 
+      new LocationViewModel(166,82), 
+      new LocationViewModel(217,82), 
+      new LocationViewModel(263,82), 
+      new LocationViewModel(312,82), 
+      new LocationViewModel(360,82), 
+      new LocationViewModel(407,82), 
+      new LocationViewModel(458,82), 
+      new LocationViewModel(499,82), 
+      new LocationViewModel(540,82), 
     
-      new Location(640,82), 
-      new Location(640,166), 
-      new Location(640,218), 
-      new Location(640,267), 
-      new Location(640,314), 
-      new Location(640,358), 
-      new Location(640,405), 
-      new Location(640,456), 
-      new Location(640,500), 
-      new Location(640,544), 
+      new LocationViewModel(640,82), 
+      new LocationViewModel(640,166), 
+      new LocationViewModel(640,218), 
+      new LocationViewModel(640,267), 
+      new LocationViewModel(640,314), 
+      new LocationViewModel(640,358), 
+      new LocationViewModel(640,405), 
+      new LocationViewModel(640,456), 
+      new LocationViewModel(640,500), 
+      new LocationViewModel(640,544), 
     };
 
-    public static Location GetMidpointOf(int location)
+    public static LocationViewModel GetMidpointOf(int location)
     {
       return Midpoints[location];
     }

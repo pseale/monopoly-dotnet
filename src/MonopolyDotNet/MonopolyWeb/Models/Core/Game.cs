@@ -42,12 +42,30 @@ namespace MonopolyWeb.Models.Core
 
     public GameStatus GetCurrentGameStatus()
     {
-      return new GameStatus() { Players = _players.ToArray().ToList() };
+      var currentGameStatus = new GameStatus();
+      currentGameStatus.Players = _players.ToArray().ToList();
+      currentGameStatus.CanBuyProperty = CanBuyProperty();
+      if (CanBuyProperty())
+        currentGameStatus.PropertySalePrice = Locations.All[_players[0].Location].Property.SalePrice;
+      return currentGameStatus;
     }
-  }
 
-  public class GameStatus
-  {
-    public List<Player> Players { get; set; }
+    private bool CanBuyProperty()
+    {
+      var location = Locations.All[_players[0].Location];
+      if (!location.HasAProperty)
+        return false;
+
+      var doesAnyoneOwnThisProperty = _players.SelectMany(x => x.Holdings).Any(x => x == location.Property);
+
+      return !doesAnyoneOwnThisProperty;
+    }
+
+    public void BuyProperty()
+    {
+      var humanPlayer = _players[0];
+      var property = Locations.All[humanPlayer.Location].Property;
+      humanPlayer.Holdings.Add(property);
+    }
   }
 }

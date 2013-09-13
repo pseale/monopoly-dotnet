@@ -78,8 +78,11 @@
   {
     <input class="btn btn-large" type="submit" value="Roll" />
   }
-  @using (Html.BeginForm<GameController>(x => x.BuyProperty()))
+  @if (Model.CanBuyProperty)
   {
-    <input class="btn btn-large" type="submit" value="Buy ($100)" />
+    using (Html.BeginForm<GameController>(x => x.BuyProperty()))
+    {
+      <input class="btn btn-large" type="submit" value="Buy (@(Model.PropertySalePrice))" />
+    }
   }
 </div>

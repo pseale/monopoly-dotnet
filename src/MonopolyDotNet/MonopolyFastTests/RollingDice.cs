@@ -9,9 +9,9 @@ namespace MonopolyFastTests
   public class RollingDice
   {
     [Test]
-    public void When_rolling_a_1_from_GO__should_change_the_players_location_to_Mediterranean()
+    public void When_rolling_a_3_from_GO__should_move_the_player_to_Baltic()
     {
-      FastTestHelper.WithDiceBehavior(() => 1, () =>
+      FastTestHelper.WithDiceBehavior(() => 3, () =>
       {
         var game = new Game();
         game.Roll();
@@ -19,7 +19,7 @@ namespace MonopolyFastTests
         var gameStatus = game.GetCurrentGameStatus();
         var playerOne = gameStatus.Players.First();
 
-        Assert.AreEqual(1, playerOne.Location);
+        Assert.AreEqual(3, playerOne.Location);
       });
     }
   }

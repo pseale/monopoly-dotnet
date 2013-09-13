@@ -1,5 +1,6 @@
 ﻿using MonopolyTests.Builders;
 using NUnit.Framework;
+using System.Linq;
 
 namespace MonopolyTests.Tests
 {
@@ -13,10 +14,11 @@ namespace MonopolyTests.Tests
       TestHelper.WithHardcodedDiceRolls(new[] {6, 10, 10, 10, 10}, () =>
       {
         browser.ClickButton("Roll");
-        browser.ClickButton("Buy");
+        browser.ClickButton("Buy ($80)");
 
-        var properties = browser.FindAllCss(".player-card#player-1 holdings");
-        Assert.Fail();
+        var allOptionTags = browser.FindAllCss(".player-card#player-1 select.holdings option").ToList();
+        Assert.AreEqual(1, allOptionTags.Count());
+        Assert.AreEqual("Oriental", allOptionTags.First().Value); 
       });
     }
   }

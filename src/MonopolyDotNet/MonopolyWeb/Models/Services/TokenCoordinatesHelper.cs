@@ -1,12 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using MonopolyWeb.Models.Core;
+﻿using MonopolyWeb.Models.Core;
 
 namespace MonopolyWeb.Models.Services
 {
   public static class TokenCoordinatesHelper
   {
-    private static Location[] _midpoints = new[]
+    private static readonly Location[] Midpoints = new[]
     {
       new Location(638,633),
       new Location(550,633), 
@@ -56,7 +54,7 @@ namespace MonopolyWeb.Models.Services
 
     public static Location GetMidpointOf(int location)
     {
-      return _midpoints[location];
+      return Midpoints[location];
     }
 
     public static TotemLocation AdjustPointToTopLeftOfTotem(TotemLocation totemLocation)
@@ -91,18 +89,6 @@ namespace MonopolyWeb.Models.Services
       }
 
       return new TotemLocation(totemLocation.OffsetFromLeft + directionToShift[0] * pixelsToShift, totemLocation.OffsetFromTop + directionToShift[1]*pixelsToShift, totemLocation.PlayerIndex, totemLocation.BoardIndex);
-    }
-
-    public static TotemLocation[] GetLocationFromBoard(int[] locationsOnBoard)
-    {
-      var list = new List<TotemLocation>();
-      for (int i=0; i<4; i++)
-      {
-        var finalPoint = GetLocationOnBoard(locationsOnBoard[i], i);
-        list.Add(finalPoint);
-      }
-
-      return list.ToArray();
     }
 
     public static TotemLocation GetLocationOnBoard(int locationOnBoard, int playerIndex)

@@ -14,21 +14,6 @@ namespace MonopolyWeb.Models.Core
         _players.Add(new Player() { Cash = 1500 });
     }
 
-    public int[] GetTotemLocations()
-    {
-      return _players.Select(x => x.Location).ToArray();
-    }
-
-    public int[] GetCash()
-    {
-      return _players.Select(x => x.Cash).ToArray();
-    }
-
-    public List<List<Property>> GetHoldings()
-    {
-      return _players.Select(x => x.Holdings).ToList();
-    }
-
     public void Roll()
     {
       var player = _players[0];

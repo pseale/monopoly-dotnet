@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Linq;
 using MonopolyWeb.Models.Core;
 using NUnit.Framework;
 
@@ -11,12 +12,12 @@ namespace MonopolyFastTests
     public void When_starting_a_new_game__should_set_the_starting_location_to_GO()
     {
       var game = new Game();
-      var tokens = game.GetTotemLocations();
+      var players = game.GetPlayers().ToArray();
 
-      Assert.AreEqual(0, tokens[0]);
-      Assert.AreEqual(0, tokens[1]);
-      Assert.AreEqual(0, tokens[2]);
-      Assert.AreEqual(0, tokens[3]);
+      Assert.AreEqual(0, players[0].Location);
+      Assert.AreEqual(0, players[1].Location);
+      Assert.AreEqual(0, players[2].Location);
+      Assert.AreEqual(0, players[3].Location);
     }
   
     [Test]
@@ -27,10 +28,10 @@ namespace MonopolyFastTests
         var game = new Game();
         game.Roll();
 
-        var tokens = game.GetTotemLocations();
-        var playerToken = tokens[0];
+        var players = game.GetPlayers().ToArray();
+        var playerOne = players.First();
 
-        Assert.AreEqual(1, playerToken);
+        Assert.AreEqual(1, playerOne.Location);
       });
     }
 

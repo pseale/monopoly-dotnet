@@ -68,7 +68,7 @@
     <img class="player-icon" src="../img/robot_scum.png" />
     }
 
-    <h4>Rube</h4>
+    <h4>@player.Name</h4>
     <div class="cash">@player.Cash</div>
     @(Html.ListBoxFor(x => x.PlayerStatuses[0].Holdings, player.Holdings, new { @class = "holdings" }))
   </div>

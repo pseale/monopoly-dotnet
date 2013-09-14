@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Linq;
+using MonopolyWeb.Models.Commands;
 using MonopolyWeb.Models.Core;
+using MonopolyWeb.Models.Queries;
 
 namespace MonopolyFastTests
 {
@@ -32,6 +34,21 @@ namespace MonopolyFastTests
       {
         Dice.Roll = originalBehavior;
       }
+    }
+
+    public static Game StartGame()
+    {
+      var playerId = Guid.NewGuid();
+      var newGameData = new NewGameData();
+      newGameData.PlayerName = "Tron";
+      newGameData.PlayerTotem = Totem.Dog;
+      newGameData.Opponent1Name = "Rube";
+      newGameData.Opponent2Name = "Chester";
+      newGameData.Opponent3Name = "Adolf";
+
+      CreateGameCommand.Execute(playerId, newGameData);
+      var game = FindGameByPlayerIdQuery.Execute(playerId);
+      return game;
     }
   }
 }

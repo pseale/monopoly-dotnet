@@ -135,6 +135,7 @@
     <Compile Include="Models\Core\NewGameData.cs" />
     <Compile Include="Models\Core\Player.cs" />
     <Compile Include="Models\Core\Property.cs" />
+    <Compile Include="Models\Core\Totem.cs" />
     <Compile Include="Models\Core\TotemLocation.cs" />
     <Compile Include="Models\Queries\FindGameByPlayerIdQuery.cs" />
     <Compile Include="Models\Services\InMemoryGameStorage.cs" />

@@ -8,7 +8,7 @@ namespace MonopolyWeb.Models.Commands
   {
     public static void Execute(Guid playerId, NewGameData newGameData)
     {
-      InMemoryGameStorage.Games[playerId] = new Game();
+      InMemoryGameStorage.Games[playerId] = new Game(newGameData);
     }
   }
 }

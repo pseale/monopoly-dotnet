@@ -27,6 +27,7 @@ namespace MonopolyWeb.Models.Converters
     {
       var playerStatus = new PlayerStatusViewModel();
       playerStatus.PlayerNumber = playerIndex;
+      playerStatus.Name = player.Name;
       playerStatus.IsHuman = player.IsHuman;
       playerStatus.Cash = CashHelper.FormatAsCash(player.Cash);
       playerStatus.Holdings = Convert(player.Holdings);

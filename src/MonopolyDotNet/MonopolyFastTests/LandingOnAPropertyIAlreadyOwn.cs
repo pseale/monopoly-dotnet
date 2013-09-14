@@ -11,7 +11,7 @@ namespace MonopolyFastTests
     {
       FastTestHelper.WithDiceRolls(new[] { 6, 10, 10, 10, 10 }, () =>
       {
-        var game = new Game();
+        var game = FastTestHelper.StartGame(); 
         game.Roll();
         game.BuyProperty();
         game.Roll();

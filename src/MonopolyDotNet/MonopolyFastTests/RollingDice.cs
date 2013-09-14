@@ -13,7 +13,7 @@ namespace MonopolyFastTests
     {
       FastTestHelper.WithDiceBehavior(() => 3, () =>
       {
-        var game = new Game();
+        var game = FastTestHelper.StartGame();
         game.Roll();
 
         var gameStatus = game.GetCurrentGameStatus();

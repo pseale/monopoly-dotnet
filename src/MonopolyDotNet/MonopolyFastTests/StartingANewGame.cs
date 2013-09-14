@@ -9,7 +9,7 @@ namespace MonopolyFastTests
     [Test]
     public void When_starting_a_new_game__should_set_the_starting_location_to_GO()
     {
-      var game = new Game();
+      var game = FastTestHelper.StartGame();
       var gameStatus = game.GetCurrentGameStatus();
       var players = gameStatus.Players;
 
@@ -22,7 +22,7 @@ namespace MonopolyFastTests
     [Test]
     public void When_starting_a_new_game__should_not_be_able_to_buy_property()
     {
-      var game = new Game();
+      var game = FastTestHelper.StartGame();
       var gameStatus = game.GetCurrentGameStatus();
 
       Assert.IsFalse(gameStatus.CanBuyProperty);

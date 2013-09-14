@@ -5,13 +5,28 @@ namespace MonopolyWeb.Models.Core
 {
   public class Game
   {
-    private readonly List<Player> _players = new List<Player>(); 
+    private readonly List<Player> _players = new List<Player>();
 
-    public Game()
+    public Game(NewGameData newGameData)
     {
-      for (int i=0; i<4; i++)
-        _players.Add(new Player() { Cash = 1500, Location = Locations.All[0]});
-      _players[0].IsHuman = true;
+      var locationGo = Locations.All[0];
+
+      var humanPlayer = new Player() { Cash = 1500, Location = locationGo };
+      humanPlayer.IsHuman = true;
+      humanPlayer.Name = newGameData.PlayerName;
+      _players.Add(humanPlayer);
+
+      var opponent1 = new Player() { Cash = 1500, Location = locationGo };
+      opponent1.Name = newGameData.Opponent1Name;
+      _players.Add(opponent1);
+
+      var opponent2 = new Player() { Cash = 1500, Location = locationGo };
+      opponent2.Name = newGameData.Opponent2Name;
+      _players.Add(opponent2);
+
+      var opponent3 = new Player() { Cash = 1500, Location = locationGo };
+      opponent3.Name = newGameData.Opponent3Name;
+      _players.Add(opponent3);
     }
 
     public void Roll()

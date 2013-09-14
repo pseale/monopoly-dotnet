@@ -69,5 +69,33 @@ namespace MonopolyTests.Tests
       string imageName = imageTag["src"].Split('/').Last();
       Assert.AreEqual("robot_scum.png", imageName);
     }
+
+    [Test]
+    public void When_starting_a_game__players_name_should_be_shown()
+    {
+      var playerNameH4 = browser.FindCss("#player-1 h4");
+      Assert.IsTrue(playerNameH4.HasContent("Tron"));
+    }
+
+    [Test]
+    public void When_starting_a_game__opponent_1s_name_should_be_shown()
+    {
+      var playerNameH4 = browser.FindCss("#player-2 h4");
+      Assert.IsTrue(playerNameH4.HasContent("Rube"));
+    }
+
+    [Test]
+    public void When_starting_a_game__opponent_2s_name_should_be_shown()
+    {
+      var playerNameH4 = browser.FindCss("#player-3 h4");
+      Assert.IsTrue(playerNameH4.HasContent("Chester"));
+    }
+
+    [Test]
+    public void When_starting_a_game__opponent_3s_name_should_be_shown()
+    {
+      var playerNameH4 = browser.FindCss("#player-4 h4");
+      Assert.IsTrue(playerNameH4.HasContent("Adolf"));
+    }
   }
 }

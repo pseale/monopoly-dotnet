@@ -28,7 +28,7 @@ namespace MonopolyWeb.Models.Services
       playerStatus.PlayerNumber = playerIndex;
       playerStatus.Cash = "$" + player.Cash;
       playerStatus.Holdings = Convert(player.Holdings);
-      var coordinates = TokenCoordinatesHelper.GetLocationOnBoard(player.Location, playerIndex);
+      var coordinates = TokenCoordinatesHelper.GetLocationOnBoard(player.Location.Index, playerIndex);
       playerStatus.OffsetFromLeft = coordinates.OffsetFromLeft.ToString();
       playerStatus.OffsetFromTop = coordinates.OffsetFromTop.ToString();
       return playerStatus;

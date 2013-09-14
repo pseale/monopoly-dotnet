@@ -10,7 +10,7 @@ namespace MonopolyWeb.Models.Core
     }
 
     public int Cash { get; set; } 
-    public int Location { get; set; }
+    public Location Location { get; set; }
     public List<Property> Holdings { get; set; }
     public bool PassesGoOnNextRoll { get; set; }
   }

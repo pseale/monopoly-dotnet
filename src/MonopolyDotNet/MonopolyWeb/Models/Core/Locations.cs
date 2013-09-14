@@ -9,54 +9,60 @@
       var empty = new Location() { HasAProperty = false };
 
       var i = 0;
-      All[i++] = empty;
-      All[i++] = Property("Mediterranean", 60);
-      All[i++] = empty;
-      All[i++] = Property("Baltic", 60);
-      All[i++] = empty;
-      All[i++] = empty;
-      All[i++] = Property("Oriental", 80);
-      All[i++] = empty;
-      All[i++] = Property("Vermont", 80);
-      All[i++] = Property("Connecticut", 100);
-      All[i++] = empty;
-      All[i++] = Property("St. Charles Place", 140);
-      All[i++] = empty;
-      All[i++] = Property("States", 140);
-      All[i++] = Property("Virginia", 160);
-      All[i++] = empty;
-      All[i++] = Property("St. James Place", 180);
-      All[i++] = empty;
-      All[i++] = Property("Tennessee", 180);
-      All[i++] = Property("New York", 200);
-      All[i++] = empty;
-      All[i++] = Property("Kentucky", 220);
-      All[i++] = empty;
-      All[i++] = Property("Indiana", 220);
-      All[i++] = Property("Illinois", 240);
-      All[i++] = empty;
-      All[i++] = Property("Atlantic", 260);
-      All[i++] = Property("Ventnor", 260);
-      All[i++] = empty;
-      All[i++] = Property("Marvin Gardens", 280);
-      All[i++] = empty;
-      All[i++] = Property("Pacific", 300);
-      All[i++] = Property("North Carolina", 300);
-      All[i++] = empty;
-      All[i++] = Property("Pennsylvania", 320);
-      All[i++] = empty;
-      All[i++] = empty;
-      All[i++] = Property("Park Place", 350);
-      All[i++] = empty;
-      All[i++] = Property("Boardwalk", 400);
+      AddEmptyLocation(i++);
+      AddProperty(i++, "Mediterranean", 60);
+      AddEmptyLocation(i++);
+      AddProperty(i++, "Baltic", 60);
+      AddEmptyLocation(i++);
+      AddEmptyLocation(i++);
+      AddProperty(i++, "Oriental", 80);
+      AddEmptyLocation(i++);
+      AddProperty(i++, "Vermont", 80);
+      AddProperty(i++, "Connecticut", 100);
+      AddEmptyLocation(i++);
+      AddProperty(i++, "St. Charles Place", 140);
+      AddEmptyLocation(i++);
+      AddProperty(i++, "States", 140);
+      AddProperty(i++, "Virginia", 160);
+      AddEmptyLocation(i++);
+      AddProperty(i++, "St. James Place", 180);
+      AddEmptyLocation(i++);
+      AddProperty(i++, "Tennessee", 180);
+      AddProperty(i++, "New York", 200);
+      AddEmptyLocation(i++);
+      AddProperty(i++, "Kentucky", 220);
+      AddEmptyLocation(i++);
+      AddProperty(i++, "Indiana", 220);
+      AddProperty(i++, "Illinois", 240);
+      AddEmptyLocation(i++);
+      AddProperty(i++, "Atlantic", 260);
+      AddProperty(i++, "Ventnor", 260);
+      AddEmptyLocation(i++);
+      AddProperty(i++, "Marvin Gardens", 280);
+      AddEmptyLocation(i++);
+      AddProperty(i++, "Pacific", 300);
+      AddProperty(i++, "North Carolina", 300);
+      AddEmptyLocation(i++);
+      AddProperty(i++, "Pennsylvania", 320);
+      AddEmptyLocation(i++);
+      AddEmptyLocation(i++);
+      AddProperty(i++, "Park Place", 350);
+      AddEmptyLocation(i++);
+      AddProperty(i++, "Boardwalk", 400);
     }
 
-    private static Location Property(string propertyName, int salePrice)
+    private static void AddProperty(int locationIndex, string propertyName, int salePrice)
     {
       var location = new Location();
+      location.Index = locationIndex;
       location.HasAProperty = true;
-      location.Property = new Property() {Name = propertyName, SalePrice = salePrice};
-      return location;
+      location.Property = new Property() { Name = propertyName, SalePrice = salePrice, };
+      All[locationIndex] = location;
+    }
+
+    private static void AddEmptyLocation(int locationIndex)
+    {
+      All[locationIndex] = new Location() { HasAProperty = false, Index = locationIndex};
     }
 
     public static readonly Location[] All;

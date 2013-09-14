@@ -136,7 +136,7 @@
     <Compile Include="Models\Queries\FindGameByPlayerIdQuery.cs" />
     <Compile Include="Models\Services\GameFormatter.cs" />
     <Compile Include="Models\Services\InMemoryGameStorage.cs" />
-    <Compile Include="Models\Services\IntFormatExtensions.cs" />
+    <Compile Include="Models\Services\CashHelper.cs" />
     <Compile Include="Models\Services\TokenCoordinatesHelper.cs" />
     <Compile Include="Models\ViewModels\GameStatusViewModel.cs" />
     <Compile Include="Models\ViewModels\LocationViewModel.cs" />

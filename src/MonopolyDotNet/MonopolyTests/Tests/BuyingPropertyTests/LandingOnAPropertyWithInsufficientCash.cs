@@ -19,8 +19,6 @@ namespace MonopolyTests.Tests.BuyingPropertyTests
         browser.ClickButton("Roll");
         browser.ClickButton("Buy ($100)");
         browser.ClickButton("Roll");
-        browser.ClickButton("Buy ($120)");
-        browser.ClickButton("Roll");
         browser.ClickButton("Buy ($140)");
         browser.ClickButton("Roll");
         browser.ClickButton("Buy ($160)");

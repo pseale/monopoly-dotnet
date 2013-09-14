@@ -59,6 +59,9 @@ namespace MonopolyWeb.Models.Core
       if (!location.HasAProperty)
         return false;
 
+      if (_players[0].Cash < location.Property.SalePrice)
+        return false;
+
       var doesAnyoneOwnThisProperty = _players.SelectMany(x => x.Holdings).Any(x => x == location.Property);
 
       return !doesAnyoneOwnThisProperty;

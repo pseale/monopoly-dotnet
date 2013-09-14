@@ -17,7 +17,7 @@ namespace MonopolyWeb.Models.Services
       gameStatusViewModel.PlayerStatuses.AddRange(gameStatus.Players.Select(player => Convert(player, playerIndex++)));
       
       gameStatusViewModel.CanBuyProperty = gameStatus.CanBuyProperty;
-      gameStatusViewModel.PropertySalePrice = "$" + gameStatus.PropertySalePrice;
+      gameStatusViewModel.PropertySalePrice = gameStatus.PropertySalePrice.FormatAsCash();
 
       return gameStatusViewModel;
     }
@@ -26,7 +26,7 @@ namespace MonopolyWeb.Models.Services
     {
       var playerStatus = new PlayerStatusViewModel();
       playerStatus.PlayerNumber = playerIndex;
-      playerStatus.Cash = "$" + player.Cash;
+      playerStatus.Cash = player.Cash.FormatAsCash();
       playerStatus.Holdings = Convert(player.Holdings);
       var coordinates = TokenCoordinatesHelper.GetLocationOnBoard(player.Location.Index, playerIndex);
       playerStatus.OffsetFromLeft = coordinates.OffsetFromLeft.ToString();

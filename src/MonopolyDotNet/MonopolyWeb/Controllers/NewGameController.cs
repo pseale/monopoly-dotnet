@@ -4,6 +4,7 @@ using Microsoft.Web.Mvc;
 using MonopolyWeb.Models;
 using System.Web.Mvc;
 using MonopolyWeb.Models.Commands;
+using MonopolyWeb.Models.Converters;
 using MonopolyWeb.Models.Services;
 using MonopolyWeb.Models.ViewModels;
 
@@ -25,8 +26,9 @@ namespace MonopolyWeb.Controllers
         return View(newGameInput);
       }
 
+      var newGameData = NewGameConverter.Convert(newGameInput);
       Guid playerId = Guid.NewGuid();
-      CreateGameCommand.Execute(playerId);
+      CreateGameCommand.Execute(playerId, newGameData);
 
       Session["playerId"] = playerId;
 

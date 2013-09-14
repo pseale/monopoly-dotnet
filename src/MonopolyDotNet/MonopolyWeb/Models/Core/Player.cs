@@ -8,7 +8,8 @@ namespace MonopolyWeb.Models.Core
     {
       Holdings = new List<Property>();
     }
-
+    
+    public bool IsHuman { get; set; }
     public int Cash { get; set; } 
     public Location Location { get; set; }
     public List<Property> Holdings { get; set; }

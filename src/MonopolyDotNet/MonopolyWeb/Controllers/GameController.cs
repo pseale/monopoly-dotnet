@@ -1,10 +1,9 @@
 ﻿using System;
 using System.Web.Mvc;
 using Microsoft.Web.Mvc;
-using MonopolyWeb.Models;
 using MonopolyWeb.Models.Commands;
+using MonopolyWeb.Models.Converters;
 using MonopolyWeb.Models.Queries;
-using MonopolyWeb.Models.Services;
 
 namespace MonopolyWeb.Controllers
 {

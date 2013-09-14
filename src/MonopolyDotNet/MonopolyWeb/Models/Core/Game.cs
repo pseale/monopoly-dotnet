@@ -11,6 +11,7 @@ namespace MonopolyWeb.Models.Core
     {
       for (int i=0; i<4; i++)
         _players.Add(new Player() { Cash = 1500, Location = Locations.All[0]});
+      _players[0].IsHuman = true;
     }
 
     public void Roll()

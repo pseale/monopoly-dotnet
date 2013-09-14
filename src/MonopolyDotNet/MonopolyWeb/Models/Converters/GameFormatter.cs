@@ -2,9 +2,10 @@
 using System.Linq;
 using System.Web.Mvc;
 using MonopolyWeb.Models.Core;
+using MonopolyWeb.Models.Services;
 using MonopolyWeb.Models.ViewModels;
 
-namespace MonopolyWeb.Models.Services
+namespace MonopolyWeb.Models.Converters
 {
   public static class GameFormatter
   {
@@ -26,6 +27,7 @@ namespace MonopolyWeb.Models.Services
     {
       var playerStatus = new PlayerStatusViewModel();
       playerStatus.PlayerNumber = playerIndex;
+      playerStatus.IsHuman = player.IsHuman;
       playerStatus.Cash = CashHelper.FormatAsCash(player.Cash);
       playerStatus.Holdings = Convert(player.Holdings);
       var coordinates = TokenCoordinatesHelper.GetLocationOnBoard(player.Location.Index, playerIndex);

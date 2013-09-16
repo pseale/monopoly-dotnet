@@ -2,6 +2,7 @@
 
 @using Microsoft.Web.Mvc
 @using MonopolyWeb.Controllers
+@using MonopolyWeb.Models.Core
 @{
   ViewBag.Title = "Start a new game";
 }
@@ -18,11 +19,10 @@
           <legend>Player 1 (You)</legend>
           <h5>Enter your name and totem. <em>Choose wisely</em></h5>
           <label>Name: <input type="text" name="Name" value="@Model.Name"/></label>
-
-          <label>@Html.RadioButtonFor(x => x.Totem, "Dog") Dog</label>
-          <label>@Html.RadioButtonFor(x => x.Totem, "Thimble") Thimble</label>
-          <label>@Html.RadioButtonFor(x => x.Totem, "Shoe") Shoe</label>
-          <label>@Html.RadioButtonFor(x => x.Totem, "Horseman") Horseman</label>
+          @foreach (var totem in Enum.GetValues(typeof (Totem)))
+          {
+            <label>@Html.RadioButtonFor(x => x.Totem, totem) @(totem)</label>
+          }
         </fieldset>
     </div>
     <div class="span5"  style="height: 300px">

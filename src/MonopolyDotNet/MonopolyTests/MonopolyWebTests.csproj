@@ -106,6 +106,7 @@
     <Compile Include="Tests\PassingGoTests\PassingGo.cs" />
     <Compile Include="Tests\ResumingAnOngoingGame.cs" />
     <Compile Include="Tests\RollingTheDice.cs" />
+    <Compile Include="Tests\StartingAGameWithADifferentTotem.cs" />
     <Compile Include="Tests\VisitingTheAboutPage.cs" />
     <Compile Include="Tests\VisitingTheHomePage.cs" />
     <Compile Include="WebTestBase.cs" />

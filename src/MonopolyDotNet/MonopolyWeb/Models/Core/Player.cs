@@ -16,5 +16,6 @@ namespace MonopolyWeb.Models.Core
     public Location Location { get; set; }
     public List<Property> Holdings { get; set; }
     public bool PassesGoOnNextRoll { get; set; }
+    public Totem Totem { get; set; }
   }
 }

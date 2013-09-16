@@ -5,6 +5,7 @@ using System.Web.Script.Serialization;
 using Coypu;
 using Coypu.Drivers;
 using MonopolyTests.Infrastructure;
+using MonopolyWeb.Models.Core;
 using RestSharp;
 
 namespace MonopolyTests.Builders
@@ -19,10 +20,15 @@ namespace MonopolyTests.Builders
 
     public static void StartAGame()
     {
+      StartAGame("Dog");
+    }
+
+    public static void StartAGame(string totem)
+    {
       browser.Visit("/NewGame");
 
       browser.FillIn("Name").With("Tron");
-      browser.Choose("Dog");
+      browser.Choose(totem);
       browser.FindFieldset("Opponent 1").Choose("Rube");
       browser.FindFieldset("Opponent 2").Choose("Chester");
       browser.FindFieldset("Opponent 3").Choose("Adolf");
@@ -82,6 +88,11 @@ namespace MonopolyTests.Builders
       {
         ResetRolls();
       }
+    }
+
+    public static string GetSrcFilenameFrom(ElementScope playerTotemImgTag)
+    {
+      return playerTotemImgTag["src"].Split('/').Last();
     }
   }
 }

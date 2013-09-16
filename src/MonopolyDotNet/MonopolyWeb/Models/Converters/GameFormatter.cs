@@ -1,5 +1,4 @@
 ﻿using System.Collections.Generic;
-using System.Configuration;
 using System.Linq;
 using System.Web.Mvc;
 using MonopolyWeb.Models.Core;
@@ -28,6 +27,7 @@ namespace MonopolyWeb.Models.Converters
       playerStatus.Name = player.Name;
       playerStatus.PlayerNumber = player.Index;
       playerStatus.Icon = player.IsHuman ? "human_player.png" : "robot_scum.png";
+      playerStatus.TotemIcon = GetIconFor(player.Totem);
       playerStatus.Cash = CashHelper.FormatAsCash(player.Cash);
       playerStatus.Holdings = Convert(player.Holdings);
       var coordinates = TokenCoordinatesHelper.GetLocationOnBoard(player);
@@ -36,7 +36,12 @@ namespace MonopolyWeb.Models.Converters
       return playerStatus;
     }
 
-    private static List<SelectListItem> Convert(List<Property> list)
+    private static string GetIconFor(Totem totem)
+    {
+      return totem.ToString().ToLower() + ".png";
+    }
+
+    private static List<SelectListItem> Convert(IEnumerable<Property> list)
     {
       var adaptedList = new List<SelectListItem>();
       foreach (var item in list)

@@ -1,4 +1,5 @@
 ﻿using System.Linq;
+using Coypu;
 using MonopolyTests.Builders;
 using NUnit.Framework;
 
@@ -96,6 +97,27 @@ namespace MonopolyTests.Tests
     {
       var playerNameH4 = browser.FindCss("#player-4 h4");
       Assert.IsTrue(playerNameH4.HasContent("Adolf"));
+    }
+
+    [Test]
+    public void When_starting_a_game__players_totem_should_be_what_they_picked_in_the_NewGame_form()
+    {
+      var playerTotemImgTag = browser.FindCss("img#player-1");
+      var imageName = TestHelper.GetSrcFilenameFrom(playerTotemImgTag);
+      Assert.AreEqual("dog.png", imageName);
+    }
+
+    [Test]
+    public void When_starting_a_game__everyones_totems_should_be_unique()
+    {
+      var player1Filename = TestHelper.GetSrcFilenameFrom(browser.FindCss("img#player-1"));
+      var player2Filename = TestHelper.GetSrcFilenameFrom(browser.FindCss("img#player-2"));
+      var player3Filename = TestHelper.GetSrcFilenameFrom(browser.FindCss("img#player-3"));
+      var player4Filename = TestHelper.GetSrcFilenameFrom(browser.FindCss("img#player-4"));
+      var filenames = new[] {player1Filename, player2Filename, player3Filename, player4Filename};
+      var numberOfUniqueFilenames = filenames.GroupBy(x => x).Count();
+
+      Assert.AreEqual(4, numberOfUniqueFilenames, "Expected unique filenames, got: " + string.Join(", ", filenames));
     }
   }
 }

@@ -49,6 +49,8 @@
       AddProperty(i++, "Park Place", 350);
       AddEmptyLocation(i++);
       AddProperty(i++, "Boardwalk", 400);
+
+      Go = All[0];
     }
 
     private static void AddProperty(int locationIndex, string propertyName, int salePrice)
@@ -66,5 +68,6 @@
     }
 
     public static readonly Location[] All;
+    public static readonly Location Go;
   }
 }

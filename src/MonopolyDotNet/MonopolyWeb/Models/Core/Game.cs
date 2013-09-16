@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 
 namespace MonopolyWeb.Models.Core
@@ -9,28 +10,34 @@ namespace MonopolyWeb.Models.Core
 
     public Game(NewGameData newGameData)
     {
-      var locationGo = Locations.All[0];
+      _players.Add(CreateHumanPlayer(newGameData));
 
-      var humanPlayer = new Player() { Cash = 1500, Location = locationGo };
+      var allTotems = Enum.GetValues(typeof(Totem)).Cast<Totem>().ToList();
+      allTotems.Remove(newGameData.PlayerTotem);
+      var availableTotems = new Stack<Totem>(allTotems);
+
+      _players.Add(CreateOpponent(newGameData, 2, availableTotems.Pop()));
+      _players.Add(CreateOpponent(newGameData, 3, availableTotems.Pop()));
+      _players.Add(CreateOpponent(newGameData, 4, availableTotems.Pop()));
+    }
+
+    private Player CreateHumanPlayer(NewGameData newGameData)
+    {
+      var humanPlayer = new Player() {Cash = 1500, Location = Locations.Go};
       humanPlayer.IsHuman = true;
       humanPlayer.Name = newGameData.PlayerName;
+      humanPlayer.Totem = newGameData.PlayerTotem;
       humanPlayer.Index = 1;
-      _players.Add(humanPlayer);
+      return humanPlayer;
+    }
 
-      var opponent1 = new Player() { Cash = 1500, Location = locationGo };
+    private Player CreateOpponent(NewGameData newGameData, int playerIndex, Totem totem)
+    {
+      var opponent1 = new Player() {Cash = 1500, Location = Locations.Go};
       opponent1.Name = newGameData.Opponent1Name;
-      opponent1.Index = 2;
-      _players.Add(opponent1);
-
-      var opponent2 = new Player() { Cash = 1500, Location = locationGo };
-      opponent2.Name = newGameData.Opponent2Name;
-      opponent2.Index = 3;
-      _players.Add(opponent2);
-
-      var opponent3 = new Player() { Cash = 1500, Location = locationGo };
-      opponent3.Name = newGameData.Opponent3Name;
-      opponent3.Index = 4;
-      _players.Add(opponent3);
+      opponent1.Index = playerIndex;
+      opponent1.Totem = totem;
+      return opponent1;
     }
 
     public void Roll()

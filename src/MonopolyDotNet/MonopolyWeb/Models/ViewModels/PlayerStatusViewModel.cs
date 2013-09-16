@@ -17,5 +17,6 @@ namespace MonopolyWeb.Models.ViewModels
     public string Cash { get; set; }
     public List<SelectListItem> Holdings { get; set; }
     public string Icon { get; set; }
+    public string TotemIcon { get; set; }
   }
 }

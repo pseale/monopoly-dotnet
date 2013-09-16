@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Configuration;
 using System.Linq;
 using System.Web.Mvc;
 using MonopolyWeb.Models.Core;
@@ -26,7 +27,7 @@ namespace MonopolyWeb.Models.Converters
       var playerStatus = new PlayerStatusViewModel();
       playerStatus.Name = player.Name;
       playerStatus.PlayerNumber = player.Index;
-      playerStatus.IsHuman = player.IsHuman;
+      playerStatus.Icon = player.IsHuman ? "human_player.png" : "robot_scum.png";
       playerStatus.Cash = CashHelper.FormatAsCash(player.Cash);
       playerStatus.Holdings = Convert(player.Holdings);
       var coordinates = TokenCoordinatesHelper.GetLocationOnBoard(player);

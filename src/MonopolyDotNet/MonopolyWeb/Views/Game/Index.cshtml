@@ -12,7 +12,7 @@
   .monopoly-board {
       height: 720px;
       width: 720px;
-      background-image: url('../img/board.png');
+      background-image: url('@Url.Content("~/img/board.png")');
       background-position: center center;
       position: relative;
     }
@@ -36,7 +36,7 @@
 
     @foreach (var player in Model.PlayerStatuses) {
       
-<text>    img#player-@(player.PlayerNumber) {
+    <text>    img#player-@(player.PlayerNumber) {
       position: absolute;
       left: @(player.OffsetFromLeft)px;
       top: @(player.OffsetFromTop)px;
@@ -51,28 +51,20 @@
 }
 
 <div class="monopoly-board span9">
-  <img class="player-totem" id="player-1" src="../img/dog.png" />
-  <img class="player-totem" id="player-2" src="../img/horseman.png" />
-  <img class="player-totem" id="player-3" src="../img/thimble.png" />
-  <img class="player-totem" id="player-4" src="../img/shoe.png" />
+  <img class="player-totem" id="player-1" src="~/img/dog.png" />
+  <img class="player-totem" id="player-2" src="~/img/horseman.png" />
+  <img class="player-totem" id="player-3" src="~/img/thimble.png" />
+  <img class="player-totem" id="player-4" src="~/img/shoe.png" />
 </div>
 @foreach (var player in Model.PlayerStatuses)
 {
   <div class="player-card span3" id="player-@(player.PlayerNumber)">
-    @if (player.IsHuman)
-    {
-    <img class="player-icon" src="../img/human_player.png" />
-    }
-    else
-    {
-    <img class="player-icon" src="../img/robot_scum.png" />
-    }
-
+    <img class="player-icon" src="~/img/@(@player.Icon)" />
     <h4>@player.Name</h4>
     <div class="cash">@player.Cash</div>
     @(Html.ListBoxFor(x => x.PlayerStatuses[0].Holdings, player.Holdings, new { @class = "holdings" }))
   </div>
-}
+} 
 <div class="span3">
   @using (Html.BeginForm<GameController>(x=>x.Roll()))
   {

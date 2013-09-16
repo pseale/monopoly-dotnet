@@ -11,11 +11,11 @@ namespace MonopolyWeb.Models.ViewModels
     }
 
     public string Name { get; set; }
-    public bool IsHuman { get; set; }
     public int PlayerNumber { get; set; }
     public string OffsetFromLeft { get; set; }
     public string OffsetFromTop { get; set; }
     public string Cash { get; set; }
     public List<SelectListItem> Holdings { get; set; }
+    public string Icon { get; set; }
   }
 }

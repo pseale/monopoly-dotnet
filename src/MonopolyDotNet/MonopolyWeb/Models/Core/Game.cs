@@ -14,18 +14,22 @@ namespace MonopolyWeb.Models.Core
       var humanPlayer = new Player() { Cash = 1500, Location = locationGo };
       humanPlayer.IsHuman = true;
       humanPlayer.Name = newGameData.PlayerName;
+      humanPlayer.Index = 1;
       _players.Add(humanPlayer);
 
       var opponent1 = new Player() { Cash = 1500, Location = locationGo };
       opponent1.Name = newGameData.Opponent1Name;
+      opponent1.Index = 2;
       _players.Add(opponent1);
 
       var opponent2 = new Player() { Cash = 1500, Location = locationGo };
       opponent2.Name = newGameData.Opponent2Name;
+      opponent2.Index = 3;
       _players.Add(opponent2);
 
       var opponent3 = new Player() { Cash = 1500, Location = locationGo };
       opponent3.Name = newGameData.Opponent3Name;
+      opponent3.Index = 4;
       _players.Add(opponent3);
     }
 

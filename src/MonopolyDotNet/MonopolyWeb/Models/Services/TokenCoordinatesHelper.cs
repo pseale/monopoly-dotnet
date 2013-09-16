@@ -58,12 +58,12 @@ namespace MonopolyWeb.Models.Services
       return Midpoints[location];
     }
 
-    public static TotemLocation AdjustPointToTopLeftOfTotem(TotemLocation totemLocation)
+    private static TotemLocation AdjustPointToTopLeftOfTotem(TotemLocation totemLocation)
     {
       return new TotemLocation(totemLocation.OffsetFromLeft-15, totemLocation.OffsetFromTop-15, totemLocation.PlayerIndex, totemLocation.BoardIndex);
     }
 
-    public static TotemLocation ShiftForPlayerIndex(TotemLocation totemLocation)
+    private static TotemLocation ShiftForPlayerIndex(TotemLocation totemLocation)
     {
       int pixelsToShift = -30 + totemLocation.PlayerIndex * 20;
       var directionToShift = new int[2];
@@ -92,10 +92,10 @@ namespace MonopolyWeb.Models.Services
       return new TotemLocation(totemLocation.OffsetFromLeft + directionToShift[0] * pixelsToShift, totemLocation.OffsetFromTop + directionToShift[1]*pixelsToShift, totemLocation.PlayerIndex, totemLocation.BoardIndex);
     }
 
-    public static TotemLocation GetLocationOnBoard(int locationOnBoard, int playerIndex)
+    public static TotemLocation GetLocationOnBoard(Player player)
     {
-      var location = GetMidpointOf(locationOnBoard);
-      var totemLocation = new TotemLocation(location.OffsetFromLeft, location.OffsetFromTop, playerIndex, locationOnBoard);
+      var location = GetMidpointOf(player.Location.Index);
+      var totemLocation = new TotemLocation(location.OffsetFromLeft, location.OffsetFromTop, player.Index, player.Location.Index);
       var adjustedPoint = AdjustPointToTopLeftOfTotem(totemLocation);
       var finalPoint = ShiftForPlayerIndex(adjustedPoint);
       return finalPoint;

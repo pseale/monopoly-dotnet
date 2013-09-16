@@ -47,7 +47,7 @@ namespace MonopolyTests.Tests
     }
 
     [Test]
-    public void When_starting_a_game__opponent_1_should_start_with_an_icon_indicating_theyre_human()
+    public void When_starting_a_game__opponent_1_should_start_with_an_icon_indicating_theyre_robot_scum()
     {
       var imageTag = browser.FindCss("#player-2 img.player-icon");
       string imageName = imageTag["src"].Split('/').Last();
@@ -55,7 +55,7 @@ namespace MonopolyTests.Tests
     }
 
     [Test]
-    public void When_starting_a_game__opponent_2_should_start_with_an_icon_indicating_theyre_human()
+    public void When_starting_a_game__opponent_2_should_start_with_an_icon_indicating_theyre_robot_scum()
     {
       var imageTag = browser.FindCss("#player-3 img.player-icon");
       string imageName = imageTag["src"].Split('/').Last();
@@ -63,7 +63,7 @@ namespace MonopolyTests.Tests
     }
 
     [Test]
-    public void When_starting_a_game__opponent_3_should_start_with_an_icon_indicating_theyre_human()
+    public void When_starting_a_game__opponent_3_should_start_with_an_icon_indicating_theyre_robot_scum()
     {
       var imageTag = browser.FindCss("#player-4 img.player-icon");
       string imageName = imageTag["src"].Split('/').Last();

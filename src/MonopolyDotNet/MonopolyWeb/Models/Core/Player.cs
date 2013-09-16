@@ -10,6 +10,7 @@ namespace MonopolyWeb.Models.Core
     }
 
     public string Name { get; set; }
+    public int Index { get; set; } //starts at 1
     public bool IsHuman { get; set; }
     public int Cash { get; set; } 
     public Location Location { get; set; }

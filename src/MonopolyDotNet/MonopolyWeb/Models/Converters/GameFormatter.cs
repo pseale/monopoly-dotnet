@@ -13,25 +13,23 @@ namespace MonopolyWeb.Models.Converters
     {
       var gameStatusViewModel = new GameStatusViewModel();
       
-      int playerIndex = 1;
       var gameStatus = game.GetCurrentGameStatus();
-      gameStatusViewModel.PlayerStatuses.AddRange(gameStatus.Players.Select(player => Convert(player, playerIndex++)));
-      
+      gameStatusViewModel.PlayerStatuses.AddRange(gameStatus.Players.Select(player => Convert(player)));
       gameStatusViewModel.CanBuyProperty = gameStatus.CanBuyProperty;
       gameStatusViewModel.PropertySalePrice = CashHelper.FormatAsCash(gameStatus.PropertySalePrice);
 
       return gameStatusViewModel;
     }
 
-    private static PlayerStatusViewModel Convert(Player player, int playerIndex)
+    private static PlayerStatusViewModel Convert(Player player)
     {
       var playerStatus = new PlayerStatusViewModel();
-      playerStatus.PlayerNumber = playerIndex;
       playerStatus.Name = player.Name;
+      playerStatus.PlayerNumber = player.Index;
       playerStatus.IsHuman = player.IsHuman;
       playerStatus.Cash = CashHelper.FormatAsCash(player.Cash);
       playerStatus.Holdings = Convert(player.Holdings);
-      var coordinates = TokenCoordinatesHelper.GetLocationOnBoard(player.Location.Index, playerIndex);
+      var coordinates = TokenCoordinatesHelper.GetLocationOnBoard(player);
       playerStatus.OffsetFromLeft = coordinates.OffsetFromLeft.ToString();
       playerStatus.OffsetFromTop = coordinates.OffsetFromTop.ToString();
       return playerStatus;

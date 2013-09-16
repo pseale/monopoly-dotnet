@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using MonopolyWeb.Models.Commands;
 using MonopolyWeb.Models.Core;
@@ -22,7 +23,7 @@ namespace MonopolyFastTests
       }
     }
 
-    public static void WithDiceRolls(int[] rolls, Action action)
+    public static void WithDiceRolls(IEnumerable<int> rolls, Action action)
     {
       var originalBehavior = Dice.Roll;
       try
@@ -39,12 +40,7 @@ namespace MonopolyFastTests
     public static Game StartGame()
     {
       var playerId = Guid.NewGuid();
-      var newGameData = new NewGameData();
-      newGameData.PlayerName = "Tron";
-      newGameData.PlayerTotem = Totem.Dog;
-      newGameData.Opponent1Name = "Rube";
-      newGameData.Opponent2Name = "Chester";
-      newGameData.Opponent3Name = "Adolf";
+      var newGameData = new NewGameData("Tron", Totem.Dog, "Rube", "Chester", "Adolf");
 
       CreateGameCommand.Execute(playerId, newGameData);
       var game = FindGameByPlayerIdQuery.Execute(playerId);

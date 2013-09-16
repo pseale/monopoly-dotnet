@@ -8,12 +8,8 @@ namespace MonopolyWeb.Models.Converters
   {
     public static NewGameData Convert(NewGameInput newGameInput)
     {
-      var newGameData = new NewGameData();
-      newGameData.PlayerName = newGameInput.Name;
-//      newGameData.PlayerTotem = newGameInput.Totem;
-      newGameData.Opponent1Name = newGameInput.Second;
-      newGameData.Opponent2Name = newGameInput.Third;
-      newGameData.Opponent3Name = newGameInput.Fourth;
+      var newGameData = new NewGameData(newGameInput.Name, newGameInput.Totem.Value, newGameInput.Second, newGameInput.Third,
+        newGameInput.Fourth);
 
       return newGameData;
     }

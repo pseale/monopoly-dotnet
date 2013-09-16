@@ -19,7 +19,7 @@ namespace MonopolyFastTests
         var gameStatus = game.GetCurrentGameStatus();
         var playerOne = gameStatus.Players.First();
 
-        Assert.AreEqual(3, playerOne.Location);
+        Assert.AreEqual(3, playerOne.Location.Index);
       });
     }
   }

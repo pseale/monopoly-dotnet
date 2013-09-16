@@ -13,10 +13,10 @@ namespace MonopolyFastTests
       var gameStatus = game.GetCurrentGameStatus();
       var players = gameStatus.Players;
 
-      Assert.AreEqual(0, players[0].Location);
-      Assert.AreEqual(0, players[1].Location);
-      Assert.AreEqual(0, players[2].Location);
-      Assert.AreEqual(0, players[3].Location);
+      Assert.AreEqual(0, players[0].Location.Index);
+      Assert.AreEqual(0, players[1].Location.Index);
+      Assert.AreEqual(0, players[2].Location.Index);
+      Assert.AreEqual(0, players[3].Location.Index);
     }
 
     [Test]

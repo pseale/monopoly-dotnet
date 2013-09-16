@@ -16,9 +16,9 @@ namespace MonopolyWeb.Models.Core
       allTotems.Remove(newGameData.PlayerTotem);
       var availableTotems = new Stack<Totem>(allTotems);
 
-      _players.Add(CreateOpponent(newGameData, 2, availableTotems.Pop()));
-      _players.Add(CreateOpponent(newGameData, 3, availableTotems.Pop()));
-      _players.Add(CreateOpponent(newGameData, 4, availableTotems.Pop()));
+      _players.Add(CreateOpponent(newGameData.Opponent1Name, 2, availableTotems.Pop()));
+      _players.Add(CreateOpponent(newGameData.Opponent2Name, 3, availableTotems.Pop()));
+      _players.Add(CreateOpponent(newGameData.Opponent3Name, 4, availableTotems.Pop()));
     }
 
     private Player CreateHumanPlayer(NewGameData newGameData)
@@ -31,10 +31,10 @@ namespace MonopolyWeb.Models.Core
       return humanPlayer;
     }
 
-    private Player CreateOpponent(NewGameData newGameData, int playerIndex, Totem totem)
+    private Player CreateOpponent(string opponentName, int playerIndex, Totem totem)
     {
       var opponent1 = new Player() {Cash = 1500, Location = Locations.Go};
-      opponent1.Name = newGameData.Opponent1Name;
+      opponent1.Name = opponentName;
       opponent1.Index = playerIndex;
       opponent1.Totem = totem;
       return opponent1;

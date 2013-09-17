@@ -66,15 +66,25 @@
   </div>
 } 
 <div class="span3">
-  @using (Html.BeginForm<GameController>(x=>x.Roll()))
+  @if (Model.CanRoll)
   {
-    <input class="btn btn-large" type="submit" value="Roll" />
+    using (Html.BeginForm<GameController>(x => x.Roll()))
+    {
+      <input class="btn btn-large" type="submit" value="Roll" />
+    }
   }
   @if (Model.CanBuyProperty)
   {
     using (Html.BeginForm<GameController>(x => x.BuyProperty()))
     {
       <input class="btn btn-large" type="submit" value="Buy (@(Model.PropertySalePrice))" />
+    }
+  }
+  @if (Model.CanEndTurn)
+  {
+    using (Html.BeginForm<GameController>(x => x.EndTurn()))
+    {
+      <input class="btn btn-large" type="submit" value="End Turn" />
     }
   }
 </div>

@@ -124,6 +124,7 @@
     </Compile>
     <Compile Include="Models\Commands\BuyPropertyCommand.cs" />
     <Compile Include="Models\Commands\CreateGameCommand.cs" />
+    <Compile Include="Models\Commands\EndTurnCommand.cs" />
     <Compile Include="Models\Commands\RollDiceCommand.cs" />
     <Compile Include="Models\Converters\GameFormatter.cs" />
     <Compile Include="Models\Converters\NewGameConverter.cs" />

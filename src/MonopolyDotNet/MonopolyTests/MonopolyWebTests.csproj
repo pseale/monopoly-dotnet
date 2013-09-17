@@ -99,6 +99,7 @@
     <Compile Include="Tests\BuyingPropertyTests\LandingOnAPropertyWithInsufficientCash.cs" />
     <Compile Include="Tests\BuyingPropertyTests\LandingOnPropertyIOwn.cs" />
     <Compile Include="Tests\BuyingPropertyTests\OpponentBuyingProperty.cs" />
+    <Compile Include="Tests\ChargingRentTests\ChargingAnOpponentRent.cs" />
     <Compile Include="Tests\PassingGoTests\OpponentArrivingAtGo.cs" />
     <Compile Include="Tests\PassingGoTests\OpponentPassingGo.cs" />
     <Compile Include="Tests\StartingAGame.cs" />

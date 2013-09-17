@@ -91,9 +91,19 @@ namespace MonopolyTests.Builders
 
     public static void WithHumanRolls(int[] rolls, Action action)
     {
+      WithRolls(GenerateSafeComputerRollsFor(rolls), action);
+    }
+
+    public static void WithOpponent1Roll(int roll, Action action)
+    {
+      WithRolls(new[] { 5, roll, 5, 5 }, action);
+    }
+
+    public static void WithRolls(IEnumerable<int> allPlayerRolls, Action action)
+    {
       try
       {
-        ReplaceRandomRollsWith(GenerateSafeComputerRollsFor(rolls));
+        ReplaceRandomRollsWith(allPlayerRolls);
         action();
       }
       finally
@@ -120,19 +130,6 @@ namespace MonopolyTests.Builders
     public static string GetSrcFilenameFrom(ElementScope playerTotemImgTag)
     {
       return playerTotemImgTag["src"].Split('/').Last();
-    }
-
-    public static void WithOpponent1Roll(int roll, Action action)
-    {
-      try
-      {
-        ReplaceRandomRollsWith(new[] { 5, roll, 5, 5});
-        action();
-      }
-      finally
-      {
-        ResetRolls();
-      }
     }
   }
 }

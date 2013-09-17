@@ -8,5 +8,6 @@
     }
     public string Name { get; set; }
     public int SalePrice { get; set; }
+    public int Rent { get { return SalePrice/10; } }
   }
 }

@@ -33,45 +33,54 @@ namespace MonopolyTests.Tests
     public void When_rolling_the_dice_and_ending_the_turn__should_do_opponent1s_turn_also()
     {
       TestHelper.StartAGame();
-      var boardLocation =
-        ((OpenQA.Selenium.Firefox.FirefoxWebElement)browser
-        .FindCss(".monopoly-board").Native).Coordinates.LocationInDom;
-      var originalLocation = GetCoordinatesOfTotemOnBoard(browser.FindCss("img#player-2"));
-      browser.ClickButton("Roll");
+      TestHelper.WithHumanRoll(5, () =>
+      {
+        var boardLocation =
+          ((OpenQA.Selenium.Firefox.FirefoxWebElement)browser
+          .FindCss(".monopoly-board").Native).Coordinates.LocationInDom;
+        var originalLocation = GetCoordinatesOfTotemOnBoard(browser.FindCss("img#player-2"));
+        browser.ClickButton("Roll");
 
-      var newLocation = GetCoordinatesOfTotemOnBoard(browser.FindCss("img#player-2"));
+        var newLocation = GetCoordinatesOfTotemOnBoard(browser.FindCss("img#player-2"));
 
-      Assert.AreNotEqual(originalLocation.X - boardLocation.X, newLocation.X - boardLocation.X);
+        Assert.AreNotEqual(originalLocation.X - boardLocation.X, newLocation.X - boardLocation.X);
+      });
     }
 
     [Test]
     public void When_rolling_the_dice_and_ending_the_turn__should_do_opponent2s_turn_also()
     {
       TestHelper.StartAGame();
-      var boardLocation =
-        ((OpenQA.Selenium.Firefox.FirefoxWebElement)browser
-        .FindCss(".monopoly-board").Native).Coordinates.LocationInDom;
-      var originalLocation = GetCoordinatesOfTotemOnBoard(browser.FindCss("img#player-3"));
-      browser.ClickButton("Roll");
+      TestHelper.WithHumanRoll(5, () =>
+      {
+        var boardLocation =
+          ((OpenQA.Selenium.Firefox.FirefoxWebElement)browser
+          .FindCss(".monopoly-board").Native).Coordinates.LocationInDom;
+        var originalLocation = GetCoordinatesOfTotemOnBoard(browser.FindCss("img#player-3"));
+        browser.ClickButton("Roll");
 
-      var newLocation = GetCoordinatesOfTotemOnBoard(browser.FindCss("img#player-3"));
+        var newLocation = GetCoordinatesOfTotemOnBoard(browser.FindCss("img#player-3"));
 
-      Assert.AreNotEqual(originalLocation.X - boardLocation.X, newLocation.X - boardLocation.X);
+        Assert.AreNotEqual(originalLocation.X - boardLocation.X, newLocation.X - boardLocation.X);
+      });
     }
 
     [Test]
     public void When_rolling_the_dice_and_ending_the_turn__should_do_opponent3s_turn_also()
     {
       TestHelper.StartAGame();
-      var boardLocation =
-        ((OpenQA.Selenium.Firefox.FirefoxWebElement)browser
-        .FindCss(".monopoly-board").Native).Coordinates.LocationInDom;
-      var originalLocation = GetCoordinatesOfTotemOnBoard(browser.FindCss("img#player-4"));
-      browser.ClickButton("Roll");
+      TestHelper.WithHumanRoll(5, () =>
+      {
+        var boardLocation =
+          ((OpenQA.Selenium.Firefox.FirefoxWebElement)browser
+          .FindCss(".monopoly-board").Native).Coordinates.LocationInDom;
+        var originalLocation = GetCoordinatesOfTotemOnBoard(browser.FindCss("img#player-4"));
+        browser.ClickButton("Roll");
 
-      var newLocation = GetCoordinatesOfTotemOnBoard(browser.FindCss("img#player-4"));
+        var newLocation = GetCoordinatesOfTotemOnBoard(browser.FindCss("img#player-4"));
 
-      Assert.AreNotEqual(originalLocation.X - boardLocation.X, newLocation.X - boardLocation.X);
+        Assert.AreNotEqual(originalLocation.X - boardLocation.X, newLocation.X - boardLocation.X);
+      });
     }
   }
 }

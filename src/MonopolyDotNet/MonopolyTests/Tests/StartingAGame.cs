@@ -119,5 +119,21 @@ namespace MonopolyTests.Tests
 
       Assert.AreEqual(4, numberOfUniqueFilenames, "Expected unique filenames, got: " + string.Join(", ", filenames));
     }
+
+    [Test]
+    public void When_starting_a_game__should_be_able_to_roll_the_dice()
+    {
+      var button = browser.FindButton("Roll");
+
+      Assert.IsTrue(button.Exists());
+    }
+
+    [Test]
+    public void When_starting_a_game__should_not_be_able_to_end_the_turn()
+    {
+      var button = browser.FindButton("End Turn");
+
+      Assert.IsFalse(button.Exists());
+    }
   }
 }

@@ -9,11 +9,13 @@ namespace MonopolyFastTests
     [Test]
     public void When_landing_on_a_property_I_own__should_not_be_able_to_buy_it()
     {
-      FastTestHelper.WithHumanDiceRolls(new[] { 6, 10, 10, 10, 10 }, () =>
+      //Roll to Oriental, then do safe rolls until you make your way back to Oriental
+      FastTestHelper.WithHumanDiceRolls(new[] { 6, 4, 10, 10, 10, 6 }, () =>
       {
         var game = FastTestHelper.StartGame(); 
         game.Roll();
         game.BuyProperty();
+        game.Roll();
         game.Roll();
         game.Roll();
         game.Roll();

@@ -11,29 +11,31 @@ namespace MonopolyWeb.Models.Converters
   {
     public static GameStatusViewModel Flatten(Game game)
     {
-      var gameStatusViewModel = new GameStatusViewModel();
+      var vm = new GameStatusViewModel();
       
       var gameStatus = game.GetCurrentGameStatus();
-      gameStatusViewModel.PlayerStatuses.AddRange(gameStatus.Players.Select(player => Convert(player)));
-      gameStatusViewModel.CanBuyProperty = gameStatus.CanBuyProperty;
-      gameStatusViewModel.PropertySalePrice = CashHelper.FormatAsCash(gameStatus.PropertySalePrice);
+      vm.PlayerStatuses.AddRange(gameStatus.Players.Select(player => Convert(player)));
+      vm.CanRoll = gameStatus.CanRoll;
+      vm.CanBuyProperty = gameStatus.CanBuyProperty;
+      vm.CanEndTurn = gameStatus.CanEndTurn;
+      vm.PropertySalePrice = CashHelper.FormatAsCash(gameStatus.PropertySalePrice);
 
-      return gameStatusViewModel;
+      return vm;
     }
 
     private static PlayerStatusViewModel Convert(Player player)
     {
-      var playerStatus = new PlayerStatusViewModel();
-      playerStatus.Name = player.Name;
-      playerStatus.PlayerNumber = player.Index;
-      playerStatus.Icon = player.IsHuman ? "human_player.png" : "robot_scum.png";
-      playerStatus.TotemIcon = GetIconFor(player.Totem);
-      playerStatus.Cash = CashHelper.FormatAsCash(player.Cash);
-      playerStatus.Holdings = Convert(player.Holdings);
+      var vm = new PlayerStatusViewModel();
+      vm.Name = player.Name;
+      vm.PlayerNumber = player.Index;
+      vm.Icon = player.IsHuman ? "human_player.png" : "robot_scum.png";
+      vm.TotemIcon = GetIconFor(player.Totem);
+      vm.Cash = CashHelper.FormatAsCash(player.Cash);
+      vm.Holdings = Convert(player.Holdings);
       var coordinates = TokenCoordinatesHelper.GetLocationOnBoard(player);
-      playerStatus.OffsetFromLeft = coordinates.OffsetFromLeft.ToString();
-      playerStatus.OffsetFromTop = coordinates.OffsetFromTop.ToString();
-      return playerStatus;
+      vm.OffsetFromLeft = coordinates.OffsetFromLeft.ToString();
+      vm.OffsetFromTop = coordinates.OffsetFromTop.ToString();
+      return vm;
     }
 
     private static string GetIconFor(Totem totem)

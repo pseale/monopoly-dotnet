@@ -44,5 +44,18 @@ namespace MonopolyWeb.Controllers
 
       return this.RedirectToAction<GameController>(x => x.Index());
     }
+
+    [HttpPost]
+    public ActionResult EndTurn()
+    {
+      if (!(Session["playerId"] is Guid))
+        return this.RedirectToAction<LogoutController>(x => x.Index());
+
+      var playerId = (Guid)Session["playerId"];
+      var game = FindGameByPlayerIdQuery.Execute(playerId);
+      EndTurnCommand.Execute(game);
+
+      return this.RedirectToAction<GameController>(x => x.Index());
+    }
   }
 }

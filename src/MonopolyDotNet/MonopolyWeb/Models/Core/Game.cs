@@ -42,11 +42,20 @@ namespace MonopolyWeb.Models.Core
 
     public void Roll()
     {
+      RollForPlayer(_players[0]);
 
-      var player = _players[0];
-      RollForPlayer(player);
+      if (!CanBuyProperty(_players[0]))
+        DoComputerTurns();
+    }
 
-      //assumes turn is always over after a roll, which is true until we implement extending turns via rolls with doubles
+    public void BuyProperty()
+    {
+      BuyPropertyForPlayer(_players[0]);
+      EndTurn();
+    }
+
+    public void EndTurn()
+    {
       DoComputerTurns();
     }
 
@@ -71,6 +80,27 @@ namespace MonopolyWeb.Models.Core
 
       newLocation %= boardSize;
       player.Location = Locations.All[newLocation];
+
+      DoRentTransaction(player);
+    }
+
+    private void DoRentTransaction(Player player)
+    {
+      if (!player.Location.HasAProperty)
+        return;
+
+      //I hate using reference equality but I'll do it here for player == player and property == property
+      var allOtherPlayers = _players.Where(x => x != player);
+      var otherPlayersProperty = allOtherPlayers.SelectMany(x => x.Holdings);
+      var matchingProperties = otherPlayersProperty.Where(x => x == player.Location.Property).ToList();
+      if (!matchingProperties.Any())
+        return;
+
+      var matchingProperty = matchingProperties.First();
+      var propertyOwner = _players.Where(x => x.Holdings.Contains(matchingProperty)).First();
+      
+      player.Cash -= matchingProperty.Rent;
+      propertyOwner.Cash += matchingProperty.Rent;
     }
 
     private void DoComputerTurns()
@@ -91,12 +121,23 @@ namespace MonopolyWeb.Models.Core
     public GameStatus GetCurrentGameStatus()
     {
       var humanPlayer = _players[0];
-      var currentGameStatus = new GameStatus();
-      currentGameStatus.Players = _players.ToArray().ToList();
-      currentGameStatus.CanBuyProperty = CanBuyProperty(humanPlayer);
+      var status = new GameStatus();
+      status.Players = _players.ToArray().ToList();
       if (CanBuyProperty(humanPlayer))
-        currentGameStatus.PropertySalePrice = humanPlayer.Location.Property.SalePrice;
-      return currentGameStatus;
+      {
+        status.CanRoll = false;
+        status.CanBuyProperty = true;
+        status.CanEndTurn = true;
+        status.PropertySalePrice = humanPlayer.Location.Property.SalePrice;
+      }
+      else
+      {
+        status.CanRoll = true;
+        status.CanBuyProperty = false;
+        status.CanEndTurn = false;
+      }
+
+      return status;
     }
 
     //This would go really well on the Player object but I'm still trying to keep all the model objects underneath Game dumb for now. We'll
@@ -114,11 +155,6 @@ namespace MonopolyWeb.Models.Core
       var doesAnyoneOwnThisProperty = _players.SelectMany(x => x.Holdings).Any(x => x == location.Property);
 
       return !doesAnyoneOwnThisProperty;
-    }
-
-    public void BuyProperty()
-    {
-      BuyPropertyForPlayer(_players[0]);
     }
 
     private static void BuyPropertyForPlayer(Player player)

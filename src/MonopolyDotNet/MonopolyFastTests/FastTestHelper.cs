@@ -9,12 +9,18 @@ namespace MonopolyFastTests
 {
   public static class FastTestHelper
   {
-    public static void WithDiceBehavior(Func<int> diceBehavior, Action action)
+    public static void WithHumanDiceRoll(int roll, Action action)
+    {
+      WithHumanDiceRolls(new[] { roll }, action);
+    }
+
+    public static void WithHumanDiceRolls(IEnumerable<int> rolls, Action action)
     {
       var originalBehavior = Dice.Roll;
       try
       {
-        Dice.Roll = diceBehavior;
+
+        Dice.ReplaceRandomRollsWith(GenerateSafeComputerRollsFor(rolls));
         action();
       }
       finally
@@ -23,18 +29,17 @@ namespace MonopolyFastTests
       }
     }
 
-    public static void WithDiceRolls(IEnumerable<int> rolls, Action action)
+    private static List<int> GenerateSafeComputerRollsFor(IEnumerable<int> humanRolls)
     {
-      var originalBehavior = Dice.Roll;
-      try
+      var list = new List<int>();
+      foreach (var humanRoll in humanRolls)
       {
-        Dice.ReplaceRandomRollsWith(rolls.ToList());
-        action();
+        list.Add(humanRoll);
+        list.Add(5); //safe roll, assuming we start from Go, and assuming we don't have railroads in the game, or Jail, or Free parking $$$.
+        list.Add(5);
+        list.Add(5);
       }
-      finally
-      {
-        Dice.Roll = originalBehavior;
-      }
+      return list;
     }
 
     public static Game StartGame()

@@ -42,14 +42,22 @@ namespace MonopolyWeb.Models.Core
 
     public void Roll()
     {
-      const int boardSize = 40;
 
       var player = _players[0];
+      RollForPlayer(player);
+
+      //assumes turn is always over after a roll, which is true until we implement extending turns via rolls with doubles
+      DoComputerTurns();
+    }
+
+    private void RollForPlayer(Player player)
+    {
+      const int boardSize = 40;
       int newLocation = player.Location.Index + Dice.Roll();
 
       if (newLocation > boardSize)
       {
-        PassGo();
+        PassGo(player);
       }
       else if (newLocation == boardSize)
       {
@@ -58,35 +66,49 @@ namespace MonopolyWeb.Models.Core
       else if (player.PassesGoOnNextRoll)
       {
         player.PassesGoOnNextRoll = false;
-        PassGo();
+        PassGo(player);
       }
 
       newLocation %= boardSize;
       player.Location = Locations.All[newLocation];
     }
 
-    private void PassGo()
+    private void DoComputerTurns()
     {
-      _players[0].Cash += 200;
+      foreach (var robotPlayer in _players.Where(x => !x.IsHuman))
+      {
+        RollForPlayer(robotPlayer);
+        if (CanBuyProperty(robotPlayer))
+          BuyPropertyForPlayer(robotPlayer);
+      }
+    }
+
+    private void PassGo(Player player)
+    {
+      player.Cash += 200;
     }
 
     public GameStatus GetCurrentGameStatus()
     {
+      var humanPlayer = _players[0];
       var currentGameStatus = new GameStatus();
       currentGameStatus.Players = _players.ToArray().ToList();
-      currentGameStatus.CanBuyProperty = CanBuyProperty();
-      if (CanBuyProperty())
-        currentGameStatus.PropertySalePrice = _players[0].Location.Property.SalePrice;
+      currentGameStatus.CanBuyProperty = CanBuyProperty(humanPlayer);
+      if (CanBuyProperty(humanPlayer))
+        currentGameStatus.PropertySalePrice = humanPlayer.Location.Property.SalePrice;
       return currentGameStatus;
     }
 
-    private bool CanBuyProperty()
+    //This would go really well on the Player object but I'm still trying to keep all the model objects underneath Game dumb for now. We'll
+    //see when the pressure becomes too much and I have to just move the logic to the currently "dumb" objects like Player. But know
+    //that I see that this would be the #1 candidate to move off of Game.
+    private bool CanBuyProperty(Player player)
     {
-      var location = _players[0].Location;
+      var location = player.Location;
       if (!location.HasAProperty)
         return false;
 
-      if (_players[0].Cash < location.Property.SalePrice)
+      if (player.Cash < location.Property.SalePrice)
         return false;
 
       var doesAnyoneOwnThisProperty = _players.SelectMany(x => x.Holdings).Any(x => x == location.Property);
@@ -96,10 +118,14 @@ namespace MonopolyWeb.Models.Core
 
     public void BuyProperty()
     {
-      var humanPlayer = _players[0];
-      var property = humanPlayer.Location.Property;
-      humanPlayer.Holdings.Add(property);
-      humanPlayer.Cash -= property.SalePrice;
+      BuyPropertyForPlayer(_players[0]);
+    }
+
+    private static void BuyPropertyForPlayer(Player player)
+    {
+      var property = player.Location.Property;
+      player.Holdings.Add(property);
+      player.Cash -= property.SalePrice;
     }
   }
 }

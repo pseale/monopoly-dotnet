@@ -11,7 +11,7 @@ namespace MonopolyTests.Tests
     public void When_buying_a_property__should_add_it_to_my_property_holdings()
     {
       TestHelper.StartAGame();
-      TestHelper.WithHardcodedDiceRolls(new[] {6, 10, 10, 10, 10}, () =>
+      TestHelper.WithHumanRolls(new[] {6, 10, 10, 10, 10}, () =>
       {
         browser.ClickButton("Roll");
         browser.ClickButton("Buy ($80)");

@@ -10,7 +10,7 @@ namespace MonopolyTests.Tests.PassingGoTests
     public void When_passing_GO__collect_200_dollars()
     {
       TestHelper.StartAGame();
-      TestHelper.WithHardcodedDiceRoll(10, () =>
+      TestHelper.WithHumanRoll(10, () =>
       {
         browser.ClickButton("Roll");
         browser.ClickButton("Roll");

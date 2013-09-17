@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Net;
 using System.Web.Script.Serialization;
@@ -39,7 +40,7 @@ namespace MonopolyTests.Builders
         throw new MonopolyTestRunException("While setting up a test, attempted to start a game, but did not succeed. At URL: " + browser.Location);
     }
 
-    public static void ReplaceRandomRollsWith(params int[] rolls)
+    private static void ReplaceRandomRollsWith(List<int> rolls)
     {
       ExecutePost("SecretAdmin/ReplaceRolls", x =>
       {
@@ -72,22 +73,37 @@ namespace MonopolyTests.Builders
       return browserSession.FindCss(".player-card#player-1 .cash").HasContent("$" + cash);
     }
 
-    public static void WithHardcodedDiceRoll(int roll, Action action)
+    public static void WithHumanRoll(int roll, Action action)
     {
-      WithHardcodedDiceRolls(new int[] { roll }, action);
+      WithHumanRolls(new int[] { roll }, action);
     }
 
-    public static void WithHardcodedDiceRolls(int[] rolls, Action action)
+    public static void WithHumanRolls(int[] rolls, Action action)
     {
       try
       {
-        ReplaceRandomRollsWith(rolls);
+        ReplaceRandomRollsWith(GenerateSafeComputerRollsFor(rolls));
         action();
       }
       finally
       {
         ResetRolls();
       }
+    }
+
+    //this method 100% duplicated in FastTests, not sure how to not duplicate it and I don't want the two test assemblies referencing each other.
+    //maybe move this logic to the secret admin controller?
+    private static List<int> GenerateSafeComputerRollsFor(IEnumerable<int> humanRolls)
+    {
+      var list = new List<int>();
+      foreach (var humanRoll in humanRolls)
+      {
+        list.Add(humanRoll);
+        list.Add(5); //safe roll, assuming we start from Go, and assuming we don't have railroads in the game, or Jail, or Free parking $$$.
+        list.Add(5);
+        list.Add(5);
+      }
+      return list;
     }
 
     public static string GetSrcFilenameFrom(ElementScope playerTotemImgTag)

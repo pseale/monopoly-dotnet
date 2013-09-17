@@ -9,7 +9,7 @@ namespace MonopolyFastTests
     [Test]
     public void When_landing_on_a_property_I_own__should_not_be_able_to_buy_it()
     {
-      FastTestHelper.WithDiceRolls(new[] { 6, 10, 10, 10, 10 }, () =>
+      FastTestHelper.WithHumanDiceRolls(new[] { 6, 10, 10, 10, 10 }, () =>
       {
         var game = FastTestHelper.StartGame(); 
         game.Roll();

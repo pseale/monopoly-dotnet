@@ -9,7 +9,7 @@ namespace MonopolyFastTests
     [Test]
     public void When_buying_a_property__should_charge_me_money()
     {
-      FastTestHelper.WithDiceRolls(new[] {6}, () =>
+      FastTestHelper.WithHumanDiceRoll(6, () =>
       {
         var game = FastTestHelper.StartGame();
         game.Roll();
@@ -24,7 +24,7 @@ namespace MonopolyFastTests
     [Test]
     public void When_buying_a_property__should_add_the_property_to_my_holdings()
     {
-      FastTestHelper.WithDiceRolls(new[] { 6 }, () =>
+      FastTestHelper.WithHumanDiceRoll(6, () =>
       {
         var game = FastTestHelper.StartGame();
         game.Roll();

@@ -10,7 +10,7 @@ namespace MonopolyTests.Tests.BuyingPropertyTests
     public void When_landing_on_a_property_for_sale__with_insufficient_cash__should_not_be_able_to_buy_it()
     {
       TestHelper.StartAGame();
-      TestHelper.WithHardcodedDiceRolls(new[] {3, 3, 3, 2, 3, 2, 3, 2, 3, 2}, () =>
+      TestHelper.WithHumanRolls(new[] {3, 3, 3, 2, 3, 2, 3, 2, 3, 2}, () =>
       {
         browser.ClickButton("Roll");
         browser.ClickButton("Buy ($60)");

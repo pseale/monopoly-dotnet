@@ -11,7 +11,7 @@ namespace MonopolyFastTests
     [Test]
     public void When_rolling_a_3_from_GO__should_move_the_player_to_Baltic()
     {
-      FastTestHelper.WithDiceBehavior(() => 3, () =>
+      FastTestHelper.WithHumanDiceRoll(3, () =>
       {
         var game = FastTestHelper.StartGame();
         game.Roll();

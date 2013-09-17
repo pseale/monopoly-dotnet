@@ -40,7 +40,7 @@ namespace MonopolyTests.Builders
         throw new MonopolyTestRunException("While setting up a test, attempted to start a game, but did not succeed. At URL: " + browser.Location);
     }
 
-    private static void ReplaceRandomRollsWith(List<int> rolls)
+    private static void ReplaceRandomRollsWith(IEnumerable<int> rolls)
     {
       ExecutePost("SecretAdmin/ReplaceRolls", x =>
       {
@@ -68,9 +68,20 @@ namespace MonopolyTests.Builders
         throw new MonopolyTestRunException("Error while attempting to POST to " + relativePath +" during test setup/teardown. Response from server: " + response.Content);
     }
 
-    public static bool PlayerHasMoney(this BrowserSession browserSession, int cash)
+    public static bool HumanPlayerHasMoney(this BrowserSession browserSession, int cash)
     {
-      return browserSession.FindCss(".player-card#player-1 .cash").HasContent("$" + cash);
+      return GetMoneyValueForPlayer(browserSession, cash, 1);
+    }
+
+
+    public static bool Opponent1HasMoney(this BrowserSession browserSession, int cash)
+    {
+      return GetMoneyValueForPlayer(browserSession, cash, 2);
+    }
+
+    private static bool GetMoneyValueForPlayer(BrowserSession browserSession, int cash, int playerNumber)
+    {
+      return browserSession.FindCss(string.Format(".player-card#player-{0} .cash", playerNumber)).HasContent("$" + cash);
     }
 
     public static void WithHumanRoll(int roll, Action action)
@@ -109,6 +120,19 @@ namespace MonopolyTests.Builders
     public static string GetSrcFilenameFrom(ElementScope playerTotemImgTag)
     {
       return playerTotemImgTag["src"].Split('/').Last();
+    }
+
+    public static void WithOpponent1Roll(int roll, Action action)
+    {
+      try
+      {
+        ReplaceRandomRollsWith(new[] { 5, roll, 5, 5});
+        action();
+      }
+      finally
+      {
+        ResetRolls();
+      }
     }
   }
 }

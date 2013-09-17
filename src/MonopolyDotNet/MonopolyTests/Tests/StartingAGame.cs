@@ -18,7 +18,7 @@ namespace MonopolyTests.Tests
     [Test]
     public void When_starting_a_game__player_should_start_with_1500_cash_money()
     {
-      Assert.IsTrue(browser.PlayerHasMoney(1500));
+      Assert.IsTrue(browser.HumanPlayerHasMoney(1500));
     }
 
     [Test]

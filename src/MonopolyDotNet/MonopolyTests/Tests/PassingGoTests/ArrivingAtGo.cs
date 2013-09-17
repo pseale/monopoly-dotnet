@@ -16,7 +16,7 @@ namespace MonopolyTests.Tests.PassingGoTests
         browser.ClickButton("Roll");
         browser.ClickButton("Roll"); //arrives at GO
 
-        Assert.IsTrue(browser.PlayerHasMoney(1500));
+        Assert.IsTrue(browser.HumanPlayerHasMoney(1500));
       });
     }
   }

@@ -16,7 +16,7 @@ namespace MonopolyTests.Tests.BuyingPropertyTests
         browser.ClickButton("Roll");
         browser.ClickButton("Buy ($80)");
 
-        Assert.IsTrue(browser.PlayerHasMoney(1500 - 80));
+        Assert.IsTrue(browser.HumanPlayerHasMoney(1500 - 80));
       });
     }
   }

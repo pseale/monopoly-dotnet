@@ -7,6 +7,7 @@ using MonopolyWeb.Models.Queries;
 
 namespace MonopolyWeb.Controllers
 {
+  [Authorize]
   public class GameController : Controller
   {
     public ActionResult Index()

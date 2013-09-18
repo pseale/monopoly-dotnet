@@ -12,4 +12,8 @@
   {
     <div><a href="Game" class="btn btn-success btn-large">Resume Game</a></div>
   }
+  <form action="/account/logoff" method="POST">
+    @Html.AntiForgeryToken()
+    <input type="submit" value="Logoff"/>
+  </form>
 </div>

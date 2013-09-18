@@ -8,9 +8,9 @@ using System.Web;
 using System.Web.Mvc;
 using Microsoft.AspNet.Identity;
 using Microsoft.Owin.Security;
-using WebApplication4.Models;
+using MonopolyWeb.Models;
 
-namespace WebApplication4.Controllers
+namespace MonopolyWeb.Controllers
 {
     [Authorize]
     public class AccountController : Controller
@@ -112,7 +112,7 @@ namespace WebApplication4.Controllers
         public async Task<ActionResult> Disassociate(string loginProvider, string providerKey)
         {
             ManageMessageId? message = null;
-            string userId = User.Identity.GetUserId();
+            string userId = Microsoft.AspNet.Identity.IdentityExtensions.GetUserId(User.Identity);
             if (await UnlinkAccountForUser(userId, loginProvider, providerKey))
             {
                 // If you remove a local login, need to delete the login as well
@@ -135,7 +135,7 @@ namespace WebApplication4.Controllers
                 : message == ManageMessageId.SetPasswordSuccess ? "Your password has been set."
                 : message == ManageMessageId.RemoveLoginSuccess ? "The external login was removed."
                 : String.Empty;
-            string localUserName = await Logins.GetProviderKey(User.Identity.GetUserId(), IdentityConfig.LocalLoginProvider);
+            string localUserName = await Logins.GetProviderKey(Microsoft.AspNet.Identity.IdentityExtensions.GetUserId(User.Identity), IdentityConfig.LocalLoginProvider);
             ViewBag.UserName = localUserName;
             ViewBag.HasLocalPassword = localUserName != null;
             ViewBag.ReturnUrl = Url.Action("Manage");
@@ -148,8 +148,8 @@ namespace WebApplication4.Controllers
         [ValidateAntiForgeryToken]
         public async Task<ActionResult> Manage(ManageUserViewModel model)
         {
-            string userId = User.Identity.GetUserId();
-            string localUserName = await Logins.GetProviderKey(User.Identity.GetUserId(), IdentityConfig.LocalLoginProvider);
+          string userId = Microsoft.AspNet.Identity.IdentityExtensions.GetUserId(User.Identity);
+            string localUserName = await Logins.GetProviderKey(Microsoft.AspNet.Identity.IdentityExtensions.GetUserId(User.Identity), IdentityConfig.LocalLoginProvider);
             bool hasLocalLogin = localUserName != null;
             ViewBag.HasLocalPassword = hasLocalLogin;
             ViewBag.ReturnUrl = Url.Action("Manage");
@@ -182,7 +182,7 @@ namespace WebApplication4.Controllers
                     try
                     {
                         // Create the local login info and link the local account to the user
-                        localUserName = User.Identity.GetUserName();
+                        localUserName = Microsoft.AspNet.Identity.IdentityExtensions.GetUserName(User.Identity);
                         if (await Secrets.Create(new UserSecret(localUserName, model.NewPassword)) &&
                             await Logins.Add(new UserLogin(userId, IdentityConfig.LocalLoginProvider, localUserName)))
                         {
@@ -246,7 +246,7 @@ namespace WebApplication4.Controllers
                 if (User.Identity.IsAuthenticated)
                 {
                     // If the current user is logged in, just add the new account
-                    await Logins.Add(new UserLogin(User.Identity.GetUserId(), loginProvider, providerKey));
+                  await Logins.Add(new UserLogin(Microsoft.AspNet.Identity.IdentityExtensions.GetUserId(User.Identity), loginProvider, providerKey));
                 }
                 else
                 {
@@ -283,7 +283,7 @@ namespace WebApplication4.Controllers
                     // Create a local user and sign in
                     var user = new User(model.UserName);
                     if (await Users.Create(user) &&
-                        await Logins.Add(new UserLogin(user.Id, model.LoginProvider, id.FindFirstValue(ClaimTypes.NameIdentifier))))
+                        await Logins.Add(new UserLogin(user.Id, model.LoginProvider, Microsoft.AspNet.Identity.IdentityExtensions.FindFirstValue(id, ClaimTypes.NameIdentifier))))
                     {
                         await SignIn(user.Id, id.Claims, isPersistent: false);
                         return RedirectToLocal(returnUrl);
@@ -335,7 +335,7 @@ namespace WebApplication4.Controllers
         {
             return Task.Run(async () =>
             {
-                var linkedAccounts = await Logins.GetLogins(User.Identity.GetUserId());
+              var linkedAccounts = await Logins.GetLogins(Microsoft.AspNet.Identity.IdentityExtensions.GetUserId(User.Identity));
                 ViewBag.ShowRemoveButton = linkedAccounts.Count > 1;
                 return (ActionResult)PartialView("_RemoveAccountPartial", linkedAccounts);
             }).Result;

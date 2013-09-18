@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-namespace WebApplication4.Models 
+namespace MonopolyWeb.Models 
 {
     public class ExternalLoginConfirmationViewModel
     {

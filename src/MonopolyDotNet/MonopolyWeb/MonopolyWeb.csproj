@@ -158,7 +158,6 @@
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\GameController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
-    <Compile Include="Controllers\LogoutController.cs" />
     <Compile Include="Controllers\NewGameController.cs" />
     <Compile Include="Controllers\SecretAdminController.cs" />
     <Compile Include="Global.asax.cs">
@@ -182,7 +181,7 @@
     <Compile Include="Models\Core\Totem.cs" />
     <Compile Include="Models\Core\TotemLocation.cs" />
     <Compile Include="Models\IdentityModels.cs" />
-    <Compile Include="Models\Queries\FindGameByPlayerIdQuery.cs" />
+    <Compile Include="Models\Queries\FindGameByUsernameQuery.cs" />
     <Compile Include="Models\Services\InMemoryGameStorage.cs" />
     <Compile Include="Models\Services\CashHelper.cs" />
     <Compile Include="Models\Services\TokenCoordinatesHelper.cs" />
@@ -233,7 +232,6 @@
     <Content Include="Views\NewGame\Index.cshtml" />
     <Content Include="Views\About\Index.cshtml" />
     <Content Include="Views\Game\Index.cshtml" />
-    <Content Include="Views\Logout\Index.cshtml" />
     <Content Include="Views\Account\ExternalLoginConfirmation.cshtml" />
     <Content Include="Views\Account\ExternalLoginFailure.cshtml" />
     <Content Include="Views\Account\Login.cshtml" />

@@ -4,11 +4,11 @@ using MonopolyWeb.Models.Services;
 
 namespace MonopolyWeb.Models.Queries
 {
-  public static class FindGameByPlayerIdQuery
+  public static class FindGameByUsernameQuery
   {
-    public static Game Execute(Guid playerId)
+    public static Game Execute(string username)
     {
-      return InMemoryGameStorage.Games[playerId];
+      return InMemoryGameStorage.Games[username];
     }
   }
 }

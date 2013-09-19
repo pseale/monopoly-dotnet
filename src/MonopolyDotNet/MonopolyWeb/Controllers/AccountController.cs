@@ -309,8 +309,9 @@ namespace MonopolyWeb.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult LogOff()
         {
-            HttpContext.SignOut();
-            return RedirectToAction("Index", "Home");
+          Session.Abandon();
+          HttpContext.SignOut();
+          return RedirectToAction("Index", "Home");
         }
 
         //

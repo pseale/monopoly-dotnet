@@ -6,9 +6,9 @@ namespace MonopolyWeb.Models.Commands
 {
   public static class CreateGameCommand
   {
-    public static void Execute(Guid playerId, NewGameData newGameData)
+    public static void Execute(string username, NewGameData newGameData)
     {
-      InMemoryGameStorage.Games[playerId] = new Game(newGameData);
+      InMemoryGameStorage.Games[username] = new Game(newGameData);
     }
   }
 }

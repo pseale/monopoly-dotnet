@@ -6,6 +6,6 @@ namespace MonopolyWeb.Models.Services
 {
   public static class InMemoryGameStorage
   {
-     public static Dictionary<Guid, Game> Games = new Dictionary<Guid, Game>();
+     public static Dictionary<string, Game> Games = new Dictionary<string, Game>();
   }
 }

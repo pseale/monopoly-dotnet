@@ -7,6 +7,7 @@ using MonopolyWeb.Models.ViewModels;
 
 namespace MonopolyWeb.Controllers
 {
+  [Authorize]
   public class NewGameController : Controller
   {
     [HttpGet]
@@ -25,10 +26,9 @@ namespace MonopolyWeb.Controllers
 
       var newGameData = NewGameConverter.Convert(newGameInput);
       Guid playerId = Guid.NewGuid();
-      CreateGameCommand.Execute(playerId, newGameData);
-      var username = playerId.ToString("D");
+      var username = Microsoft.AspNet.Identity.IdentityExtensions.GetUserName(User.Identity);
+      CreateGameCommand.Execute(username, newGameData);
       
-      Session["playerId"] = playerId;
 
       // If we got this far, something failed, redisplay form
       return this.RedirectToAction<GameController>(x => x.Index());

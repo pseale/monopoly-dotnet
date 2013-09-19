@@ -12,11 +12,8 @@ namespace MonopolyWeb.Controllers
   {
     public ActionResult Index()
     {
-      if (!(Session["playerId"] is Guid))
-        return this.RedirectToAction<LogoutController>(x => x.Index());
-
-      var playerId = (Guid) Session["playerId"];
-      var game = FindGameByPlayerIdQuery.Execute(playerId);
+      var username = Microsoft.AspNet.Identity.IdentityExtensions.GetUserName(User.Identity);
+      var game = FindGameByUsernameQuery.Execute(username);
       var gameStatus = GameFormatter.Flatten(game);
       return View(gameStatus);
     }
@@ -24,11 +21,8 @@ namespace MonopolyWeb.Controllers
     [HttpPost]
     public ActionResult Roll()
     {
-      if (!(Session["playerId"] is Guid))
-        return this.RedirectToAction<LogoutController>(x => x.Index());
-
-      var playerId = (Guid)Session["playerId"];
-      var game = FindGameByPlayerIdQuery.Execute(playerId);
+      var username = Microsoft.AspNet.Identity.IdentityExtensions.GetUserName(User.Identity);
+      var game = FindGameByUsernameQuery.Execute(username);
       RollDiceCommand.Execute(game);
       return this.RedirectToAction<GameController>(x => x.Index());
     }
@@ -36,11 +30,8 @@ namespace MonopolyWeb.Controllers
     [HttpPost]
     public ActionResult BuyProperty()
     {
-      if (!(Session["playerId"] is Guid))
-        return this.RedirectToAction<LogoutController>(x => x.Index());
-
-      var playerId = (Guid)Session["playerId"];
-      var game = FindGameByPlayerIdQuery.Execute(playerId);
+      var username = Microsoft.AspNet.Identity.IdentityExtensions.GetUserName(User.Identity);
+      var game = FindGameByUsernameQuery.Execute(username);
       BuyPropertyCommand.Execute(game);
 
       return this.RedirectToAction<GameController>(x => x.Index());
@@ -49,11 +40,8 @@ namespace MonopolyWeb.Controllers
     [HttpPost]
     public ActionResult EndTurn()
     {
-      if (!(Session["playerId"] is Guid))
-        return this.RedirectToAction<LogoutController>(x => x.Index());
-
-      var playerId = (Guid)Session["playerId"];
-      var game = FindGameByPlayerIdQuery.Execute(playerId);
+      var username = Microsoft.AspNet.Identity.IdentityExtensions.GetUserName(User.Identity);
+      var game = FindGameByUsernameQuery.Execute(username);
       EndTurnCommand.Execute(game);
 
       return this.RedirectToAction<GameController>(x => x.Index());

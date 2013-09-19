@@ -44,11 +44,11 @@ namespace MonopolyFastTests
 
     public static Game StartGame()
     {
-      var playerId = Guid.NewGuid();
+      var username = Guid.NewGuid().ToString("D");
       var newGameData = new NewGameData("Tron", Totem.Dog, "Rube", "Chester", "Adolf");
 
-      CreateGameCommand.Execute(playerId, newGameData);
-      var game = FindGameByPlayerIdQuery.Execute(playerId);
+      CreateGameCommand.Execute(username, newGameData);
+      var game = FindGameByUsernameQuery.Execute(username);
       return game;
     }
   }

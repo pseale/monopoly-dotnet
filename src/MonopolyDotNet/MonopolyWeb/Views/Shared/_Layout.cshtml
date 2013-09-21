@@ -20,6 +20,10 @@
             <ul class="nav">
               <li>@(Html.ActionLink<HomeController>(x=> x.Index(), "Home"))</li>
               <li>@(Html.ActionLink<AboutController>(x => x.Index(), "About"))</li>
+              @if (User.Identity.IsAuthenticated)
+              {
+                <li>@(Html.ActionLink<QuitGameController>(x => x.Index(), "Quit Game"))</li>
+              }
             </ul>
           </div>
         </div>

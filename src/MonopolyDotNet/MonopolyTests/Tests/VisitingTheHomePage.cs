@@ -23,5 +23,13 @@ namespace MonopolyTests.Tests
 
       Assert.IsTrue(link.Exists());
     }
+
+    [Test]
+    public void When_visiting_the_home_page__should_not_see_a_Quit_Game_link()
+    {
+      var link = browser.FindLink("Quit Game");
+
+      Assert.IsFalse(link.Exists());
+    }
   }
 }

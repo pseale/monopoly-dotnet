@@ -131,5 +131,10 @@ namespace MonopolyTests.Builders
     {
       return playerTotemImgTag["src"].Split('/').Last();
     }
+
+    public static void Logout()
+    {
+      browser.Visit("/QuitGame");
+    }
   }
 }

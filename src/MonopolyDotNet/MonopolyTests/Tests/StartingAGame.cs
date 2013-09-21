@@ -135,5 +135,13 @@ namespace MonopolyTests.Tests
 
       Assert.IsFalse(button.Exists());
     }
+
+    [Test]
+    public void When_starting_a_game__should_be_able_to_quit_the_game()
+    {
+      var link = browser.FindLink("Quit Game");
+
+      Assert.IsTrue(link.Exists());
+    }
   }
 }

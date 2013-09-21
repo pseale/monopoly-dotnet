@@ -159,6 +159,7 @@
     <Compile Include="Controllers\GameController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\NewGameController.cs" />
+    <Compile Include="Controllers\QuitGameController.cs" />
     <Compile Include="Controllers\SecretAdminController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>

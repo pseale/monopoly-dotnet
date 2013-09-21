@@ -1,4 +1,5 @@
 ﻿using Coypu;
+using MonopolyTests.Builders;
 using MonopolyTests.Infrastructure;
 using NUnit.Framework;
 
@@ -11,8 +12,7 @@ namespace MonopolyTests
     [SetUp]
     public void WebTestBaseSetUp()
     {
-      browser.Visit("/");
-      browser.ClickButton("Logoff");
+      TestHelper.Logout();
     }
 
     [TearDown]

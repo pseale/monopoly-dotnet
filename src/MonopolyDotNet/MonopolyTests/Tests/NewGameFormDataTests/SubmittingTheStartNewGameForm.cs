@@ -121,8 +121,8 @@ namespace MonopolyTests.Tests.NewGameFormDataTests
     [Test]
     public void When_posting_a_Name_that_is_too_large_to_the_Start_New_Game_service__should_redirect_us_back_to_the_form()
     {
-      string nameThatIs41CharsLong = "1234567890123456789012345678901234567890*";
-      _request.AddParameter("Name", nameThatIs41CharsLong);
+      string nameThatIs21CharsLong = "12345678901234567890*";
+      _request.AddParameter("Name", nameThatIs21CharsLong);
       _request.AddParameter("Totem", "Dog");
       _request.AddParameter("Opponent1", "Rube");
       _request.AddParameter("Opponent2", "Rube");

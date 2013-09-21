@@ -6,7 +6,7 @@ namespace MonopolyWeb.Models.ViewModels
   public class NewGameInput
   {
     [Required]
-    [MaxLength(40, ErrorMessage = "Name cannot be longer than 40 characters.")]
+    [MaxLength(20, ErrorMessage = "Name cannot be longer than 20 characters.")]
     public string Name { get; set; }
     [Required]
     public Totem? Totem { get; set; }

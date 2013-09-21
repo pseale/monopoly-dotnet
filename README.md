@@ -6,9 +6,12 @@ This is a sample ASP.NET MVC 5 app I (@pseale) wrote to explore automated web te
 Usage
 -----
 
-Download this project, run the app (it creates its own database in App_Data), and read the source as desired. I created this sample project with a copy of Visual Studio 2013 **Preview** (emphasis on Preview), so if you're running the RC or anything newer, **there might be some weirdness with Nuget packages**. For example, all of the MVC 5 Identity packages have changed significantly; even some of the package names have changed. Also, I have read that for the final release, they plan to use Bootstrap 3, and this project uses Bootstrap 2, so there's no telling what will happen visually when you upgrade. 
+Download/clone this project's source, run the app (it creates its own database in App_Data), and read the source as desired. 
 
-To run the automated web tests, use any NUnit test runner and run all tests, which will fire up an IISExpress instance and a Selenium-driven browser. Do not touch the browser.
+To run the web tests, use any NUnit test runner and run the entire test suite. The test run will fire up an IISExpress instance and a Selenium-driven browser. Do not touch the browser.
+
+VS2013 version note: I created this sample project with a copy of Visual Studio 2013 **Preview** (emphasis on Preview), so if you're running the RC or anything newer, **there might be some weirdness with Nuget packages**. For example, all of the MVC 5 Identity packages have changed significantly; even some of the package names have changed. Also, I have read that for the final release, they plan to use Bootstrap 3, and this project uses Bootstrap 2, so there's no telling what will happen visually when you upgrade. 
+
 
 Things I am mildly to moderately ashamed of
 -------------------------------------------

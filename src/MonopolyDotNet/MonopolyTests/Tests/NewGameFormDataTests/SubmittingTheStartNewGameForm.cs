@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Net;
+using System.Text.RegularExpressions;
 using NUnit.Framework;
 using RestSharp;
 
@@ -15,8 +16,19 @@ namespace MonopolyTests.Tests.NewGameFormDataTests
     public void SetUp()
     {
       _client = new RestClient(baseUrl);
+      
+      var requestToGetTheAntiForgeryToken = new RestRequest("NewGame");
+      requestToGetTheAntiForgeryToken.Method = Method.GET;
+      var result = _client.Execute(requestToGetTheAntiForgeryToken);
+      var antiForgeryCookie = result.Cookies[0];
+      var match = Regex.Match(result.Content,
+        "<input name=\"__RequestVerificationToken\" type=\"hidden\" value=\"(?<token>.*?)\" />"); //this feels brittle, but it works today, 2013-09-21
+      var token = match.Groups["token"].Value;
+
       _request = new RestRequest("NewGame");
       _request.Method = Method.POST;
+      _request.AddCookie(antiForgeryCookie.Name, antiForgeryCookie.Value);
+      _request.AddParameter("__RequestVerificationToken", token);
     }
 
     [Test]

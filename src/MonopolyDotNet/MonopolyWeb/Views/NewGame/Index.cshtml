@@ -13,7 +13,7 @@
 @{
   using (Html.BeginForm<NewGameController>(x => x.Index()))
   {
-
+    @Html.AntiForgeryToken()
       <div class="span5" style="height: 300px">
         <fieldset>
           <legend>Player 1 (You)</legend>

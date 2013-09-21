@@ -20,6 +20,7 @@ namespace MonopolyWeb.Controllers
       return View(new NewGameInput());
     }
 
+    [ValidateAntiForgeryToken]
     [HttpPost]
     public async Task<ActionResult> Index(NewGameInput newGameInput)
     {

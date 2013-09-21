@@ -4,13 +4,13 @@
 }
 
 <div class="hero-unit" style="height: 400px; background-image: url('@Url.Content("~/img/Monopoly_board.jpg")'); background-position: center center">
-  @if (Session["playerId"] == null)
+  @if (User.Identity.IsAuthenticated)
   {
-    <div><a href="NewGame" class="btn btn-success btn-large">Start a new game <i class="icon-white icon-arrow-right"></i></a></div>
+    <div><a href="/Game" class="btn btn-success btn-large">Resume Game</a></div>
   }
   else
   {
-    <div><a href="Game" class="btn btn-success btn-large">Resume Game</a></div>
+    <div><a href="/NewGame" class="btn btn-success btn-large">Start a new game <i class="icon-white icon-arrow-right"></i></a></div>
   }
   <form action="/account/logoff" method="POST">
     @Html.AntiForgeryToken()

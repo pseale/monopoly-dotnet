@@ -11,7 +11,8 @@ namespace MonopolyTests
     [SetUp]
     public void WebTestBaseSetUp()
     {
-      browser.Visit("/Logout");
+      browser.Visit("/");
+      browser.ClickButton("Logoff");
     }
 
     [TearDown]

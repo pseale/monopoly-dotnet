@@ -10,7 +10,7 @@ Download/clone this project's source, run the app (it creates its own database i
 
 To run the web tests, use any NUnit test runner and run the entire test suite. The test run will fire up an IISExpress instance and a Selenium-driven browser. Do not touch the browser.
 
-VS2013 version note: I created this sample project with a copy of Visual Studio 2013 **Preview** (emphasis on Preview), so if you're running the RC or anything newer, **there might be some weirdness with Nuget packages**. For example, all of the MVC 5 Identity packages have changed significantly; even some of the package names have changed. Also, I have read that for the final release, they plan to use Bootstrap 3, and this project uses Bootstrap 2, so there's no telling what will happen visually when you upgrade. 
+VS2013 version note: I created this sample project with a copy of Visual Studio 2013 **Preview** (emphasis on Preview), so if you're running the RC or anything newer, **there might be some weirdness with Nuget packages**. For example, all of the MVC 5 Identity packages have changed significantly; even some of the package names have changed.
 
 
 Things I am mildly to moderately ashamed of
@@ -23,7 +23,8 @@ Things I am mildly to moderately ashamed of
 5. I'm moderately ashamed of how I put zero (0) behavior on most of my model objects, but threw all the behavior on Game (the aggregate root). I either have to spread around the behavior like a strong domain model, or completely strip Game of all behavior like an anemic domain model, for consistency.
 6. My "fast tests" project sucks...I think. Maybe. Given I have comprehensive web tests, and given I was rarely at a loss for how to implement the simple behavior, I felt little need to add unit tests that covered things already covered by the web tests.
 7. My git checkin history is like a stream of consciousness. When working on solo projects I use source control as a lazy way to back up my work, and reading the commits shows. I could have (still can) go back and clean up the history so that each well-labeled commit represents a single change. But I didn't.
-8. Don't look at SecretAdminController.
+8. At current count, there are 192 compiler warnings. In related news, I can't make and use my own extension methods.
+9. Don't look at SecretAdminController.
 
 Things you may find interesting
 ===============================

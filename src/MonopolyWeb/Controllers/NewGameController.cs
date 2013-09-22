@@ -1,12 +1,7 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Security.Claims;
 using System.Threading.Tasks;
-using System.Web.Security;
 using Microsoft.Web.Mvc;
 using System.Web.Mvc;
-using MonopolyWeb.Models;
 using ASPNETIdentity;
 using MonopolyWeb.Models.Commands;
 using MonopolyWeb.Models.Converters;

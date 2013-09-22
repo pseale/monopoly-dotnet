@@ -67,8 +67,7 @@ namespace MonopolyTests.Tests.NewGameFormDataTests
 
       browser.ClickButton("Submit");
 
-      Assert.AreEqual(new Uri(baseUrl + "/Game"), browser.Location);
+      Assert.AreEqual(new Uri(baseUrl + "/"), browser.Location);
     }
-
   }
 }

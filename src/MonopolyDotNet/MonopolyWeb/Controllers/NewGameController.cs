@@ -35,7 +35,7 @@ namespace MonopolyWeb.Controllers
 
       CreateGameCommand.Execute(username, newGameData);
 
-      return this.RedirectToAction<GameController>(x => x.Index());
+      return this.RedirectToAction<HomeController>(x => x.Index());
     }
 
     private async Task CreateUserAndThenLogIn(string username)

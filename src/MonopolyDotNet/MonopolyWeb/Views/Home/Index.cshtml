@@ -1,15 +1,11 @@
-﻿@using System.Linq
-@{
-    ViewBag.Title = "Home Page";  
-}
+﻿@using Microsoft.Web.Mvc
+@using MonopolyWeb.Controllers
 
-<div class="hero-unit" style="height: 400px; background-image: url('@Url.Content("~/img/Monopoly_board.jpg")'); background-position: center center">
-  @if (User.Identity.IsAuthenticated)
-  {
-    <div><a href="/Game" class="btn btn-success btn-large">Resume Game</a></div>
-  }
-  else
-  {
-    <div><a href="/NewGame" class="btn btn-success btn-large">Start a new game <i class="icon-white icon-arrow-right"></i></a></div>
-  }
-</div>
+@if (User.Identity.IsAuthenticated)
+{
+  Html.RenderAction((GameController x) => x.Index());
+}
+else
+{
+  Html.RenderAction((NewGameController x) => x.Index());
+}

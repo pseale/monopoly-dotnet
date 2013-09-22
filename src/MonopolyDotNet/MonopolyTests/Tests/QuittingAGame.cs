@@ -24,8 +24,11 @@ namespace MonopolyTests.Tests
 
       browser.ClickLink("Quit Game");
 
-      var link = browser.FindLink("Start a new game");
-      Assert.IsTrue(link.Exists());
+      //find the start new game form
+      var nameField = browser.FindField("Name");
+      var totemField = browser.FindField("Totem");
+      Assert.IsTrue(nameField.Exists());
+      Assert.IsTrue(totemField.Exists());
     }
   }
 }

@@ -36,7 +36,7 @@ namespace MonopolyTests.Builders
 
       browser.ClickButton("Submit");
 
-      if (browser.Location.PathAndQuery != "/Game")
+      if (browser.Location.PathAndQuery != "/")
         throw new MonopolyTestRunException("While setting up a test, attempted to start a game, but did not succeed. At URL: " + browser.Location);
     }
 

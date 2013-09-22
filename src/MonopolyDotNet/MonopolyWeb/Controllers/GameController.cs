@@ -25,7 +25,7 @@ namespace MonopolyWeb.Controllers
       var username = Microsoft.AspNet.Identity.IdentityExtensions.GetUserName(User.Identity);
       var game = FindGameByUsernameQuery.Execute(username);
       RollDiceCommand.Execute(game);
-      return this.RedirectToAction<GameController>(x => x.Index());
+      return this.RedirectToAction<HomeController>(x => x.Index());
     }
 
     [HttpPost]
@@ -35,7 +35,7 @@ namespace MonopolyWeb.Controllers
       var game = FindGameByUsernameQuery.Execute(username);
       BuyPropertyCommand.Execute(game);
 
-      return this.RedirectToAction<GameController>(x => x.Index());
+      return this.RedirectToAction<HomeController>(x => x.Index());
     }
 
     [HttpPost]
@@ -45,7 +45,7 @@ namespace MonopolyWeb.Controllers
       var game = FindGameByUsernameQuery.Execute(username);
       EndTurnCommand.Execute(game);
 
-      return this.RedirectToAction<GameController>(x => x.Index());
+      return this.RedirectToAction<HomeController>(x => x.Index());
     }
   }
 }

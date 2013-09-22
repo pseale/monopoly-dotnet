@@ -1,4 +1,5 @@
-﻿using MonopolyWeb.Models.Core;
+﻿using System.Linq;
+using MonopolyWeb.Models.Core;
 using NUnit.Framework;
 
 namespace MonopolyFastTests
@@ -32,8 +33,8 @@ namespace MonopolyFastTests
 
         var gameStatus = game.GetCurrentGameStatus();
 
-        Assert.AreEqual(1, gameStatus.Players[0].Holdings.Count);
-        Assert.AreEqual("Oriental", gameStatus.Players[0].Holdings[0].Name);
+        Assert.AreEqual(1, gameStatus.Players[0].Holdings.Count());
+        Assert.AreEqual("Oriental", gameStatus.Players[0].Holdings.First().Name);
       });
     }
   }

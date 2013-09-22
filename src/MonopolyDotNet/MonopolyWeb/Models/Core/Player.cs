@@ -4,6 +4,7 @@ namespace MonopolyWeb.Models.Core
 {
   public class Player
   {
+
     public Player(string name, Totem totem, bool isHuman, int index)
     {
       Name = name;
@@ -13,7 +14,7 @@ namespace MonopolyWeb.Models.Core
 
       Cash = 1500;
       Location = Locations.Go;
-      Holdings = new List<Property>();
+      _holdings = new List<Property>();
     }
 
     public string Name { get; private set; }
@@ -22,7 +23,13 @@ namespace MonopolyWeb.Models.Core
     public Totem Totem { get; private set; }
 
     public int Cash { get; private set; }
-    public List<Property> Holdings { get; private set; }
+
+    private readonly List<Property> _holdings;
+    public IEnumerable<Property> Holdings
+    {
+      get { return _holdings; }
+    }
+
     public Location Location { get; set; }
     public bool PassesGoOnNextRoll { get; set; }
 
@@ -44,7 +51,7 @@ namespace MonopolyWeb.Models.Core
     public void Buy()
     {
       var property = Location.Property;
-      Holdings.Add(property);
+      _holdings.Add(property);
       Cash -= property.SalePrice;
     }
   }

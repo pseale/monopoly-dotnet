@@ -15,7 +15,7 @@
     <div class="navbar navbar-inverse navbar-fixed-top">
       <div class="navbar-inner">
         <div class="container">
-          @Html.ActionLink("Monopoly", "Index", "Home", null, new { @class = "brand" })
+          @Html.ActionLink((HomeController x) => x.Index(), "Monopoly", new { @class = "brand" })
           <div>
             <ul class="nav">
               <li>@(Html.ActionLink<HomeController>(x=> x.Index(), "Home"))</li>

@@ -25,5 +25,20 @@ namespace MonopolyWeb.Models.Core
     public List<Property> Holdings { get; private set; }
     public Location Location { get; set; }
     public bool PassesGoOnNextRoll { get; set; }
+
+    public void PayRent(int rent)
+    {
+      Cash -= rent;
+    }
+
+    public void ReceiveRent(int rent)
+    {
+      Cash += rent;
+    }
+
+    public void PassGo()
+    {
+      Cash += 200;
+    }
   }
 }

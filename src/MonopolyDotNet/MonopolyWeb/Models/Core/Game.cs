@@ -33,17 +33,22 @@ namespace MonopolyWeb.Models.Core
       return opponent1;
     }
 
+    private Player GetHumanPlayer()
+    {
+      return _players[0];
+    }
+
     public void Roll()
     {
-      RollForPlayer(_players[0]);
+      RollForPlayer(GetHumanPlayer());
 
-      if (!CanBuyProperty(_players[0]))
+      if (!CanBuyProperty(GetHumanPlayer()))
         DoComputerTurns();
     }
 
     public void BuyProperty()
     {
-      BuyPropertyForPlayer(_players[0]);
+      BuyPropertyForPlayer(GetHumanPlayer());
       EndTurn();
     }
 
@@ -59,7 +64,7 @@ namespace MonopolyWeb.Models.Core
 
       if (newLocation > boardSize)
       {
-        PassGo(player);
+        player.PassGo();
       }
       else if (newLocation == boardSize)
       {
@@ -68,7 +73,7 @@ namespace MonopolyWeb.Models.Core
       else if (player.PassesGoOnNextRoll)
       {
         player.PassesGoOnNextRoll = false;
-        PassGo(player);
+        player.PassGo();
       }
 
       newLocation %= boardSize;
@@ -83,7 +88,7 @@ namespace MonopolyWeb.Models.Core
         return;
 
       //I hate using reference equality but I'll do it here for player == player and property == property
-      var allOtherPlayers = _players.Where(x => x != player);
+      var allOtherPlayers = GetOpponents(player);
       var otherPlayersProperty = allOtherPlayers.SelectMany(x => x.Holdings);
       var matchingProperties = otherPlayersProperty.Where(x => x == player.Location.Property).ToList();
       if (!matchingProperties.Any())
@@ -91,9 +96,14 @@ namespace MonopolyWeb.Models.Core
 
       var matchingProperty = matchingProperties.First();
       var propertyOwner = _players.Where(x => x.Holdings.Contains(matchingProperty)).First();
-      
-      player.Cash -= matchingProperty.Rent;
-      propertyOwner.Cash += matchingProperty.Rent;
+
+      player.PayRent(matchingProperty.Rent);
+      propertyOwner.ReceiveRent(matchingProperty.Rent);
+    }
+
+    private IEnumerable<Player> GetOpponents(Player player)
+    {
+      return _players.Where(x => x != player);
     }
 
     private void DoComputerTurns()
@@ -106,14 +116,9 @@ namespace MonopolyWeb.Models.Core
       }
     }
 
-    private void PassGo(Player player)
-    {
-      player.Cash += 200;
-    }
-
     public GameStatus GetCurrentGameStatus()
     {
-      var humanPlayer = _players[0];
+      var humanPlayer = GetHumanPlayer();
       var status = new GameStatus();
       status.Players = _players.ToArray().ToList();
       if (CanBuyProperty(humanPlayer))

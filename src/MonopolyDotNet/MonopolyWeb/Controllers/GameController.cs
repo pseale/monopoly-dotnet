@@ -2,52 +2,45 @@
 using System.Web;
 using System.Web.Mvc;
 using Microsoft.Web.Mvc;
+using MonopolyWeb.Filters;
 using MonopolyWeb.Models.Commands;
 using MonopolyWeb.Models.Converters;
+using MonopolyWeb.Models.Core;
 using MonopolyWeb.Models.Queries;
 
 namespace MonopolyWeb.Controllers
 {
+  [InjectGame]
   [Authorize]
   public class GameController : Controller
   {
-    public ActionResult Index()
+    public ActionResult Index(Game game)
     {
-      var username = Microsoft.AspNet.Identity.IdentityExtensions.GetUserName(User.Identity);
-      var game = FindGameByUsernameQuery.Execute(username);
       var gameStatus = GameFormatter.Flatten(game);
       return View(gameStatus);
     }
 
     [ValidateAntiForgeryToken]
     [HttpPost]
-    public ActionResult Roll()
+    public ActionResult Roll(Game game)
     {
-      var username = Microsoft.AspNet.Identity.IdentityExtensions.GetUserName(User.Identity);
-      var game = FindGameByUsernameQuery.Execute(username);
       RollDiceCommand.Execute(game);
       return this.RedirectToAction<HomeController>(x => x.Index());
     }
 
     [ValidateAntiForgeryToken]
     [HttpPost]
-    public ActionResult BuyProperty()
+    public ActionResult BuyProperty(Game game)
     {
-      var username = Microsoft.AspNet.Identity.IdentityExtensions.GetUserName(User.Identity);
-      var game = FindGameByUsernameQuery.Execute(username);
       BuyPropertyCommand.Execute(game);
-
       return this.RedirectToAction<HomeController>(x => x.Index());
     }
 
     [ValidateAntiForgeryToken]
     [HttpPost]
-    public ActionResult EndTurn()
+    public ActionResult EndTurn(Game game)
     {
-      var username = Microsoft.AspNet.Identity.IdentityExtensions.GetUserName(User.Identity);
-      var game = FindGameByUsernameQuery.Execute(username);
       EndTurnCommand.Execute(game);
-
       return this.RedirectToAction<HomeController>(x => x.Index());
     }
   }

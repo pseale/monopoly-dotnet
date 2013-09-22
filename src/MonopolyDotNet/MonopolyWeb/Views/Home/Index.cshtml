@@ -3,7 +3,7 @@
 
 @if (User.Identity.IsAuthenticated)
 {
-  Html.RenderAction((GameController x) => x.Index());
+  Html.RenderAction((GameController x) => x.Index(null));
 }
 else
 {

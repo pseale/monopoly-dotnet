@@ -8,7 +8,7 @@ using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.EntityFramework;
 using MonopolyWeb;
 using MonopolyWeb.Models;
-using MonopolyWeb.Models.ASPNETIdentity;
+using ASPNETIdentity;
 
 namespace MonopolyWeb
 {

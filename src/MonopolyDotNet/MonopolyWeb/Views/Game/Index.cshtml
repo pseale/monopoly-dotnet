@@ -68,7 +68,7 @@
 <div class="span3">
   @if (Model.CanRoll)
   {
-    using (Html.BeginForm<GameController>(x => x.Roll()))
+    using (Html.BeginForm<GameController>(x => x.Roll(null)))
     {
       @Html.AntiForgeryToken()
       <input class="btn btn-large" type="submit" value="Roll" />
@@ -76,7 +76,7 @@
   }
   @if (Model.CanBuyProperty)
   {
-    using (Html.BeginForm<GameController>(x => x.BuyProperty()))
+    using (Html.BeginForm<GameController>(x => x.BuyProperty(null)))
     {
       @Html.AntiForgeryToken()
       <input class="btn btn-large" type="submit" value="Buy (@(Model.PropertySalePrice))" />
@@ -84,7 +84,7 @@
   }
   @if (Model.CanEndTurn)
   {
-    using (Html.BeginForm<GameController>(x => x.EndTurn()))
+    using (Html.BeginForm<GameController>(x => x.EndTurn(null)))
     {
       @Html.AntiForgeryToken()
       <input class="btn btn-large" type="submit" value="End Turn" />

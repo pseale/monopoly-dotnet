@@ -64,7 +64,7 @@ namespace MonopolyTests.Builders
       }
       catch (Exception e)
       {
-        throw new MonopolyTestRunException("Error retrieving cookies (probably can blame the IE driver) - Error attempting to retrieve cookies from the Selenium browser so we can use those cookies to make requests against the Secret Admin controller. If you see this error message and are using the Internet Explorer web driver, well, sorry, I couldn't figure out how to retrieve cookies from IE either (it seems the IE selenium driver reports 0 cookies always). Best of luck.");
+        throw new MonopolyTestRunException("Error retrieving cookies (probably can blame the IE driver) - Error attempting to retrieve cookies from the Selenium browser so we can use those cookies to make requests against the Secret Admin controller. If you see this error message and are using the Internet Explorer web driver, well, sorry, I couldn't figure out how to retrieve cookies from IE either (it seems the IE selenium driver reports 0 cookies always). Best of luck. Inner exception: " + e.ToString());
       }
       request.AddCookie(cookie.Name, cookie.Value);
       request.Method = Method.POST;

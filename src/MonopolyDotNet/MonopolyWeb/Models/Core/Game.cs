@@ -48,7 +48,7 @@ namespace MonopolyWeb.Models.Core
 
     public void BuyProperty()
     {
-      BuyPropertyForPlayer(GetHumanPlayer());
+      GetHumanPlayer().Buy();
       EndTurn();
     }
 
@@ -112,7 +112,9 @@ namespace MonopolyWeb.Models.Core
       {
         RollForPlayer(robotPlayer);
         if (CanBuyProperty(robotPlayer))
-          BuyPropertyForPlayer(robotPlayer);
+        {
+          robotPlayer.Buy();
+        }
       }
     }
 
@@ -153,13 +155,6 @@ namespace MonopolyWeb.Models.Core
       var doesAnyoneOwnThisProperty = _players.SelectMany(x => x.Holdings).Any(x => x == location.Property);
 
       return !doesAnyoneOwnThisProperty;
-    }
-
-    private static void BuyPropertyForPlayer(Player player)
-    {
-      var property = player.Location.Property;
-      player.Holdings.Add(property);
-      player.Cash -= property.SalePrice;
     }
   }
 }

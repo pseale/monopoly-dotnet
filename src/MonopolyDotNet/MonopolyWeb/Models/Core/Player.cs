@@ -21,7 +21,7 @@ namespace MonopolyWeb.Models.Core
     public bool IsHuman { get; private set; }
     public Totem Totem { get; private set; }
 
-    public int Cash { get; set; }
+    public int Cash { get; private set; }
     public List<Property> Holdings { get; private set; }
     public Location Location { get; set; }
     public bool PassesGoOnNextRoll { get; set; }
@@ -39,6 +39,13 @@ namespace MonopolyWeb.Models.Core
     public void PassGo()
     {
       Cash += 200;
+    }
+
+    public void Buy()
+    {
+      var property = Location.Property;
+      Holdings.Add(property);
+      Cash -= property.SalePrice;
     }
   }
 }

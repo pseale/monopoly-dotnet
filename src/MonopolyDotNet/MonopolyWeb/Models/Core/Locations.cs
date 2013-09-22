@@ -6,8 +6,6 @@
     {
       All = new Location[40];
 
-      var empty = new Location() { HasAProperty = false };
-
       var i = 0;
       AddEmptyLocation(i++);
       AddProperty(i++, "Mediterranean", 60);
@@ -55,16 +53,13 @@
 
     private static void AddProperty(int locationIndex, string propertyName, int salePrice)
     {
-      var location = new Location();
-      location.Index = locationIndex;
-      location.HasAProperty = true;
-      location.Property = new Property(propertyName, salePrice);
-      All[locationIndex] = location;
+      var location = new Location(locationIndex, new Property(propertyName, salePrice));
+     All[locationIndex] = location;
     }
 
     private static void AddEmptyLocation(int locationIndex)
     {
-      All[locationIndex] = new Location() { HasAProperty = false, Index = locationIndex};
+      All[locationIndex] = new Location(locationIndex);
     }
 
     public static readonly Location[] All;

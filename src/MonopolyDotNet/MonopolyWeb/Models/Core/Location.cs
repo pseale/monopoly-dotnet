@@ -2,8 +2,23 @@
 {
   public class Location
   {
-    public int Index { get; set; }
-    public bool HasAProperty { get; set; }
-    public Property Property { get; set; }
+    public Location(int index)
+    {
+      Index = index;
+    }
+
+    public Location(int index, Property property)
+    {
+      Index = index;
+      Property = property;
+    }
+
+    public int Index { get; private set; }
+    public Property Property { get; private set; }
+
+    public bool HasAProperty
+    {
+      get { return Property != null; }
+    }
   }
 }

@@ -53,7 +53,7 @@
 <div class="monopoly-board span9">
   @foreach (var player in Model.PlayerStatuses)
   {
-    <img class="player-totem" id="player-@(player.PlayerNumber)" src="~/img/@(player.TotemIcon)" alt="Player @(player.PlayerNumber): @(player.Name)" title="Player @(player.PlayerNumber): @(player.Name)" />
+    <img class="player-totem" id="player-@(player.PlayerNumber)" src="~/img/@(player.TotemIcon)" alt="Player @(player.PlayerNumber) (@(player.Name))" title="Player @(player.PlayerNumber) (@(player.Name))" />
   }
 </div>
 @foreach (var player in Model.PlayerStatuses)

@@ -1,4 +1,5 @@
-﻿using MonopolyWeb.Models.Core;
+﻿using MonopolyWeb.Models.Commands;
+using MonopolyWeb.Models.Core;
 using NUnit.Framework;
 
 namespace MonopolyFastTests
@@ -12,14 +13,13 @@ namespace MonopolyFastTests
       //Roll to Oriental, then do safe rolls until you make your way back to Oriental
       FastTestHelper.WithHumanDiceRolls(new[] { 6, 4, 10, 10, 10, 6 }, () =>
       {
-        var game = FastTestHelper.StartGame(); 
-        game.Roll();
+        var game = FastTestHelper.StartGame();
+        RollDiceCommand.Execute(game);
         game.BuyProperty();
-        game.Roll();
-        game.Roll();
-        game.Roll();
-        game.Roll();
-        game.Roll();
+        RollDiceCommand.Execute(game);
+        RollDiceCommand.Execute(game);
+        RollDiceCommand.Execute(game);
+        RollDiceCommand.Execute(game);
 
         var gameStatus = game.GetCurrentGameStatus();
 

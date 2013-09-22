@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Linq;
+using MonopolyWeb.Models.Commands;
 using MonopolyWeb.Models.Core;
 using NUnit.Framework;
 
@@ -14,7 +15,7 @@ namespace MonopolyFastTests
       FastTestHelper.WithHumanDiceRoll(3, () =>
       {
         var game = FastTestHelper.StartGame();
-        game.Roll();
+        RollDiceCommand.Execute(game);
 
         var gameStatus = game.GetCurrentGameStatus();
         var playerOne = gameStatus.Players.First();

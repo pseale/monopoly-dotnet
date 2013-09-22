@@ -1,4 +1,5 @@
-﻿using MonopolyWeb.Models.Core;
+﻿using MonopolyWeb.Models.Commands;
+using MonopolyWeb.Models.Core;
 using NUnit.Framework;
 
 namespace MonopolyFastTests
@@ -12,7 +13,7 @@ namespace MonopolyFastTests
       FastTestHelper.WithHumanDiceRoll(6, () =>
       {
         var game = FastTestHelper.StartGame();
-        game.Roll();
+        RollDiceCommand.Execute(game);
         game.BuyProperty();
 
         var gameStatus = game.GetCurrentGameStatus();
@@ -27,7 +28,7 @@ namespace MonopolyFastTests
       FastTestHelper.WithHumanDiceRoll(6, () =>
       {
         var game = FastTestHelper.StartGame();
-        game.Roll();
+        RollDiceCommand.Execute(game);
         game.BuyProperty();
 
         var gameStatus = game.GetCurrentGameStatus();

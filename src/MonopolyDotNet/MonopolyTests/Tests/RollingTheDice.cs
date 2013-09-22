@@ -1,6 +1,7 @@
 ﻿using System.Drawing;
 using Coypu;
 using MonopolyTests.Builders;
+using MonopolyTests.Infrastructure;
 using NUnit.Framework;
 
 namespace MonopolyTests.Tests
@@ -12,21 +13,14 @@ namespace MonopolyTests.Tests
     public void When_rolling_the_dice__should_move_my_token()
     {
       TestHelper.StartAGame();
-      var boardLocation =
-        ((OpenQA.Selenium.Firefox.FirefoxWebElement) browser
-        .FindCss(".monopoly-board").Native).Coordinates.LocationInDom;
-      var originalLocation = GetCoordinatesOfTotemOnBoard(browser.FindCss("img#player-1"));
+      var boardLocation = GetBoardCoordinates();
+      var originalLocation = GetTotemCoordinates(browser.FindCss("img#player-1"));
 
       browser.ClickButton("Roll");
 
-      var newLocation = GetCoordinatesOfTotemOnBoard(browser.FindCss("img#player-1"));
+      var newLocation = GetTotemCoordinates(browser.FindCss("img#player-1"));
       //I want to see test failures in terms of offset from the board coordinates, not offset from the entire page
       Assert.AreNotEqual(originalLocation.X - boardLocation.X, newLocation.X - boardLocation.X);
-    }
-
-    private static Point GetCoordinatesOfTotemOnBoard(ElementScope imgTag)
-    {
-      return ((OpenQA.Selenium.Firefox.FirefoxWebElement) imgTag.Native).Coordinates.LocationInDom;
     }
 
     [Test]
@@ -35,13 +29,11 @@ namespace MonopolyTests.Tests
       TestHelper.StartAGame();
       TestHelper.WithHumanRoll(5, () =>
       {
-        var boardLocation =
-          ((OpenQA.Selenium.Firefox.FirefoxWebElement)browser
-          .FindCss(".monopoly-board").Native).Coordinates.LocationInDom;
-        var originalLocation = GetCoordinatesOfTotemOnBoard(browser.FindCss("img#player-2"));
+        var boardLocation = GetBoardCoordinates();
+        var originalLocation = GetTotemCoordinates(browser.FindCss("img#player-2"));
         browser.ClickButton("Roll");
 
-        var newLocation = GetCoordinatesOfTotemOnBoard(browser.FindCss("img#player-2"));
+        var newLocation = GetTotemCoordinates(browser.FindCss("img#player-2"));
 
         Assert.AreNotEqual(originalLocation.X - boardLocation.X, newLocation.X - boardLocation.X);
       });
@@ -53,13 +45,11 @@ namespace MonopolyTests.Tests
       TestHelper.StartAGame();
       TestHelper.WithHumanRoll(5, () =>
       {
-        var boardLocation =
-          ((OpenQA.Selenium.Firefox.FirefoxWebElement)browser
-          .FindCss(".monopoly-board").Native).Coordinates.LocationInDom;
-        var originalLocation = GetCoordinatesOfTotemOnBoard(browser.FindCss("img#player-3"));
+        var boardLocation = GetBoardCoordinates();
+        var originalLocation = GetTotemCoordinates(browser.FindCss("img#player-3"));
         browser.ClickButton("Roll");
 
-        var newLocation = GetCoordinatesOfTotemOnBoard(browser.FindCss("img#player-3"));
+        var newLocation = GetTotemCoordinates(browser.FindCss("img#player-3"));
 
         Assert.AreNotEqual(originalLocation.X - boardLocation.X, newLocation.X - boardLocation.X);
       });
@@ -71,16 +61,30 @@ namespace MonopolyTests.Tests
       TestHelper.StartAGame();
       TestHelper.WithHumanRoll(5, () =>
       {
-        var boardLocation =
-          ((OpenQA.Selenium.Firefox.FirefoxWebElement)browser
-          .FindCss(".monopoly-board").Native).Coordinates.LocationInDom;
-        var originalLocation = GetCoordinatesOfTotemOnBoard(browser.FindCss("img#player-4"));
+        var boardLocation = GetBoardCoordinates();
+        var originalLocation = GetTotemCoordinates(browser.FindCss("img#player-4"));
         browser.ClickButton("Roll");
 
-        var newLocation = GetCoordinatesOfTotemOnBoard(browser.FindCss("img#player-4"));
+        var newLocation = GetTotemCoordinates(browser.FindCss("img#player-4"));
 
         Assert.AreNotEqual(originalLocation.X - boardLocation.X, newLocation.X - boardLocation.X);
       });
+    }
+
+    private static Point GetBoardCoordinates()
+    {
+      var native = browser.FindCss(".monopoly-board").Native;
+      if (native is OpenQA.Selenium.Remote.RemoteWebElement)
+        return ((OpenQA.Selenium.Remote.RemoteWebElement)native).Coordinates.LocationInDom;
+      throw new MonopolyTestRunException("Test infrastructure problem: can't figure out what browser we're using to get the native coordinates. Find this method and add browser-specific code to fix this problem.");
+    }
+
+    private static Point GetTotemCoordinates(ElementScope imgTag)
+    {
+      var native = imgTag.Native;
+      if (native is OpenQA.Selenium.Remote.RemoteWebElement)
+        return ((OpenQA.Selenium.Remote.RemoteWebElement)native).Coordinates.LocationInDom;
+      throw new MonopolyTestRunException("Test infrastructure problem: can't figure out what browser we're using to get the native coordinates. Find this method and add browser-specific code to fix this problem.");
     }
   }
 }

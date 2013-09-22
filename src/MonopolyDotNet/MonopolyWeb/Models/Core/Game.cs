@@ -48,7 +48,7 @@ namespace MonopolyWeb.Models.Core
 
     public void BuyProperty()
     {
-      GetHumanPlayer().Buy();
+      GetHumanPlayer().BuyProperty();
       EndTurn();
     }
 
@@ -113,7 +113,7 @@ namespace MonopolyWeb.Models.Core
         RollForPlayer(robotPlayer);
         if (CanBuyProperty(robotPlayer))
         {
-          robotPlayer.Buy();
+          robotPlayer.BuyProperty();
         }
       }
     }
@@ -140,21 +140,16 @@ namespace MonopolyWeb.Models.Core
       return status;
     }
 
-    //This would go really well on the Player object but I'm still trying to keep all the model objects underneath Game dumb for now. We'll
-    //see when the pressure becomes too much and I have to just move the logic to the currently "dumb" objects like Player. But know
-    //that I see that this would be the #1 candidate to move off of Game.
     private bool CanBuyProperty(Player player)
     {
-      var location = player.Location;
-      if (!location.HasAProperty)
+      if (!player.Location.HasAProperty)
         return false;
 
-      if (player.Cash < location.Property.SalePrice)
+      var someoneOwnsThisProperty = _players.SelectMany(x => x.Holdings).Any(x => x == player.Location.Property);
+      if (someoneOwnsThisProperty)
         return false;
 
-      var doesAnyoneOwnThisProperty = _players.SelectMany(x => x.Holdings).Any(x => x == location.Property);
-
-      return !doesAnyoneOwnThisProperty;
+      return player.CanAffordProperty();
     }
   }
 }

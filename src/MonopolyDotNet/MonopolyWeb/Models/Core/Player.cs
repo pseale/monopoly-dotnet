@@ -48,11 +48,22 @@ namespace MonopolyWeb.Models.Core
       Cash += 200;
     }
 
-    public void Buy()
+    public void BuyProperty()
     {
       var property = Location.Property;
       _holdings.Add(property);
       Cash -= property.SalePrice;
+    }
+
+    public bool CanAffordProperty()
+    {
+      if (!Location.HasAProperty)
+        return false;
+
+      if (Cash < Location.Property.SalePrice)
+        return false;
+
+      return true;
     }
   }
 }

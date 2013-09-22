@@ -10,32 +10,17 @@ namespace MonopolyWeb.Models.Core
 
     public Game(NewGameData newGameData)
     {
-      _players.Add(CreateHumanPlayer(newGameData));
-
-      var allTotems = Enum.GetValues(typeof(Totem)).Cast<Totem>().ToList();
-      allTotems.Remove(newGameData.PlayerTotem);
-      var availableTotems = new Stack<Totem>(allTotems);
-
-      _players.Add(CreateOpponent(newGameData.Opponent1Name, 2, availableTotems.Pop()));
-      _players.Add(CreateOpponent(newGameData.Opponent2Name, 3, availableTotems.Pop()));
-      _players.Add(CreateOpponent(newGameData.Opponent3Name, 4, availableTotems.Pop()));
-    }
-
-    private Player CreateHumanPlayer(NewGameData data)
-    {
-      var humanPlayer = new Player(data.PlayerName, data.PlayerTotem, true, 1); 
-      return humanPlayer;
-    }
-
-    private Player CreateOpponent(string opponentName, int playerIndex, Totem totem)
-    {
-      var opponent1 = new Player(opponentName, totem, false, playerIndex);
-      return opponent1;
+      _players.AddRange(newGameData.GetPlayers());
     }
 
     private Player GetHumanPlayer()
     {
       return _players[0];
+    }
+
+    private IEnumerable<Player> GetOpponents(Player player)
+    {
+      return _players.Where(x => x != player);
     }
 
     public void Roll()
@@ -97,13 +82,7 @@ namespace MonopolyWeb.Models.Core
       var matchingProperty = matchingProperties.First();
       var propertyOwner = _players.Where(x => x.Holdings.Contains(matchingProperty)).First();
 
-      player.PayRent(matchingProperty.Rent);
-      propertyOwner.ReceiveRent(matchingProperty.Rent);
-    }
-
-    private IEnumerable<Player> GetOpponents(Player player)
-    {
-      return _players.Where(x => x != player);
+      player.PayRentTo(propertyOwner);
     }
 
     private void DoComputerTurns()

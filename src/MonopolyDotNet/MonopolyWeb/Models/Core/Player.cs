@@ -33,9 +33,11 @@ namespace MonopolyWeb.Models.Core
     public Location Location { get; set; }
     public bool PassesGoOnNextRoll { get; set; }
 
-    public void PayRent(int rent)
+    public void PayRentTo(Player propertyOwner)
     {
+      var rent = Location.Property.Rent;
       Cash -= rent;
+      propertyOwner.ReceiveRent(rent);
     }
 
     public void ReceiveRent(int rent)

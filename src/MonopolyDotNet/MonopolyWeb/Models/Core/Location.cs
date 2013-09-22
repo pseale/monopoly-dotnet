@@ -20,5 +20,23 @@
     {
       get { return Property != null; }
     }
+
+    protected bool Equals(Location other)
+    {
+      return Index == other.Index;
+    }
+
+    public override int GetHashCode()
+    {
+      return Index;
+    }
+
+    public override bool Equals(object obj)
+    {
+      if (ReferenceEquals(null, obj)) return false;
+      if (ReferenceEquals(this, obj)) return true;
+      if (obj.GetType() != this.GetType()) return false;
+      return Equals((Location) obj);
+    }
   }
 }

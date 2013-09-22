@@ -4,7 +4,6 @@ namespace MonopolyWeb.Models.Core
 {
   public class Player
   {
-
     public Player(string name, Totem totem, bool isHuman, int index)
     {
       Name = name;
@@ -66,6 +65,24 @@ namespace MonopolyWeb.Models.Core
         return false;
 
       return true;
+    }
+
+    protected bool Equals(Player other)
+    {
+      return Index == other.Index;
+    }
+
+    public override int GetHashCode()
+    {
+      return Index;
+    }
+    
+    public override bool Equals(object obj)
+    {
+      if (ReferenceEquals(null, obj)) return false;
+      if (ReferenceEquals(this, obj)) return true;
+      if (obj.GetType() != this.GetType()) return false;
+      return Equals((Player) obj);
     }
   }
 }

@@ -11,18 +11,16 @@ namespace MonopolyWeb
   // For more information on ASP.NET Identity, visit http://go.microsoft.com/fwlink/?LinkId=301863
   public static class IdentityConfig
   {
-    public static IUserStore Users { get; set; }
-    public static IRoleStore Roles { get; set; }
-    public static string RoleClaimType { get; set; }
-    public static string UserNameClaimType { get; set; }
-    public static string UserIdClaimType { get; set; }
-    public static string ClaimsIssuer { get; set; }
+    public static IUserStore Users { get; private set; }
+    private static string RoleClaimType { get; set; }
+    private static string UserNameClaimType { get; set; }
+    private static string UserIdClaimType { get; set; }
+    private static string ClaimsIssuer { get; set; }
 
     public static void ConfigureIdentity()
     {
       var dbContextCreator = new DbContextFactory<IdentityDbContext>();
       Users = new EFUserStore<User>(dbContextCreator);
-      Roles = new EFRoleStore<Role, UserRole>(dbContextCreator);
       RoleClaimType = ClaimsIdentity.DefaultRoleClaimType;
       UserIdClaimType = "http://schemas.microsoft.com/aspnet/userid";
       UserNameClaimType = "http://schemas.microsoft.com/aspnet/username";

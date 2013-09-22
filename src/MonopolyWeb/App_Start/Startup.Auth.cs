@@ -4,6 +4,8 @@ using Owin;
 
 namespace MonopolyWeb
 {
+    // this class is used by Owin on app load
+    // ReSharper disable once UnusedMember.Global
     public partial class Startup
     {
         // For more information on configuring authentication, please visit http://go.microsoft.com/fwlink/?LinkId=301864

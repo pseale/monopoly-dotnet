@@ -58,7 +58,7 @@
       var location = new Location();
       location.Index = locationIndex;
       location.HasAProperty = true;
-      location.Property = new Property() { Name = propertyName, SalePrice = salePrice, };
+      location.Property = new Property(propertyName, salePrice);
       All[locationIndex] = location;
     }
 

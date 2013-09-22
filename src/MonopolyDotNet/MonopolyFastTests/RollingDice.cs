@@ -2,6 +2,7 @@
 using System.Linq;
 using MonopolyWeb.Models.Commands;
 using MonopolyWeb.Models.Core;
+using MonopolyWeb.Models.Services;
 using NUnit.Framework;
 
 namespace MonopolyFastTests
@@ -17,7 +18,7 @@ namespace MonopolyFastTests
         var game = FastTestHelper.StartGame();
         RollDiceCommand.Execute(game);
 
-        var gameStatus = game.GetCurrentGameStatus();
+        var gameStatus = GameStatusService.GetCurrentGameStatus(game);
         var playerOne = gameStatus.Players.First();
 
         Assert.AreEqual(3, playerOne.Location.Index);

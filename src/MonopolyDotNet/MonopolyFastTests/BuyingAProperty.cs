@@ -1,5 +1,6 @@
 ﻿using MonopolyWeb.Models.Commands;
 using MonopolyWeb.Models.Core;
+using MonopolyWeb.Models.Services;
 using NUnit.Framework;
 
 namespace MonopolyFastTests
@@ -14,9 +15,9 @@ namespace MonopolyFastTests
       {
         var game = FastTestHelper.StartGame();
         RollDiceCommand.Execute(game);
-        game.BuyProperty();
+        BuyPropertyCommand.Execute(game);
 
-        var gameStatus = game.GetCurrentGameStatus();
+        var gameStatus = GameStatusService.GetCurrentGameStatus(game);
 
         Assert.AreEqual(1500-80, gameStatus.Players[0].Cash);
       });
@@ -29,9 +30,9 @@ namespace MonopolyFastTests
       {
         var game = FastTestHelper.StartGame();
         RollDiceCommand.Execute(game);
-        game.BuyProperty();
+        BuyPropertyCommand.Execute(game);
 
-        var gameStatus = game.GetCurrentGameStatus();
+        var gameStatus = GameStatusService.GetCurrentGameStatus(game);
 
         Assert.AreEqual(1, gameStatus.Players[0].Holdings.Count);
         Assert.AreEqual("Oriental", gameStatus.Players[0].Holdings[0].Name);

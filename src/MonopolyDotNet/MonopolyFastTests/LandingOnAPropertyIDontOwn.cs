@@ -1,5 +1,6 @@
 ﻿using MonopolyWeb.Models.Commands;
 using MonopolyWeb.Models.Core;
+using MonopolyWeb.Models.Services;
 using NUnit.Framework;
 using NUnit.Framework.Constraints;
 
@@ -16,7 +17,7 @@ namespace MonopolyFastTests
         var game = FastTestHelper.StartGame();
         RollDiceCommand.Execute(game);
 
-        var gameStatus = game.GetCurrentGameStatus();
+        var gameStatus = GameStatusService.GetCurrentGameStatus(game);
 
         Assert.IsTrue(gameStatus.CanBuyProperty);
       });
@@ -30,7 +31,7 @@ namespace MonopolyFastTests
         var game = FastTestHelper.StartGame();
         RollDiceCommand.Execute(game);
 
-        var gameStatus = game.GetCurrentGameStatus();
+        var gameStatus = GameStatusService.GetCurrentGameStatus(game);
 
         Assert.AreEqual(80, gameStatus.PropertySalePrice);
       });

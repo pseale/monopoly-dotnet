@@ -1,4 +1,5 @@
 ﻿using MonopolyWeb.Models.Core;
+using MonopolyWeb.Models.Services;
 
 namespace MonopolyWeb.Models.Commands
 {
@@ -6,7 +7,7 @@ namespace MonopolyWeb.Models.Commands
   {
     public static void Execute(Game game)
     {
-      game.EndTurn();
+      ComputerAi.DoComputerTurns(game);
     }
   }
 }

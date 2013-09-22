@@ -21,5 +21,12 @@ namespace MonopolyWeb.Models.Services
 
       return !doesAnyoneOwnThisProperty;
     }
+
+    public static void BuyProperty(Player player)
+    {
+      var property = player.Location.Property;
+      player.Holdings.Add(property);
+      player.Cash -= property.SalePrice;
+    }
   }
 }

@@ -13,7 +13,7 @@ namespace MonopolyWeb.Models.Converters
     {
       var vm = new GameStatusViewModel();
       
-      var gameStatus = game.GetCurrentGameStatus();
+      var gameStatus = GameStatusService.GetCurrentGameStatus(game);
       vm.PlayerStatuses.AddRange(gameStatus.Players.Select(player => Convert(player)));
       vm.CanRoll = gameStatus.CanRoll;
       vm.CanBuyProperty = gameStatus.CanBuyProperty;

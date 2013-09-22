@@ -11,7 +11,7 @@ namespace MonopolyWeb.Models.Services
       {
         RollService.RollForPlayer(game, robotPlayer);
         if (PropertyService.CanBuyProperty(game, robotPlayer))
-          game.BuyPropertyForPlayer(robotPlayer);
+          PropertyService.BuyProperty(robotPlayer);
       }
     }
   }

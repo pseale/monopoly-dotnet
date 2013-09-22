@@ -11,7 +11,7 @@ namespace MonopolyWeb.Models.Services
 
       if (newLocation > boardSize)
       {
-        game.PassGo(player);
+        PassGo(player);
       }
       else if (newLocation == boardSize)
       {
@@ -20,14 +20,18 @@ namespace MonopolyWeb.Models.Services
       else if (player.PassesGoOnNextRoll)
       {
         player.PassesGoOnNextRoll = false;
-        game.PassGo(player);
+        PassGo(player);
       }
 
       newLocation %= boardSize;
       player.Location = Locations.All[newLocation];
 
-      game.DoRentTransaction(player);
+      RentService.DoRentTransaction(game, player);
     }
 
+    public static void PassGo(Player player)
+    {
+      player.Cash += 200;
+    }
   }
 }

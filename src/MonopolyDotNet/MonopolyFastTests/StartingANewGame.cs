@@ -1,4 +1,5 @@
 ﻿using MonopolyWeb.Models.Core;
+using MonopolyWeb.Models.Services;
 using NUnit.Framework;
 
 namespace MonopolyFastTests
@@ -10,7 +11,7 @@ namespace MonopolyFastTests
     public void When_starting_a_new_game__should_set_the_starting_location_to_GO()
     {
       var game = FastTestHelper.StartGame();
-      var gameStatus = game.GetCurrentGameStatus();
+      var gameStatus = GameStatusService.GetCurrentGameStatus(game);
       var players = gameStatus.Players;
 
       Assert.AreEqual(0, players[0].Location.Index);
@@ -23,7 +24,7 @@ namespace MonopolyFastTests
     public void When_starting_a_new_game__should_not_be_able_to_buy_property()
     {
       var game = FastTestHelper.StartGame();
-      var gameStatus = game.GetCurrentGameStatus();
+      var gameStatus = GameStatusService.GetCurrentGameStatus(game);
 
       Assert.IsFalse(gameStatus.CanBuyProperty);
     }

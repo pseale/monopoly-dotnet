@@ -178,9 +178,11 @@
     <Compile Include="Models\Core\TotemLocation.cs" />
     <Compile Include="Models\Queries\FindGameByUsernameQuery.cs" />
     <Compile Include="Models\Services\ComputerAi.cs" />
+    <Compile Include="Models\Services\GameStatusService.cs" />
     <Compile Include="Models\Services\InMemoryGameStorage.cs" />
     <Compile Include="Models\Services\CashHelper.cs" />
     <Compile Include="Models\Services\PropertyService.cs" />
+    <Compile Include="Models\Services\RentService.cs" />
     <Compile Include="Models\Services\RollService.cs" />
     <Compile Include="Models\Services\TokenCoordinatesHelper.cs" />
     <Compile Include="Models\ViewModels\GameStatusViewModel.cs" />

@@ -19,6 +19,7 @@ namespace MonopolyWeb.Controllers
       return View(gameStatus);
     }
 
+    [ValidateAntiForgeryToken]
     [HttpPost]
     public ActionResult Roll()
     {
@@ -28,6 +29,7 @@ namespace MonopolyWeb.Controllers
       return this.RedirectToAction<HomeController>(x => x.Index());
     }
 
+    [ValidateAntiForgeryToken]
     [HttpPost]
     public ActionResult BuyProperty()
     {
@@ -38,6 +40,7 @@ namespace MonopolyWeb.Controllers
       return this.RedirectToAction<HomeController>(x => x.Index());
     }
 
+    [ValidateAntiForgeryToken]
     [HttpPost]
     public ActionResult EndTurn()
     {

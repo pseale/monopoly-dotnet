@@ -70,6 +70,7 @@
   {
     using (Html.BeginForm<GameController>(x => x.Roll()))
     {
+      @Html.AntiForgeryToken()
       <input class="btn btn-large" type="submit" value="Roll" />
     }
   }
@@ -77,6 +78,7 @@
   {
     using (Html.BeginForm<GameController>(x => x.BuyProperty()))
     {
+      @Html.AntiForgeryToken()
       <input class="btn btn-large" type="submit" value="Buy (@(Model.PropertySalePrice))" />
     }
   }
@@ -84,6 +86,7 @@
   {
     using (Html.BeginForm<GameController>(x => x.EndTurn()))
     {
+      @Html.AntiForgeryToken()
       <input class="btn btn-large" type="submit" value="End Turn" />
     }
   }

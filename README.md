@@ -22,8 +22,7 @@ Things I am mildly to moderately ashamed of
 4. I'm moderately ashamed of how I put zero (0) behavior on most of my model objects, but threw all the behavior on Game (the aggregate root). I either have to spread around the behavior like a strong domain model, or completely strip Game of all behavior like an anemic domain model, for consistency.
 5. My "fast tests" project sucks...I think. Maybe. Given I have comprehensive web tests, and given I was rarely at a loss for how to implement the simple behavior, I felt little need to add unit tests that covered things already covered by the web tests.
 6. My git checkin history is like a stream of consciousness. When working on solo projects I use source control as a lazy way to back up my work, as reading the commits for this project quickly shows. I could have (still can) go back and clean up the history so that each well-labeled commit represents a single change. But I didn't, and I won't.
-7. At current count, there are 192 compiler warnings. In related news, I can't use any extension methods defined in my assemblies.
-8. Don't look at SecretAdminController.
+7. Don't look at SecretAdminController.
 
 Things you may find interesting
 ===============================

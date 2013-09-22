@@ -1,7 +1,7 @@
 Monopoly sample project
 ===============
 
-This is a sample ASP.NET MVC 5 app I (@pseale) wrote to explore automated web testing, singleton abuse, basic EF 6, and a few other things.
+This is a sample app I (@pseale) wrote to explore ASP.NET MVC 5, automated web testing, singleton abuse, basic EF 6, and a few other things. I am nowhere near finished implementing all of Monopoly. The UI is ugly and mostly AJAX-free. 
 
 Usage
 -----
@@ -18,13 +18,12 @@ Things I am mildly to moderately ashamed of
 
 1. UI. I did the minimum possible on top of what the base template (and twitter bootstrap) provided. I'm not ashamed of my paint-fu, though perhaps I should be.
 2. My automated web test harness is interesting, and better than anything I could find, but it still has some major problems that will show up quickly if you try to just copy/paste use it on a real project with CI. I may fix them, but I haven't yet.
-3. Things I have on my to-do list: Fix selenium Firefox wrapper-aware code to be agnostic, make sure I have anti-forgery tokens everywhere, add an action filter to remove a lot of duplication in the GameController
-4. As of today (2013-09-21), the test helpers are disorganized. I plan to experiment with them, but if they don't change...just know I meant to change them.
-5. I'm moderately ashamed of how I put zero (0) behavior on most of my model objects, but threw all the behavior on Game (the aggregate root). I either have to spread around the behavior like a strong domain model, or completely strip Game of all behavior like an anemic domain model, for consistency.
-6. My "fast tests" project sucks...I think. Maybe. Given I have comprehensive web tests, and given I was rarely at a loss for how to implement the simple behavior, I felt little need to add unit tests that covered things already covered by the web tests.
-7. My git checkin history is like a stream of consciousness. When working on solo projects I use source control as a lazy way to back up my work, and reading the commits shows. I could have (still can) go back and clean up the history so that each well-labeled commit represents a single change. But I didn't.
-8. At current count, there are 192 compiler warnings. In related news, I can't make and use my own extension methods.
-9. Don't look at SecretAdminController.
+3. As of today (2013-09-21), the test helpers are disorganized. I plan to experiment with them, but if they don't change...just know I meant to change them.
+4. I'm moderately ashamed of how I put zero (0) behavior on most of my model objects, but threw all the behavior on Game (the aggregate root). I either have to spread around the behavior like a strong domain model, or completely strip Game of all behavior like an anemic domain model, for consistency.
+5. My "fast tests" project sucks...I think. Maybe. Given I have comprehensive web tests, and given I was rarely at a loss for how to implement the simple behavior, I felt little need to add unit tests that covered things already covered by the web tests.
+6. My git checkin history is like a stream of consciousness. When working on solo projects I use source control as a lazy way to back up my work, as reading the commits for this project quickly shows. I could have (still can) go back and clean up the history so that each well-labeled commit represents a single change. But I didn't, and I won't.
+7. At current count, there are 192 compiler warnings. In related news, I can't use any extension methods defined in my assemblies.
+8. Don't look at SecretAdminController.
 
 Things you may find interesting
 ===============================

@@ -163,7 +163,7 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Models\AccountViewModels.cs" />
+    <Compile Include="Models\ASPNETIdentity\IdentityModels.cs" />
     <Compile Include="Models\Commands\BuyPropertyCommand.cs" />
     <Compile Include="Models\Commands\CreateGameCommand.cs" />
     <Compile Include="Models\Commands\EndTurnCommand.cs" />
@@ -180,7 +180,6 @@
     <Compile Include="Models\Core\Property.cs" />
     <Compile Include="Models\Core\Totem.cs" />
     <Compile Include="Models\Core\TotemLocation.cs" />
-    <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\Queries\FindGameByUsernameQuery.cs" />
     <Compile Include="Models\Services\InMemoryGameStorage.cs" />
     <Compile Include="Models\Services\CashHelper.cs" />
@@ -207,7 +206,6 @@
     <Content Include="img\board.png" />
     <Content Include="img\horseman.png" />
     <Content Include="img\human_player.png" />
-    <Content Include="img\Monopoly_board.jpg" />
     <Content Include="img\robot_scum.png" />
     <Content Include="img\shoe.png" />
     <Content Include="img\thimble.png" />

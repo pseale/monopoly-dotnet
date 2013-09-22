@@ -6,6 +6,7 @@ using System.Web.Security;
 using Microsoft.Web.Mvc;
 using System.Web.Mvc;
 using MonopolyWeb.Models;
+using MonopolyWeb.Models.ASPNETIdentity;
 using MonopolyWeb.Models.Commands;
 using MonopolyWeb.Models.Converters;
 using MonopolyWeb.Models.ViewModels;

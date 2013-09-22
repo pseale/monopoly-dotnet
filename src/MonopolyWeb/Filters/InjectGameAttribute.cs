@@ -1,4 +1,5 @@
 ﻿using System.Web.Mvc;
+using Microsoft.AspNet.Identity;
 using MonopolyWeb.Models.Queries;
 
 namespace MonopolyWeb.Filters
@@ -7,7 +8,7 @@ namespace MonopolyWeb.Filters
   {
     public override void OnActionExecuting(ActionExecutingContext filterContext)
     {
-      var username = Microsoft.AspNet.Identity.IdentityExtensions.GetUserName(filterContext.HttpContext.User.Identity);
+      var username = filterContext.HttpContext.User.Identity.Name;
       var game = FindGameByUsernameQuery.Execute(username);
       filterContext.ActionParameters["game"] = game;
 

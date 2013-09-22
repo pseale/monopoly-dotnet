@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Security.Claims;
 using System.Threading.Tasks;
 using System.Web.Security;
@@ -43,10 +44,7 @@ namespace MonopolyWeb.Controllers
     {
       var user = new User(username);
       await IdentityConfig.Users.Create(user);
-      await IdentityConfig.Secrets.Create(new UserSecret(username, "123456"));
-      await IdentityConfig.Logins.Add(new UserLogin(user.Id, IdentityConfig.LocalLoginProvider, username));
-      IList<Claim> userClaims = IdentityConfig.RemoveUserIdentityClaims(new Claim[0]);
-      IdentityConfig.AddUserIdentityClaims(user.Id, user.UserName, userClaims);
+      var userClaims = IdentityConfig.GetNewUserIdentityClaims(user.Id, user.UserName);
       IdentityConfig.SignIn(HttpContext, userClaims, false);
     }
   }

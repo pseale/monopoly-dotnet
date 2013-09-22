@@ -6,7 +6,7 @@ This is a sample app I (@pseale) wrote to explore ASP.NET MVC 5, automated web t
 Usage
 -----
 
-Download/clone this project's source, run the app (it creates its own database in App_Data), and read the source as desired. 
+Download/clone this project's source, get all NuGet packages, run the app (it creates its own database in App_Data), and read the source as desired. 
 
 To run the web tests, use any NUnit test runner and run the entire test suite. The test run will fire up an IISExpress instance and a Selenium-driven browser. Do not touch the browser.
 

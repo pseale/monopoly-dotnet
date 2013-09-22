@@ -21,22 +21,15 @@ namespace MonopolyWeb.Models.Core
       _players.Add(CreateOpponent(newGameData.Opponent3Name, 4, availableTotems.Pop()));
     }
 
-    private Player CreateHumanPlayer(NewGameData newGameData)
+    private Player CreateHumanPlayer(NewGameData data)
     {
-      var humanPlayer = new Player() {Cash = 1500, Location = Locations.Go};
-      humanPlayer.IsHuman = true;
-      humanPlayer.Name = newGameData.PlayerName;
-      humanPlayer.Totem = newGameData.PlayerTotem;
-      humanPlayer.Index = 1;
+      var humanPlayer = new Player(data.PlayerName, data.PlayerTotem, true, 1); 
       return humanPlayer;
     }
 
     private Player CreateOpponent(string opponentName, int playerIndex, Totem totem)
     {
-      var opponent1 = new Player() {Cash = 1500, Location = Locations.Go};
-      opponent1.Name = opponentName;
-      opponent1.Index = playerIndex;
-      opponent1.Totem = totem;
+      var opponent1 = new Player(opponentName, totem, false, playerIndex);
       return opponent1;
     }
 

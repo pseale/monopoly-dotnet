@@ -11,21 +11,20 @@ namespace MonopolyWeb
   // For more information on ASP.NET Identity, visit http://go.microsoft.com/fwlink/?LinkId=301863
   public static class IdentityConfig
   {
+    private const string RoleClaimType = ClaimsIdentity.DefaultRoleClaimType;
+    private const string UserNameClaimType = "http://schemas.microsoft.com/aspnet/userid";
+    private const string UserIdClaimType = "http://schemas.microsoft.com/aspnet/username";
+    private const string ClaimsIssuer = ClaimsIdentity.DefaultIssuer;
+
     public static IUserStore Users { get; private set; }
-    private static string RoleClaimType { get; set; }
-    private static string UserNameClaimType { get; set; }
-    private static string UserIdClaimType { get; set; }
-    private static string ClaimsIssuer { get; set; }
 
     public static void ConfigureIdentity()
     {
       var dbContextCreator = new DbContextFactory<IdentityDbContext>();
       Users = new EFUserStore<User>(dbContextCreator);
-      RoleClaimType = ClaimsIdentity.DefaultRoleClaimType;
-      UserIdClaimType = "http://schemas.microsoft.com/aspnet/userid";
-      UserNameClaimType = "http://schemas.microsoft.com/aspnet/username";
-      ClaimsIssuer = ClaimsIdentity.DefaultIssuer;
-      AntiForgeryConfig.UniqueClaimTypeIdentifier = IdentityConfig.UserIdClaimType;
+
+      //Identity framework code, required
+      AntiForgeryConfig.UniqueClaimTypeIdentifier = UserIdClaimType;
     }
 
     public static IEnumerable<Claim> GetNewUserIdentityClaims(string userId, string displayName)

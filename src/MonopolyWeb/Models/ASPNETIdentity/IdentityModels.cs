@@ -45,7 +45,8 @@ namespace ASPNETIdentity
       return base.ValidateEntity(entityEntry, items);
     }
 
-    //property injected by EF, oops
+    //property injected by EF, so, don't make this private
+    // ReSharper disable once MemberCanBePrivate.Global
     public DbSet<User> Users { get; set; }
   }
 }

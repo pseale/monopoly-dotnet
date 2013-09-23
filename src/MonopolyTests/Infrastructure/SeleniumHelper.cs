@@ -1,4 +1,5 @@
 ﻿using Coypu;
+using Coypu.Drivers;
 
 namespace MonopolyTests.Infrastructure
 {
@@ -18,7 +19,8 @@ namespace MonopolyTests.Infrastructure
 
     public static void Start()
     {
-      _browserSession = new BrowserSession(new SessionConfiguration() { Port = IisExpressInstance.Port});
+      //_browserSession = new BrowserSession(new SessionConfiguration() { Port = IisExpressInstance.Port});
+      _browserSession = new BrowserSession(new SessionConfiguration() { Port = IisExpressInstance.Port, Browser = Browser.Chrome});
     }
 
     public static void Stop()

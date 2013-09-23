@@ -12,7 +12,15 @@ namespace MonopolyWeb.Models.Core.EF
     protected override void OnModelCreating(DbModelBuilder modelBuilder)
     {
       modelBuilder.Entity<Game>().HasKey(x => x.Id);
+      modelBuilder.Entity<Game>().Property(x => x.Username).IsRequired();
       modelBuilder.Entity<Game>().Property(x => x.Id).HasDatabaseGeneratedOption(DatabaseGeneratedOption.Identity);
+
+      modelBuilder.Entity<Player>().Property(x => x.PlayerName).HasMaxLength(20);
+      modelBuilder.Entity<Player>().Property(x => x.PlayerName).IsRequired();
+
+      modelBuilder.Entity<Location>().Property(x => x.Index).IsRequired();
+
+      modelBuilder.Entity<Property>().Property(x => x.PropertyName).IsRequired();
     }
 
     // This method ensures that user names are always unique

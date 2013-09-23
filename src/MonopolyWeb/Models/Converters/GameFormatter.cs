@@ -45,16 +45,16 @@ namespace MonopolyWeb.Models.Converters
 
     private static List<SelectListItem> Convert(IEnumerable<Property> list)
     {
-      var adaptedList = new List<SelectListItem>();
-      foreach (var item in list)
+      var convertedList = new List<SelectListItem>();
+      foreach (var item in list.OrderBy(x=>x.SalePrice))
       {
         var selectListItem = new SelectListItem();
         selectListItem.Text = item.PropertyName;
         selectListItem.Value = item.PropertyName;
-        adaptedList.Add(selectListItem);
+        convertedList.Add(selectListItem);
       }
 
-      return adaptedList;
+      return convertedList;
     }
   }
 }

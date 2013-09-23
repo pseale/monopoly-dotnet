@@ -28,8 +28,6 @@ namespace ASPNETIdentity
 
   public class IdentityDbContext : DbContext
   {
-    public IdentityDbContext() :base() { }
-
     // This method ensures that user names are always unique
     protected override DbEntityValidationResult ValidateEntity(DbEntityEntry entityEntry, IDictionary<object, object> items)
     {

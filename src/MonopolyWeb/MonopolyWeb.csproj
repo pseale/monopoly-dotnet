@@ -146,7 +146,7 @@
   <ItemGroup>
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
-    <Compile Include="App_Start\IdentityConfig.cs" />
+    <Compile Include="App_Start\EntityFrameworkConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="Controllers\AboutController.cs" />
@@ -159,7 +159,7 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Models\ASPNETIdentity\IdentityModels.cs" />
+    <Compile Include="Models\Core\Identity\MonopolyDotNetDbContext.cs" />
     <Compile Include="Models\Commands\BuyPropertyCommand.cs" />
     <Compile Include="Models\Commands\CreateGameCommand.cs" />
     <Compile Include="Models\Commands\EndTurnCommand.cs" />
@@ -169,6 +169,7 @@
     <Compile Include="Models\Core\Dice.cs" />
     <Compile Include="Models\Core\Game.cs" />
     <Compile Include="Models\Core\GameStatus.cs" />
+    <Compile Include="Models\Core\Identity\User.cs" />
     <Compile Include="Models\Core\Location.cs" />
     <Compile Include="Models\Core\Locations.cs" />
     <Compile Include="Models\Core\NewGameData.cs" />

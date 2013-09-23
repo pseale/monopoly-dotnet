@@ -12,7 +12,7 @@ namespace MonopolyWeb
     {
       AreaRegistration.RegisterAllAreas();
 
-      IdentityConfig.ConfigureIdentity();
+      EntityFrameworkConfig.Configure();
       FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters);
       RouteConfig.RegisterRoutes(RouteTable.Routes);
       BundleConfig.RegisterBundles(BundleTable.Bundles);

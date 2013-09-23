@@ -4,12 +4,13 @@ using System.Web;
 using System.Web.Helpers;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.EntityFramework;
-using ASPNETIdentity;
+using MonopolyWeb.Models.Core.Identity;
 
+// ReSharper disable once CheckNamespace
 namespace MonopolyWeb
 {
   // For more information on ASP.NET Identity, visit http://go.microsoft.com/fwlink/?LinkId=301863
-  public static class IdentityConfig
+  public static class EntityFrameworkConfig
   {
     private const string RoleClaimType = ClaimsIdentity.DefaultRoleClaimType;
     private const string UserNameClaimType = "http://schemas.microsoft.com/aspnet/userid";
@@ -18,9 +19,9 @@ namespace MonopolyWeb
 
     public static IUserStore Users { get; private set; }
 
-    public static void ConfigureIdentity()
+    public static void Configure()
     {
-      var dbContextCreator = new DbContextFactory<IdentityDbContext>();
+      var dbContextCreator = new DbContextFactory<MonopolyDotNetDbContext>();
       Users = new EFUserStore<User>(dbContextCreator);
 
       //Identity framework code, required

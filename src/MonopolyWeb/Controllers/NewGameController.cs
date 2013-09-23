@@ -2,9 +2,9 @@
 using System.Threading.Tasks;
 using Microsoft.Web.Mvc;
 using System.Web.Mvc;
-using ASPNETIdentity;
 using MonopolyWeb.Models.Commands;
 using MonopolyWeb.Models.Converters;
+using MonopolyWeb.Models.Core.Identity;
 using MonopolyWeb.Models.ViewModels;
 
 namespace MonopolyWeb.Controllers
@@ -38,9 +38,9 @@ namespace MonopolyWeb.Controllers
     private async Task CreateUserAndThenLogIn(string username)
     {
       var user = new User(username);
-      await IdentityConfig.Users.Create(user);
-      var userClaims = IdentityConfig.GetNewUserIdentityClaims(user.Id, user.UserName);
-      IdentityConfig.SignIn(HttpContext, userClaims, false);
+      await EntityFrameworkConfig.Users.Create(user);
+      var userClaims = EntityFrameworkConfig.GetNewUserIdentityClaims(user.Id, user.UserName);
+      EntityFrameworkConfig.SignIn(HttpContext, userClaims, false);
     }
   }
 }

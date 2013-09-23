@@ -1,32 +1,12 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
+﻿using System.Collections.Generic;
 using System.Data.Entity;
 using System.Data.Entity.Infrastructure;
 using System.Data.Entity.Validation;
 using System.Linq;
-using Microsoft.AspNet.Identity;
 
-namespace ASPNETIdentity
+namespace MonopolyWeb.Models.Core.Identity
 {
-  // Modify the User class to add extra user information
-  public class User : IUser
-  {
-    public User() : this(String.Empty) { }
-
-    public User(string userName)
-    {
-      UserName = userName;
-      Id = Guid.NewGuid().ToString();
-    }
-
-    [Key]
-    public string Id { get; set; }
-
-    public string UserName { get; set; }
-  }
-
-  public class IdentityDbContext : DbContext
+  public class MonopolyDotNetDbContext : DbContext
   {
     // This method ensures that user names are always unique
     protected override DbEntityValidationResult ValidateEntity(DbEntityEntry entityEntry, IDictionary<object, object> items)
@@ -45,7 +25,7 @@ namespace ASPNETIdentity
       return base.ValidateEntity(entityEntry, items);
     }
 
-    //property injected by EF, so, don't make this private
+    //property injected by EF, so, uh, don't make this private
     // ReSharper disable once MemberCanBePrivate.Global
     public DbSet<User> Users { get; set; }
   }

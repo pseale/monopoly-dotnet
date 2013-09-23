@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Data.Entity;
 using System.Data.Entity.Infrastructure;
 using System.Data.Entity.Validation;
@@ -8,6 +9,11 @@ namespace MonopolyWeb.Models.Core.EF
 {
   public class MonopolyDotNetDbContext : DbContext
   {
+    protected override void OnModelCreating(DbModelBuilder modelBuilder)
+    {
+      modelBuilder.Entity<Game>().HasKey(x => x.Id);
+      modelBuilder.Entity<Game>().Property(x => x.Id).HasDatabaseGeneratedOption(DatabaseGeneratedOption.Identity);
+    }
 
     // This method ensures that user names are always unique
     protected override DbEntityValidationResult ValidateEntity(DbEntityEntry entityEntry, IDictionary<object, object> items)

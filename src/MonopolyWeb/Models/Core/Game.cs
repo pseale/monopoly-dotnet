@@ -1,14 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
-using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 
 namespace MonopolyWeb.Models.Core
 {
   public class Game
   {
-    [Key, DatabaseGenerated(DatabaseGeneratedOption.Identity)]
     public Guid Id { get; private set; }
 
     public Game() //EF requires empty constructor

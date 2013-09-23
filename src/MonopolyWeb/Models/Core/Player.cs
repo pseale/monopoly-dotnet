@@ -23,7 +23,8 @@ namespace MonopolyWeb.Models.Core
     public Guid GameId { get; set; } //required for EF
     public Game Game { get; set; } //required for EF
     public string PlayerName { get; private set; }
-    [Key, DatabaseGenerated(DatabaseGeneratedOption.None)]
+    [Key, DatabaseGenerated(DatabaseGeneratedOption.Identity)]
+    public Guid Id { get; set; }
     public int Index { get; private set; } //starts at 1
     public bool IsHuman { get; private set; }
     public Totem Totem { get; private set; }

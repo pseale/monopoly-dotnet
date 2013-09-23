@@ -28,9 +28,7 @@ namespace ASPNETIdentity
 
   public class IdentityDbContext : DbContext
   {
-    public IdentityDbContext() : base("DefaultConnection") { }
-
-    public IdentityDbContext(string nameOrConnectionString) : base(nameOrConnectionString) { }
+    public IdentityDbContext() :base() { }
 
     // This method ensures that user names are always unique
     protected override DbEntityValidationResult ValidateEntity(DbEntityEntry entityEntry, IDictionary<object, object> items)
@@ -49,6 +47,7 @@ namespace ASPNETIdentity
       return base.ValidateEntity(entityEntry, items);
     }
 
-    private DbSet<User> Users { get; set; }
+    //property injected by EF, oops
+    public DbSet<User> Users { get; set; }
   }
 }

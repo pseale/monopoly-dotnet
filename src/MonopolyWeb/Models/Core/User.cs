@@ -2,7 +2,7 @@
 using System.ComponentModel.DataAnnotations;
 using Microsoft.AspNet.Identity;
 
-namespace MonopolyWeb.Models.Core.Identity
+namespace MonopolyWeb.Models.Core
 {
   public class User : IUser
   {

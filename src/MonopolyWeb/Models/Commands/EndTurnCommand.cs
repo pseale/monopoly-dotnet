@@ -1,4 +1,5 @@
 ﻿using MonopolyWeb.Models.Core;
+using MonopolyWeb.Models.Core.EF;
 
 namespace MonopolyWeb.Models.Commands
 {
@@ -6,7 +7,12 @@ namespace MonopolyWeb.Models.Commands
   {
     public static void Execute(Game game)
     {
-      game.EndTurn();
+      using (var context = new MonopolyDotNetDbContext())
+      {
+        context.Games.Attach(game);
+        game.EndTurn();
+        context.SaveChanges();
+      }
     }
   }
 }

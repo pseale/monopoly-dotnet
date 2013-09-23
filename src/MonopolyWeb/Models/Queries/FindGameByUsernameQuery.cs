@@ -1,6 +1,7 @@
-﻿using System;
+﻿using System.Data.Entity;
+using System.Linq;
 using MonopolyWeb.Models.Core;
-using MonopolyWeb.Models.Services;
+using MonopolyWeb.Models.Core.EF;
 
 namespace MonopolyWeb.Models.Queries
 {
@@ -8,7 +9,16 @@ namespace MonopolyWeb.Models.Queries
   {
     public static Game Execute(string username)
     {
-      return InMemoryGameStorage.Games[username];
+      using (var context = new MonopolyDotNetDbContext())
+      {
+        return context.Games
+          .AsQueryable()
+          .Include(x=>x.Players)
+          .Include(x=>x.Players.Select(y=>y.Holdings))
+          .Include(x => x.Players.Select(y => y.Location))
+          .Include(x => x.Players.Select(y => y.Location.Property))
+          .Single(x => x.Username == username);
+      }
     }
   }
 }

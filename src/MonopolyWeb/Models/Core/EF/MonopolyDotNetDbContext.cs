@@ -4,10 +4,11 @@ using System.Data.Entity.Infrastructure;
 using System.Data.Entity.Validation;
 using System.Linq;
 
-namespace MonopolyWeb.Models.Core.Identity
+namespace MonopolyWeb.Models.Core.EF
 {
   public class MonopolyDotNetDbContext : DbContext
   {
+
     // This method ensures that user names are always unique
     protected override DbEntityValidationResult ValidateEntity(DbEntityEntry entityEntry, IDictionary<object, object> items)
     {
@@ -28,5 +29,6 @@ namespace MonopolyWeb.Models.Core.Identity
     //property injected by EF, so, uh, don't make this private
     // ReSharper disable once MemberCanBePrivate.Global
     public DbSet<User> Users { get; set; }
+    public DbSet<Game> Games { get; set; }
   }
 }

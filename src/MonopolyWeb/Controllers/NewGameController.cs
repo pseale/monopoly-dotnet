@@ -4,7 +4,7 @@ using Microsoft.Web.Mvc;
 using System.Web.Mvc;
 using MonopolyWeb.Models.Commands;
 using MonopolyWeb.Models.Converters;
-using MonopolyWeb.Models.Core.Identity;
+using MonopolyWeb.Models.Core;
 using MonopolyWeb.Models.ViewModels;
 
 namespace MonopolyWeb.Controllers

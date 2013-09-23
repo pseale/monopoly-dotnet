@@ -159,7 +159,6 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Models\Core\Identity\MonopolyDotNetDbContext.cs" />
     <Compile Include="Models\Commands\BuyPropertyCommand.cs" />
     <Compile Include="Models\Commands\CreateGameCommand.cs" />
     <Compile Include="Models\Commands\EndTurnCommand.cs" />
@@ -167,15 +166,16 @@
     <Compile Include="Models\Converters\GameFormatter.cs" />
     <Compile Include="Models\Converters\NewGameConverter.cs" />
     <Compile Include="Models\Core\Dice.cs" />
+    <Compile Include="Models\Core\EF\MonopolyDotNetDbContext.cs" />
     <Compile Include="Models\Core\Game.cs" />
     <Compile Include="Models\Core\GameStatus.cs" />
-    <Compile Include="Models\Core\Identity\User.cs" />
     <Compile Include="Models\Core\Location.cs" />
     <Compile Include="Models\Core\Locations.cs" />
     <Compile Include="Models\Core\NewGameData.cs" />
     <Compile Include="Models\Core\Player.cs" />
     <Compile Include="Models\Core\Property.cs" />
     <Compile Include="Models\Core\Totem.cs" />
+    <Compile Include="Models\Core\User.cs" />
     <Compile Include="Models\Queries\FindGameByUsernameQuery.cs" />
     <Compile Include="Models\Services\InMemoryGameStorage.cs" />
     <Compile Include="Models\Services\CashHelper.cs" />

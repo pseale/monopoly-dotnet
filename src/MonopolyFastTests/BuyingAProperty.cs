@@ -34,7 +34,7 @@ namespace MonopolyFastTests
         var gameStatus = game.GetCurrentGameStatus();
 
         Assert.AreEqual(1, gameStatus.Players[0].Holdings.Count());
-        Assert.AreEqual("Oriental", gameStatus.Players[0].Holdings.First().Name);
+        Assert.AreEqual("Oriental", gameStatus.Players[0].Holdings.First().PropertyName);
       });
     }
   }

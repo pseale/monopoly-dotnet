@@ -1,6 +1,5 @@
-﻿using System;
-using MonopolyWeb.Models.Core;
-using MonopolyWeb.Models.Services;
+﻿using MonopolyWeb.Models.Core;
+using MonopolyWeb.Models.Core.EF;
 
 namespace MonopolyWeb.Models.Commands
 {
@@ -8,7 +7,12 @@ namespace MonopolyWeb.Models.Commands
   {
     public static void Execute(string username, NewGameData newGameData)
     {
-      InMemoryGameStorage.Games[username] = new Game(newGameData);
+      using (var context = new MonopolyDotNetDbContext())
+      {
+        var game = new Game(newGameData, username);
+        context.Games.Add(game);
+        context.SaveChanges();
+      }
     }
   }
 }

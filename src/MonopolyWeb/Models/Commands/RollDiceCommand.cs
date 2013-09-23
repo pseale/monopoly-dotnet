@@ -1,12 +1,18 @@
 ﻿using MonopolyWeb.Models.Core;
+using MonopolyWeb.Models.Core.EF;
 
 namespace MonopolyWeb.Models.Commands
 {
-  public class RollDiceCommand
+  public static class RollDiceCommand
   {
     public static void Execute(Game game)
     {
-      game.Roll();
+      using (var context = new MonopolyDotNetDbContext())
+      {
+        context.Games.Attach(game);
+        game.Roll();
+        context.SaveChanges();
+      }
     }
   }
 }

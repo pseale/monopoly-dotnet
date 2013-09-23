@@ -4,7 +4,8 @@ using System.Web;
 using System.Web.Helpers;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.EntityFramework;
-using MonopolyWeb.Models.Core.Identity;
+using MonopolyWeb.Models.Core;
+using MonopolyWeb.Models.Core.EF;
 
 // ReSharper disable once CheckNamespace
 namespace MonopolyWeb

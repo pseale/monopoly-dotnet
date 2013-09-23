@@ -14,7 +14,7 @@ namespace MonopolyWeb.Models.Converters
       var vm = new GameStatusViewModel();
       
       var gameStatus = game.GetCurrentGameStatus();
-      vm.PlayerStatuses.AddRange(gameStatus.Players.Select(player => Convert(player)));
+      vm.PlayerStatuses.AddRange(gameStatus.Players.Select(player => Convert(player)).OrderBy(x=>x.PlayerNumber));
       vm.CanRoll = gameStatus.CanRoll;
       vm.CanBuyProperty = gameStatus.CanBuyProperty;
       vm.CanEndTurn = gameStatus.CanEndTurn;
@@ -26,7 +26,7 @@ namespace MonopolyWeb.Models.Converters
     private static PlayerStatusViewModel Convert(Player player)
     {
       var vm = new PlayerStatusViewModel();
-      vm.Name = player.Name;
+      vm.Name = player.PlayerName;
       vm.PlayerNumber = player.Index;
       vm.Icon = player.IsHuman ? "human_player.png" : "robot_scum.png";
       vm.TotemIcon = GetIconFor(player.Totem);
@@ -49,8 +49,8 @@ namespace MonopolyWeb.Models.Converters
       foreach (var item in list)
       {
         var selectListItem = new SelectListItem();
-        selectListItem.Text = item.Name;
-        selectListItem.Value = item.Name;
+        selectListItem.Text = item.PropertyName;
+        selectListItem.Value = item.PropertyName;
         adaptedList.Add(selectListItem);
       }
 

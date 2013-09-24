@@ -19,7 +19,7 @@ namespace MonopolyTests.Infrastructure
 
     public static void Start()
     {
-      //_browserSession = new BrowserSession(new SessionConfiguration() { Port = IisExpressInstance.Port});
+      //_browserSession = new BrowserSession(new SessionConfiguration() { Port = IisExpressInstance.Port, Browser = Browser.Firefox});
       _browserSession = new BrowserSession(new SessionConfiguration() { Port = IisExpressInstance.Port, Browser = Browser.Chrome});
     }
 

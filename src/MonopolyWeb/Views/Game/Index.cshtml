@@ -53,13 +53,13 @@
 <div class="monopoly-board span9">
   @foreach (var player in Model.PlayerStatuses)
   {
-    <img class="player-totem" id="player-@(player.PlayerNumber)" src="~/img/@(player.TotemIcon)" alt="Player @(player.PlayerNumber) (@(player.Name))" title="Player @(player.PlayerNumber) (@(player.Name))" />
+    <img class="player-totem" id="player-@(player.PlayerNumber)" src="~/Content/Images/@(player.TotemIcon)" alt="Player @(player.PlayerNumber) (@(player.Name))" title="Player @(player.PlayerNumber) (@(player.Name))" />
   }
 </div>
 @foreach (var player in Model.PlayerStatuses)
 {
   <div class="player-card span3" id="player-@(player.PlayerNumber)">
-    <img class="player-icon" src="~/img/@(@player.Icon)" />
+    <img class="player-icon" src="~/Content/Images/@(@player.Icon)" />
     <h4>@player.Name</h4>
     <div class="cash">@player.Cash</div>
     @(Html.ListBoxFor(x => x.PlayerStatuses[0].Holdings, player.Holdings, new { @class = "holdings" }))

@@ -28,19 +28,10 @@ namespace MonopolyWeb.Controllers
 
       var newGameData = NewGameConverter.Convert(newGameInput);
       var username = Guid.NewGuid().ToString("D");
-      await CreateUserAndThenLogIn(username);
-
+      CreateUserCommand.Execute(HttpContext, username);
       CreateGameCommand.Execute(username, newGameData);
 
       return this.RedirectToAction<HomeController>(x => x.Index());
-    }
-
-    private async Task CreateUserAndThenLogIn(string username)
-    {
-      var user = new User(username);
-      await EntityFrameworkConfig.Users.Create(user);
-      var userClaims = EntityFrameworkConfig.GetNewUserIdentityClaims(user.Id, user.UserName);
-      EntityFrameworkConfig.SignIn(HttpContext, userClaims, false);
     }
   }
 }

@@ -23,7 +23,7 @@ namespace MonopolyWeb.Models.Core
     public Guid Id { get; set; }
     public int Index { get; private set; }
     public Property Property { get; private set; }
-
+     
     public bool HasAProperty
     {
       get { return Property != null; }

@@ -147,7 +147,7 @@
   <ItemGroup>
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
-    <Compile Include="App_Start\EntityFrameworkConfig.cs" />
+    <Compile Include="App_Start\IdentityConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="Controllers\AboutController.cs" />
@@ -162,6 +162,7 @@
     </Compile>
     <Compile Include="Models\Commands\BuyPropertyCommand.cs" />
     <Compile Include="Models\Commands\CreateGameCommand.cs" />
+    <Compile Include="Models\Commands\CreateUserCommand.cs" />
     <Compile Include="Models\Commands\EndTurnCommand.cs" />
     <Compile Include="Models\Commands\RollDiceCommand.cs" />
     <Compile Include="Models\Converters\GameFormatter.cs" />

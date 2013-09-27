@@ -23,8 +23,11 @@ namespace MonopolyWeb.Models.Commands
       //that the correct way to "wait for an async task to finish" is to use task.Wait(), so I'm just leaving this here with this 
       //longwinded comment that absolves me of all responsibility. You Have Been Warned.
       //
+      //I also tried task.GetAwaiter().GetResult(); -- no dice.
+      //
       //It's probably because I'm using preview code (not even RC).
-      var task = userStore.Create(user); 
+      var task = userStore.Create(user);
+      //task.GetAwaiter().GetResult();
       //task.Wait();
       var userClaims = GetNewUserIdentityClaims(user.Id, user.UserName);
       SignIn(httpContext, userClaims, false);
